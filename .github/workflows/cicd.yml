@@ -19,11 +19,25 @@ jobs:
       runs-on: ubuntu-latest
 
 #Deploy dev-test      
-      if: github.ref == 'refs/heads/Develop-test' # run this job only for the dev branch
+      if: github.ref == 'refs/heads/back-develop.serviapp.site' # run this job only for the dev branch
       steps:
          - name: Hello world
            run: |
                echo "Hi!"
+        #Back
+         - name: checkout repo
+           uses: actions/checkout@v2
+
+         - name: Create SSH key
+           run: |
+               install -m 600 -D /dev/null ~/.ssh/id_rsa
+               echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+               ssh-keyscan serviapp.solutions > ~/.ssh/known_hosts          
+        
+         - name: Deploy Back
+           run: |
+               rsync -ra --delete ./ ubuntu@neumapp.site:/home/ubuntu/neumapp/dev/s14-35-n-node-react/
+               ssh -f ubuntu@${{ secrets.SSH_HOST }} /home/ubuntu/neumapp/dev/dev.sh
 #        - name: checkout repo#
 #          uses: actions/checkout@v2
 #
