@@ -32,7 +32,7 @@ jobs:
            run: |
                install -m 600 -D /dev/null ~/.ssh/id_rsa
                echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-               ssh-keyscan serviapp.solutions > ~/.ssh/known_hosts          
+               ssh-keyscan neumapp.site > ~/.ssh/known_hosts          
         
          - name: Deploy Back
            run: |
