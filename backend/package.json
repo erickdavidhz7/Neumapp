@@ -2,16 +2,17 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "**Usuarios: 2**",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "tsnd --respawn --clear src/index.ts",
+    "dev": "tsnd --respawn --clear src/app.ts",
     "build": "rimraf ./dist && tsc",
-    "start": "npm run build && node dist/index.js"
+    "start": "npm run build && node dist/app.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.12.3",
