@@ -15,7 +15,7 @@ app.use(
     origin: '*',
     credentials: true,
   })
-);
+)
 
 app.use((_req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*') // update to match the domain you will make the request from
@@ -26,17 +26,10 @@ app.use((_req, res, next) => {
   );
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
   next()
-});
+})
 
 //Llamo al router principal
 app.use('/', routes)
-// app.get("/", (req, res) => {
-//   res.status(200).send(`
-//   <h1>Welcome to Neuma's backend server</h1>
-//   <h2>Code: 200</h2>
-//   <p>Good request</p>
-//   `);
-// });
 
 https
   .createServer(
