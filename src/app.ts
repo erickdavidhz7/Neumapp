@@ -1,6 +1,8 @@
 import express  from "express";
 import cors from "cors";
-import { port } from "./utils/constants";
+import https from "node:https";
+import fs from "fs";
+import { port, sslPathOutsideRep } from "./utils/constants";
 
 //* ----------------Server configuration -----------------
 
@@ -36,9 +38,13 @@ app.get("/", (req, res) => {
   `);
 });
 
-app.listen(port, () =>{
+
+https.createServer({
+  cert: fs.readFileSync(sslPathOutsideRep + "/fullchain.pem"),
+  key: fs.readFileSync(sslPathOutsideRep + "/privkey.pem")
+}, app).listen(port, () => {
   // local testing
-  console.log(`Server is listening at http://localhost:${port}/`);
+    //console.log(`Server is listening at https://localhost:${port}/`);
   // For the deployment
-  // console.log(`Server is listening at https://neumapp.site:${port}/`);
+  console.log(`Server is listening at https://neumapp.site:${port}/`);
 });
