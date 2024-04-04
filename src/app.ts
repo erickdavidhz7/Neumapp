@@ -23,7 +23,7 @@ app.use((_req, res, next) => {
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
-  );
+  )
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
   next()
 })
@@ -43,5 +43,5 @@ https
     // local testing
     //console.log(`Server is listening at https://localhost:${port}/`)
     //For the deployment
-    console.log(`Server is listening at https://neumapp.site:${port}/`);
+    console.log(`Server is listening at https://neumapp.site:${port}/`)
   })

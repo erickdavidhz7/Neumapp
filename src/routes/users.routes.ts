@@ -8,4 +8,4 @@ router.get('/', usersControllers.getAllUsers)
 
 //Aca debemos agregar las demas rutas de usuarios
 
-export default router;
+export default router

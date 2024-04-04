@@ -1,19 +1,20 @@
 //------ ESTE ES EL ROUTER PRINCPAL, LLAMA A LAS DISTINTAS RUTAS -------//
 import express from 'express'
+import { Request, Response } from 'express'
 //---- Importo las rutas de users ----/ (lo mismo para cada entidad que necesitemos)
 import usersRoutes from './users.routes'
 
 const mainRouter = express.Router()
 //-------------------------------------------//
 //este es solo para que no se vea el mensaje de Canot GET (Luego hay que eliminarlo)//
-mainRouter.get('/', (req: any, res: any)=> {
-    res.status(200).send(`
+mainRouter.get('/', (_req: Request, res: Response) => {
+  res.status(200).send(`
        <h1>Welcome to Neuma's backend server</h1>
        <h2>Code: 200</h2>
        <p>Good request</p>
        <p>Using HTTPS</p>
        <P>Architecture Defined</p>
-      `);
+      `)
 })
 //------------------------------------------//
 //---- Llamo a las Rutas de cada Entidad ----//
