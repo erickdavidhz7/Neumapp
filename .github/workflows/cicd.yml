@@ -18,7 +18,7 @@ jobs:
       runs-on: ubuntu-latest
 
 #Deploy dev-test      
-      if: github.ref == 'refs/heads/back-develop.serviapp.site' # run this job only for the dev branch
+      if: github.ref == 'refs/heads/back-develop.neumapp.site' # run this job only for the dev branch
       steps:
          - name: Hello world
            run: |
