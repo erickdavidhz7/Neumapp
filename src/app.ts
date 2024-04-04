@@ -35,6 +35,7 @@ app.get("/", (req, res) => {
   <h1>Welcome to Neuma's backend server</h1>
   <h2>Code: 200</h2>
   <p>Good request</p>
+  <p>Using https</p>
   `);
 });
 
