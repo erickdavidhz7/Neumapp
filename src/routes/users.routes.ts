@@ -1,6 +1,6 @@
-const usersControllers = require('../controllers/users.controllers.ts')
-const { Router } = require('express')
-const router = Router()
+import usersControllers from '../controllers/users.controllers'
+import express from 'express'
+const router = express.Router()
 
 //---- ACA COMIENZAN LOS ENDPOINT DE USUARIOS ----/
 
@@ -8,4 +8,4 @@ router.get('/', usersControllers.getAllUsers)
 
 //Aca debemos agregar las demas rutas de usuarios
 
-module.exports = router;
+export default router;
