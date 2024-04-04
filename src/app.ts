@@ -5,6 +5,7 @@ import { port } from "./utils/constants";
 //* ----------------Server configuration -----------------
 
 const app = express();
+const routes = require ("./routes/router.ts")
 
 app.use(express.json());
 app.use(
@@ -28,13 +29,15 @@ app.use((_req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.status(200).send(`
-  <h1>Welcome to Neuma's backend server</h1>
-  <h2>Code: 200</h2>
-  <p>Good request</p>
-  `);
-});
+//Llamo al router principal
+app.use('/', routes)
+// app.get("/", (req, res) => {
+//   res.status(200).send(`
+//   <h1>Welcome to Neuma's backend server</h1>
+//   <h2>Code: 200</h2>
+//   <p>Good request</p>
+//   `);
+// });
 
 app.listen(port, () =>{
   // local testing
