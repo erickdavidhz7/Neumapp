@@ -19,5 +19,13 @@ const ReviewsControllers = {
       else res.status(400).send(reviews)
     } catch (error) {}
   },
+  getByProviderId: async (req: Request, res: Response) => {
+    const { id } = req.params
+    try {
+      const reviews = await reviewsServices.getByProviderId(id)
+      if (reviews) res.status(200).send(reviews)
+      else res.status(400).send(reviews)
+    } catch (error) {}
+  },
 }
 export default ReviewsControllers

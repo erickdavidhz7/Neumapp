@@ -6,7 +6,7 @@ const reviewsServices = {
       const reviews = await Reviews.findAll()
       return reviews
     } catch (error) {
-      return ('Error al buscar Reviews')
+      return 'Error al buscar Reviews'
     }
   },
   getByUserId: async (id: string) => {
@@ -16,7 +16,17 @@ const reviewsServices = {
       })
       return reviews
     } catch (error) {
-      return ('Error al buscar Reviews')
+      return 'Error al buscar Reviews'
+    }
+  },
+  getByProviderId: async (id: string) => {
+    try {
+      const reviews = await Reviews.findOne({
+        where: { ProviderId: id },
+      })
+      return reviews
+    } catch (error) {
+      return 'Error al buscar Reviews'
     }
   },
 }
