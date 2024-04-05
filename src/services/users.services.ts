@@ -1,11 +1,16 @@
-const UserServices = {
+import { Reviews } from "../models/review.model"
+import { Users } from "../models/user.model"
+
+const userServices = {
   getAllUsers: async () => {
     try {
-      return '<h1>Estas Haciendo une GET a todos los usuarios de la base de datos.</h1>'
+      const users = Users.findAll({
+        include: Reviews
+      })
+      return users
     } catch (error) {
       throw new Error('Error al buscar usuarios')
     }
   },
-  // Aca debemos seguir agregando los servicios de Usuarios
 }
-export default UserServices
+export default userServices
