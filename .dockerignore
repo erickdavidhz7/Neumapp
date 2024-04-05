@@ -1,0 +1,6 @@
+dist/
+node_modules/
+postgres/
+pgadmin/
+.gitignore
+.git/
