@@ -2,8 +2,11 @@ import express from 'express'
 import cors from 'cors'
 import https from 'node:https'
 import fs from 'fs'
-import { port, sslPathOutsideRep } from './utils/constants'
+import { envs, sslPathOutsideRep } from './utils/constants'
 import routes from './routes/router'
+import { db } from './utils/database'
+import { error } from 'node:console'
+import { initModels } from './models/initModels'
 
 //* ----------------Server configuration -----------------
 
@@ -16,6 +19,24 @@ app.use(
     credentials: true,
   })
 )
+
+db.authenticate()
+  .then(() => {
+    console.log('Database Authenticated')
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+
+db.sync()
+  .then(() => {
+    console.log('Database Synced')
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+
+initModels()
 
 app.use((_req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*') // update to match the domain you will make the request from
@@ -39,9 +60,9 @@ https
     },
     app
   )
-  .listen(port, () => {
+  .listen(envs.PORT, () => {
     // local testing
-    //console.log(`Server is listening at https://localhost:${port}/`)
+    // console.log(`Server is listening at https://localhost:${envs.PORT}/`)
     //For the deployment
-    console.log(`Server is listening at https://neumapp.site:${port}/`)
+    console.log(`Server is listening at https://neumapp.site:${envs.PORT}/`)
   })

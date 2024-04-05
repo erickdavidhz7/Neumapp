@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15.4 #Specific version
+    restart: always
+    ports:
+      - ${DB_PORT}:5432 #Our Port : Port of container
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    container_name: neumappDB
+    volumes:
+      - ./postgres:/var/lib/postgresql/data #Para no perder la data
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+      - ./pgadmin:/var/lib/pgadmin/sessions
+      - ./pgadmin:/var/lib/pgadmin/storage
+      - ./pgadmin:/var/lib/pgadmin/azurecredentialcache
+      - ./pgadmin:/certs/server.cert
+      - ./pgadmin:/certs/server.key
+      - ./pgadmin:/pgadmin4/servers.json
