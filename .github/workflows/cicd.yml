@@ -34,8 +34,8 @@ jobs:
                echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
                ssh-keyscan neumapp.site > ~/.ssh/known_hosts          
         
-         - name: Deploy Back
+         - name: Deploy Front Dev
            run: |
-               rsync -ra --delete ./neumapp/ ubuntu@neumapp.site:/home/ubuntu/neumapp/frontdev/s14-35-n-node-react/
+               rsync -ra --delete ./neumapp/ ubuntu@neumapp.site:/home/ubuntu/neumapp/dev/frontdev/s14-35-n-node-react/
                ssh -f ubuntu@${{ secrets.SSH_HOST }} /home/ubuntu/neumapp/dev/frontdev.sh
 
