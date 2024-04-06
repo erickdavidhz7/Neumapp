@@ -12,33 +12,94 @@ Esta idea surge con el fin de mejorar el servicio de auxilio a los vehículos re
 
 ---
 
-##INTEGRANTES
+## INTEGRANTES
 
-###FrontEnd
-- [Edwin Amaranto]()
-- [Luca Pattin]()
-- [Camilo Duque]()
-- [Joseph]()
+### FrontEnd
+- [Edwin Amaranto](https://github.com/EdwinCoder85)
+- [Luca Pattin](https://github.com/lupattin)
+- [Camilo Duque](https://github.com/camiloduquee)
+- [Joseph Rodríguez](https://github.com/eJosR-Coding)
 
-###Backend
+### Backend
 
-- [Erick Henríquez]()
-- [Marco Antonio R. Del A]()
-- [Jorge Trujillo]()
-- [Nicolas Mennichelli]()
+- [Erick Henríquez](https://github.com/erickdavidhz7)
+- [Marco Antonio R. Del A](https://github.com/MarkMarda)
+- [Jorge Trujillo](https://github.com/xiriuxb)
+- [Nicolas Mennichelli](https://guthub.com/michiqueli)
 
-###DevOps
-- [Antonio Lefinir]()
+### DevOps
+- [Antonio Lefinir](https://github.com/alefinir)
 
-###UX/UI
+### UX/UI
 
-- [FLorencia Parodi]()
-- [Rut Escudero]()
+- [FLorencia Parodi](https://github.com/florenciaParodi)
+- [Rut Escudero](https://github.com/rutymiriam)
 
-###QA Tester
+### QA Tester
 
-- [Mariely Carrizo]()
-- [Lea Romero]()
+- [Mariely Carrizo](https://www.linkedin.com/in/carrizomariely/)
+- [Lea Romero](https://www.linkedin.com/in/lea-romero-ar)
 
-###PM
-- [Nciolas Mennichelli]()
+### PM
+- [Nciolas Mennichelli](https://github.com/michiqueli)
+
+### TL
+- name
+
+***
+## TECNOLOGIAS UTILIZADAS
+
+### FRONTEND
+
+### BACKEND
+***
+
+## DEPENDENCIAS
+
+### UX/UI
+- Figma
+
+***
+***
+
+### **Algunos ejemplos de pantallas**
+
+- Landing Page (Desktop responsive):
+
+- Inicio de sesión, registro, recuperar contraseña:
+
+- Menú con servicios:
+
+- Mapas:
+
+- Perfil prestador:
+
+***
+
+### **¿Cómo nos organizamos con el equipo?**
+
+Primero creamos un diseño de baja fidelidad en Figjam para representar el flujo de la app, también definimos logo, tonalidades, fuentes y  MVP.
+Luego comenzamos a dividir las tareas por áreas para cumplir con los tiempos de cada sprint. Avanzamos creando un diseño de media fidelidad, frontEnd comenzó a crear la web y backEnd a organizar la BDD.Una vez completamos el MVP, avanzamos sobre funcionalidades extras y errores.
+
+Tuvimos en cuenta las semanas organizadas por No-Country para cumplir con los tiempos de entrega.
+
+**Funcionalidades para el MVP:**
+- Registro
+- Logueo
+- Ver perfil user
+- Ver perfil prestador
+- Ver menú
+- Solicitar servicio
+
+***
+
+## SPRINT 1
+- **Diseño / BDD / landing sin funcionalidades / :**
+
+## SPRINT 2
+
+## SPRINT 3
+
+## SPRINT 4
+
+***
