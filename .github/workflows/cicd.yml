@@ -1,0 +1,46 @@
+name: CI-CD
+
+# Controls when the action will run. 
+on: [push] #to any branch
+  # Triggers the workflow on push or pull request events but only for the Develop branch
+  #push:
+  #  branches: [ Develop ]
+  # Allows you to run this workflow manually from the Actions tab
+  #workflow_dispatch:
+  
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
+jobs:
+  # This workflow contains multiple jobs
+
+  deploy_to_dev:
+      # The type of runner that the job will run on
+
+      runs-on: ubuntu-latest
+
+#Deploy dev      
+      if: github.ref == 'refs/heads/front-develop.neumapp.site' # run this job only for the dev branch
+      steps:
+        - name: checkout repo
+          uses: actions/checkout@v2
+        - name: Use Node.js 16 LTS
+          uses: actions/setup-node@v2
+          with:
+            node-version: '16'
+        - name: Install NPM Modules
+          working-directory: ./neumapp
+          run: npm install
+
+        - name: Build Project
+          working-directory: ./neumapp
+          run: CI= npm run build
+          
+        - name: Create SSH key
+          run: |
+              install -m 600 -D /dev/null ~/.ssh/id_rsa
+              echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+              ssh-keyscan neumapp.site > ~/.ssh/known_hosts
+        - name: Deploy Front
+          run: |
+              echo "${{ secrets.OPT_SRV }}" > neumapp/build/.htaccess
+              rsync -ra --delete neumapp/build/ ubuntu@neumapp.site:/var/www/dev.neumapp.site/public_html/
