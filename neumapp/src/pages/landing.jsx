@@ -8,11 +8,11 @@ export default function Landing() {
   return (
     <main className="bg-zinc-700">
       <div className="w-[90%] max-w-6xl mx-auto">
-        <Faq />
-        <Contact />
         <TestimonialsSection />
         <AboutSection />
         <AboutHistorySection />
+        <Faq />
+        <Contact />
       </div>
     </main>
   );

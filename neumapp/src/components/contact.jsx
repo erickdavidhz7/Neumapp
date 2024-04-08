@@ -4,21 +4,21 @@ export default function Contact() {
     <section className="bg-zinc-700 h-screen w-full flex justify-center items-center">
       <div className=" w-full h-full flex flex-col items-center justify-center">
         <div className="mb-5 w-3/4 h-[300px] bg-white rounded-lg flex flex-col items-center justify-center">
-          <h4 className=" text-3xl text-zinc-700 font-bold m-3">
+          <h4 className=" text-2xl text-zinc-700 font-bold m-3 sm:text-5xl">
             {" "}
             ¿Queres prestar servicios?
           </h4>
-          <h3 className=" text-5xl text-zinc-700 font-extrabold  m-3">
+          <h3 className=" text-3xl sm:text-5xl text-zinc-700 font-extrabold  m-3">
             SE PARTE DE NEUMAPP
           </h3>
-          <button className="bg-zinc-500 hover:bg-zinc-700 text-white font-bold py-4 px-8 rounded-lg m-3">
+          <button className="bg-zinc-500 hover:bg-zinc-700 text-white font-bold sm:py-4 py-2 px-8 rounded-lg m-3">
             Contactar
           </button>
         </div>
-        <div className="w-3/4 h-[400px] bg-zinc-500 rounded-lg flex flex-row items-center justify-center">
-          <div className="flex flex-col h-1/2 w-3/5 justify-between font-bold">
-            <div className="text-white"> Logo </div>
-            <div className="flex flex-row justify-end">
+        <div className="w-3/4 h-[400px] bg-zinc-500 rounded-lg flex flex-col-reverse sm:flex-row items-center justify-center">
+          <div className="flex flex-col h-1/2 w-3/5 justify-between font-bold ">
+            <div className="text-white hidden sm:block"> Logo </div>
+            <div className="flex flex-row sm:justify-end">
               <div className="flex flex-row w-3/4 justify-between mt-10 ">
                 <li className="flex flex-col w-3/4 justify-between">
                   <div className="text-white font-bold">${"(icon-rueda)"}</div>
@@ -42,7 +42,7 @@ export default function Contact() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col text-white font-bold h-1/2">
+          <div className="flex flex-col text-white font-bold sm:h-1/2">
             <p>Unite a nuestro newsletter</p>
             <div className=" flex flex-row h-[50px] w-[250px] bg-white rounded-full mt-5">
               <input
