@@ -1,10 +1,10 @@
 //------ ESTE ES EL ROUTER PRINCPAL, LLAMA A LAS DISTINTAS RUTAS -------//
-import express from 'express'
-import { Request, Response } from 'express'
+import express, { Request, Response } from 'express'
 //---- Importo las rutas de users ----/ (lo mismo para cada entidad que necesitemos)
 import usersRoutes from './users.routes'
 import reviewsRoutes from './reviews.routes'
 import authRoutes from './auth.routes'
+import providersRoutes from './providers.routes'
 
 const mainRouter = express.Router()
 //-------------------------------------------//
@@ -23,6 +23,7 @@ mainRouter.get('/', (_req: Request, res: Response) => {
 mainRouter.use('/auth', authRoutes)
 mainRouter.use('/users', usersRoutes)
 mainRouter.use('/reviews', reviewsRoutes)
+mainRouter.use('/providers', providersRoutes)
 
 //Aca van las distintas rutas para cada entidad
 

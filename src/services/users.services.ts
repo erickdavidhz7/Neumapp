@@ -36,7 +36,7 @@ const userServices = {
   },
   getAllUsers: async () => {
     try {
-      const users = Users.findAll({
+      const users = await Users.findAll({
         include: [Reviews, Providers],
       })
       return users
