@@ -1,5 +1,5 @@
-import { DataTypes } from 'sequelize'
-import { db } from '../utils/database'
+import { DataTypes } from 'sequelize';
+import { db } from '../utils/database';
 
 export const Providers = db.define('Providers', {
   id: {
@@ -7,13 +7,13 @@ export const Providers = db.define('Providers', {
     primaryKey: true,
     allowNull: false,
   },
-  job_phone: {
+  providerPhone: {
     type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
+    allowNull: true,
+    field: 'provider_phone',
   },
   location: {
-    type:DataTypes.STRING,
-    allowNull: false,
+    type: DataTypes.STRING,
+    allowNull: true,
   },
 })
