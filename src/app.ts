@@ -5,7 +5,6 @@ import fs from 'fs'
 import { envs, sslPathOutsideRep } from './utils/constants'
 import routes from './routes/router'
 import { db } from './utils/database'
-import { error } from 'node:console'
 import { initModels } from './models/initModels'
 
 //* ----------------Server configuration -----------------

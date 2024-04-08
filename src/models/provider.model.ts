@@ -7,7 +7,7 @@ export const Providers = db.define('Providers', {
     primaryKey: true,
     allowNull: false,
   },
-  phone: {
+  job_phone: {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
@@ -16,20 +16,4 @@ export const Providers = db.define('Providers', {
     type:DataTypes.STRING,
     allowNull: false,
   },
-  provider_type: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  address: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  legal_id: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  photo: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
 })
