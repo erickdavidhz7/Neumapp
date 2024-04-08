@@ -14,4 +14,5 @@ export const router = createBrowserRouter(
       <Route path="prueba" element={<Pagina2 />} />
     </>
   )
+
 );
