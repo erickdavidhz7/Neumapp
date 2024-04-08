@@ -31,6 +31,14 @@ const reviewsServices = {
   },
   createReview: async (reviewData: any) => {
     try {
+      if (
+        !reviewData.comment ||
+        !reviewData.rating ||
+        !reviewData.UserId ||
+        !reviewData.ProviderId
+      ) {
+        throw new Error('Missing Data')
+      }
       const newReview =  await Reviews.create({
         comment: reviewData.comment,
         rating: reviewData.rating,
