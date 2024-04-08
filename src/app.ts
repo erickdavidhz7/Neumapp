@@ -1,11 +1,11 @@
 import express from 'express'
 import cors from 'cors'
 import https from 'node:https'
+import http from 'node:http'
 import fs from 'fs'
 import { envs, sslPathOutsideRep } from './utils/constants'
 import routes from './routes/router'
 import { db } from './utils/database'
-import { error } from 'node:console'
 import { initModels } from './models/initModels'
 
 //* ----------------Server configuration -----------------
@@ -65,4 +65,10 @@ https
     // console.log(`Server is listening at https://localhost:${envs.PORT}/`)
     //For the deployment
     console.log(`Server is listening at https://neumapp.site:${envs.PORT}/`)
+  })
+
+http
+  .createServer(app)
+  .listen(8000, () => {
+    console.log(`Server is listening at http://localhost:${8000}/`)
   })
