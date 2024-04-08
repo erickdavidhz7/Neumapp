@@ -3,6 +3,7 @@ import { Reviews } from '../models/review.model'
 import { Users } from '../models/user.model'
 import UserI from '../interfaces/user.interface'
 import { hashPassword } from '../utils/crypto'
+import { UUID } from 'sequelize'
 
 const userServices = {
   createUsers: async (user: UserI) => {
@@ -24,12 +25,12 @@ const userServices = {
         password: hashPassword(user.password),
         phoneClient: user.phoneClient,
         photo: user.photo,
-        status: user.status,
-        isVerified: user.isVerified
+        status: "active",
+        isVerified: true
       });
-      
       return newUser;
     } catch (error) {
+      console.log(error)
       throw new Error(error as string);
     }
   },

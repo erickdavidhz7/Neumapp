@@ -5,7 +5,8 @@ export const Reviews = db.define('Reviews', {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        defaultValue: DataTypes.UUIDV4
     },
     comment: {
         type: DataTypes.TEXT,

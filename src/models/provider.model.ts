@@ -6,6 +6,7 @@ export const Providers = db.define('Providers', {
     type: DataTypes.UUID,
     primaryKey: true,
     allowNull: false,
+    defaultValue: DataTypes.UUIDV4
   },
   phoneProvider: {
     type: DataTypes.STRING,

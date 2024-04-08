@@ -11,7 +11,7 @@ const reviewsServices = {
   },
   getByUserId: async (id: string) => {
     try {
-      const reviews = await Reviews.findOne({
+      const reviews = await Reviews.findAll({
         where: { UserId: id },
       })
       return reviews
@@ -21,7 +21,7 @@ const reviewsServices = {
   },
   getByProviderId: async (id: string) => {
     try {
-      const reviews = await Reviews.findOne({
+      const reviews = await Reviews.findAll({
         where: { ProviderId: id },
       })
       return reviews
@@ -31,8 +31,13 @@ const reviewsServices = {
   },
   createReview: async (reviewData: any) => {
     try {
-      await Reviews.create(reviewData)
-      return 'Review Creada con exito'
+      const newReview =  await Reviews.create({
+        comment: reviewData.comment,
+        rating: reviewData.rating,
+        UserId: reviewData.UserId,
+        ProviderId: reviewData.ProviderId
+      })
+      return newReview
     } catch (error) {
       return 'Error al Crear la Review'
     }

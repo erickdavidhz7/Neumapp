@@ -1,5 +1,6 @@
 //IMPORTO LOS SERVICIOS DE USUARIOS//
 import userServices from "../services/users.services";
+import providerServices from "../services/providers.services";
 import { Request, Response } from "express";
 
 const UsersControllers = {
@@ -19,7 +20,7 @@ const UsersControllers = {
       if (!firstName || !lastName || !email || !password || !phoneClient) {
         return res.status(400).json({ message: "Missing User Data" });
       }
-      const user = await userServices.createUsers({
+      const user: any = await userServices.createUsers({
         firstName,
         lastName,
         email,
@@ -27,14 +28,17 @@ const UsersControllers = {
         phoneClient,
         photo,
       });
-      if (phoneProvider && location) {
-        const provider = await providerServices.createProvider({
-          phoneProvider,
-          location,
-        })
+      console.log(user.id)
+      const provider = {
+        phoneProvider: phoneProvider,
+        location: location,
+        UserId: user.id
       }
-      const finalUser = {...user, provider}
-      return res.status(201).json(finalUser);
+      console.log(provider.UserId)
+      if (phoneProvider && location) {
+        await providerServices.createProvider(provider)
+      }
+      return res.status(201).json(user);
     } catch (error) {
       res.status(500).json("Internal Server Error");
     }
