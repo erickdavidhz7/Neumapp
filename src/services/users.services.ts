@@ -1,9 +1,9 @@
-import { v4 as uuidv4 } from 'uuid'
 import { Providers } from '../models/provider.model'
 import { Reviews } from '../models/review.model'
 import { Users } from '../models/user.model'
 import UserI from '../interfaces/user.interface'
 import { hashPassword } from '../utils/crypto'
+import { UUID } from 'sequelize'
 
 const userServices = {
   createUsers: async (user: UserI) => {
@@ -13,27 +13,24 @@ const userServices = {
         !user.lastName ||
         !user.email ||
         !user.password ||
-        !user.phoneClient
+        !user.phoneClient ||
+        !user.photo
       ) {
         throw new Error('Missing Data')
       }
-
       const newUser = await Users.create({
-        id: uuidv4(),
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
         password: hashPassword(user.password),
         phoneClient: user.phoneClient,
-        phoneProvider: user.phoneProvider,
-        status: user.status,
-        isVerified: user.isVerified
+        photo: user.photo,
+        status: "active",
+        isVerified: true
       });
-
-      await newUser.save();
-      
       return newUser;
     } catch (error) {
+      console.log(error)
       throw new Error(error as string);
     }
   },

@@ -6,6 +6,7 @@ export const Users = db.define('Users', {
     type: DataTypes.UUID,
     primaryKey: true,
     allowNull: false,
+    defaultValue: DataTypes.UUIDV4
   },
   firstName: {
     type: DataTypes.STRING,
@@ -35,10 +36,9 @@ export const Users = db.define('Users', {
     unique: true,
     field: 'phone_client'
   },
-  phoneProvider: {
+  photo: {
     type: DataTypes.STRING,
-    allowNull: true,
-    field: 'phone_provider'
+    allowNull: true
   },
   status: {
     type: DataTypes.STRING,

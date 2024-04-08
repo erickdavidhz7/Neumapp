@@ -1,35 +1,20 @@
-import { DataTypes } from 'sequelize'
-import { db } from '../utils/database'
+import { DataTypes } from 'sequelize';
+import { db } from '../utils/database';
 
 export const Providers = db.define('Providers', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
     allowNull: false,
+    defaultValue: DataTypes.UUIDV4
   },
-  phone: {
+  phoneProvider: {
     type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
+    allowNull: true,
+    field: 'phone_provider',
   },
   location: {
-    type:DataTypes.STRING,
-    allowNull: false,
-  },
-  provider_type: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
-  address: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  legal_id: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  photo: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
 })
