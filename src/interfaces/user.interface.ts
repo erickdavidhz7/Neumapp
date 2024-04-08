@@ -5,7 +5,7 @@ interface UserI {
   email: string;
   password: string;
   phoneClient: string;
-  phoneProvider?: string;
+  photo: string;
   status?: string;
   isVerified?: string;
 }

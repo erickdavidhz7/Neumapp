@@ -7,10 +7,10 @@ export const Providers = db.define('Providers', {
     primaryKey: true,
     allowNull: false,
   },
-  providerPhone: {
+  phoneProvider: {
     type: DataTypes.STRING,
     allowNull: true,
-    field: 'provider_phone',
+    field: 'phone_provider',
   },
   location: {
     type: DataTypes.STRING,
