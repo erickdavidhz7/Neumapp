@@ -29,10 +29,16 @@ export const Users = db.define('Users', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  phone: {
+  phoneClient: {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
+    field: 'phone_client'
+  },
+  phoneProvider: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    field: 'phone_provider'
   },
   status: {
     type: DataTypes.STRING,

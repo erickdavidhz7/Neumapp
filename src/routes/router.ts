@@ -4,6 +4,7 @@ import { Request, Response } from 'express'
 //---- Importo las rutas de users ----/ (lo mismo para cada entidad que necesitemos)
 import usersRoutes from './users.routes'
 import reviewsRoutes from './reviews.routes'
+import authRoutes from './auth.routes'
 
 const mainRouter = express.Router()
 //-------------------------------------------//
@@ -19,6 +20,7 @@ mainRouter.get('/', (_req: Request, res: Response) => {
 })
 //------------------------------------------//
 //---- Llamo a las Rutas de cada Entidad ----//
+mainRouter.use('/auth', authRoutes)
 mainRouter.use('/users', usersRoutes)
 mainRouter.use('/reviews', reviewsRoutes)
 
