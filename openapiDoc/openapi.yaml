@@ -1,0 +1,81 @@
+openapi: 3.1.0
+
+info:
+  title: Neumapp
+  version: 1.0.0
+
+servers:
+  - url: https://neumapp.site:3001
+    description: The development API server 
+  - url: https://neumapp.site:4001
+    description: The QA API server
+  - url: https://neumapp.site:5001
+    description: The production API server
+
+tags:
+  - name: Auth
+  - name: Users
+  - name: Providers
+  - name: Reviews
+
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register a user.
+      responses:
+        '201':
+          description: A JSON of user registered.
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Loggin a user.
+      responses:
+        '200':
+          description: User Logged.
+  /users:
+    get: 
+      tags:
+        - Users
+      summary: Returns a list of users
+      responses:
+        '200':
+          description: A JSON array of cards. The image is a link from cloudinary.
+        '400':
+          description: Validation error
+  /users/email/{email}:
+    parameters:
+      - in: path
+        name: email
+        schema: 
+          type: string
+        required: true
+    get:
+      tags:
+        - Users
+      summary: Returns a user with the data.
+      responses:
+        '200':
+          description: A JSON of a user.
+
+components:
+  schemas:
+    User:
+      required:
+        - firstName
+        - astName
+        - email
+        - password
+      type: object
+      properties:
+        firstName: 
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password: 
+          type: string
+        
