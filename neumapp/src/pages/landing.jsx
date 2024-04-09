@@ -11,8 +11,8 @@ import Servicios from "../components/Servicios";
 export default function Landing() {
   return (
     <main className="bg-zinc-700">
+      <NavBar />
       <div className="w-[90%] max-w-6xl mx-auto">
-        <NavBar />
         <LandingOne />
         <LandingTwo />
         <Servicios />

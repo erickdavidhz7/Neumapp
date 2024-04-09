@@ -22,11 +22,10 @@ const Servicios = () => {
           <h3 className=" text-white text-3xl font-semibold text-center mb-3">
             Servicio
           </h3>
-          <p className="text-white mx-5 text-center">
+          <p className="text-white mx-5 text-center text-[10px] sm:text-sm">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
             quod consequuntur fuga, maxime non ab illo qui odio recusandae totam
-            molestias sed? Temporibus necessitatibus veniam iure accusamus dolor
-            consequatur aut.
+            molestias sed?.
           </p>
         </div>
       )}
@@ -39,11 +38,11 @@ const Servicios = () => {
   return (
     <section className="bg-zinc-700 min-h-screen flex flex-col  justify-center items-center">
       <div>
-        <h3 className="text-3xl font-bold tracking-tight text-white sm:text-6xl">
+        <h3 className="text-4xl font-bold tracking-tight text-white sm:text-5xl my-5 sm:mb-12">
           Nuestros servicios
         </h3>
       </div>
-      <div className=" w-3/5 lg:w-[1192px] h-auto grid grid-cols-2 justify-items-center  md:grid-cols-3 gap-4 mt-10">
+      <div className="w-full lg:w-[1192px] h-auto grid grid-cols-2 justify-items-center md:grid-cols-3 gap-4 mt-10">
         {cards}
       </div>
     </section>
