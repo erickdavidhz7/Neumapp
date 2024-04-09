@@ -3,6 +3,8 @@ import cors from 'cors'
 import https from 'node:https'
 import http from 'node:http'
 import fs from 'fs'
+import swaggerUi from 'swagger-ui-express'
+import YAML from 'yamljs'
 import { envs, sslPathOutsideRep } from './utils/constants'
 import routes from './routes/router'
 import { db } from './utils/database'
@@ -10,6 +12,7 @@ import { initModels } from './models/initModels'
 
 //* ----------------Server configuration -----------------
 
+const openApiSpec = YAML.load('openapiDoc/openapi.yaml')
 const app = express()
 
 app.use(express.json())
@@ -51,6 +54,7 @@ app.use((_req, res, next) => {
 
 //Llamo al router principal
 app.use('/', routes)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiSpec))
 
 https
   .createServer(
