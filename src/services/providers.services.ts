@@ -11,23 +11,23 @@ const providerServices = {
       const newProvider = await Providers.create({
         phoneProvider: provider.phoneProvider,
         location: provider.location,
-        UserId: provider.UserId
+        UserId: provider.UserId,
       })
       return newProvider
     } catch (error) {
       throw new Error(error as string)
     }
   },
-  getAllPrviders: async () => {
+  getAllProviders: async () => {
     try {
       const providers = await Providers.findAll({
-        include: Reviews
+        include: Reviews,
       })
       return providers
     } catch (error) {
       console.log(error)
       throw new Error(error as string)
     }
-  }
+  },
 }
 export default providerServices
