@@ -24,6 +24,13 @@ paths:
       tags:
         - Auth
       summary: Register a user.
+      requestBody:
+        description: Create a new user.
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserRegister'
+        required: true
       responses:
         '201':
           description: A JSON of user registered.
@@ -32,9 +39,16 @@ paths:
       tags:
         - Auth
       summary: Loggin a user.
+      requestBody:
+        description: Loggin a user.
+        content:
+          aplication/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+        required: true
       responses:
         '200':
-          description: User Logged.
+          description: User logged and token.
   /users:
     get: 
       tags:
@@ -42,7 +56,7 @@ paths:
       summary: Returns a list of users
       responses:
         '200':
-          description: A JSON array of cards. The image is a link from cloudinary.
+          description: A JSON array of users. The image is a link from cloudinary.
         '400':
           description: Validation error
   /users/email/{email}:
@@ -62,20 +76,47 @@ paths:
 
 components:
   schemas:
-    User:
+    UserRegister:
       required:
         - firstName
-        - astName
+        - lastName
         - email
         - password
+        - phoneClient
       type: object
       properties:
         firstName: 
           type: string
+          example: Arturo
         lastName:
           type: string
+          example: Ortega Regil
         email:
           type: string
+          example: olora@yahoo.com
         password: 
           type: string
+          example: per43#784732#67y9
+        phoneClient:
+          type: string
+          example: '+541112345678'
+        photo:
+          type: string
+        status: 
+          type: string
+        isVerified:
+          type: string
+    UserLogin:
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+          example: olora@yahoo.com
+        password:
+          type: string
+          example: per43#784732#67y9
+
         
