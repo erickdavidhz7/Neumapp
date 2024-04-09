@@ -1,7 +1,7 @@
 interface OrderI {
   id?: string
   type?: string
-  location: string
+  location?: string
   code?: number
   description?: string
   status?: string

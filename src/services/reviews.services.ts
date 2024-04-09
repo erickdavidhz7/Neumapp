@@ -39,16 +39,16 @@ const reviewsServices = {
       ) {
         throw new Error('Missing Data')
       }
-      const newReview =  await Reviews.create({
+      const newReview = await Reviews.create({
         comment: reviewData.comment,
         rating: reviewData.rating,
         UserId: reviewData.UserId,
-        ProviderId: reviewData.ProviderId
+        ProviderId: reviewData.ProviderId,
       })
       return newReview
     } catch (error) {
       return 'Error al Crear la Review'
     }
-  }
+  },
 }
 export default reviewsServices

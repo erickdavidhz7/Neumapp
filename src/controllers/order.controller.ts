@@ -43,12 +43,12 @@ const OrdersControllers = {
   updateOrder: async (req: Request, res: Response) => {
     const { id } = req.params
     const orderData = req.body
-    try{
+    try {
       const updatedOrder = await ordersServices.updateOrder(id, orderData)
       res.status(200).json(updatedOrder)
-    }catch (err){
+    } catch (err) {
       res.status(500).send('Internal server error')
     }
-  }
+  },
 }
 export default OrdersControllers

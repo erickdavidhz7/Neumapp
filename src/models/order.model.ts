@@ -17,13 +17,13 @@ export const Orders = db.define('Orders', {
   location: {
     type: DataTypes.STRING,
     allowNull: false,
-    field: 'location'
+    field: 'location',
   },
   code: {
     type: DataTypes.INTEGER,
     allowNull: false,
     field: 'code',
-    unique: true
+    unique: true,
   },
   description: {
     type: DataTypes.TEXT,
