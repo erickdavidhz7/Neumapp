@@ -3,6 +3,7 @@ import express, { Request, Response } from 'express'
 //---- Importo las rutas de users ----/ (lo mismo para cada entidad que necesitemos)
 import usersRoutes from './users.routes'
 import reviewsRoutes from './reviews.routes'
+import servicesRouter from './services.routes'
 import authRoutes from './auth.routes'
 import providersRoutes from './providers.routes'
 
@@ -24,6 +25,7 @@ mainRouter.use('/auth', authRoutes)
 mainRouter.use('/users', usersRoutes)
 mainRouter.use('/reviews', reviewsRoutes)
 mainRouter.use('/providers', providersRoutes)
+mainRouter.use('/services', servicesRouter)
 
 //Aca van las distintas rutas para cada entidad
 
