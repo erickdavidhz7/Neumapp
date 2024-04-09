@@ -102,10 +102,6 @@ components:
           example: '+541112345678'
         photo:
           type: string
-        status: 
-          type: string
-        isVerified:
-          type: string
     UserLogin:
       required:
         - email
