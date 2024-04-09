@@ -5,7 +5,7 @@ const servicesController = {
   async create(req: Request, res: Response) {
     try {
       const data = await servicesService.createService(req.body)
-      return res.status(200).json(data)
+      return res.status(201).json(data)
     } catch (error: any) {
       console.log(error)
       if (error.status) {

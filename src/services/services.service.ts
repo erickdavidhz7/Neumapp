@@ -12,11 +12,11 @@ const servicesService = {
           },
         },
       })
-      if(existService){
-        throw {status:400, msg:'Service already exists'}
+      if (existService) {
+        throw { status: 400, msg: 'Service already exists' }
       }
       const newService = await Service.create({
-        ...newServiceData
+        ...newServiceData,
       })
       return newService
     } catch (error) {
@@ -67,8 +67,8 @@ const servicesService = {
 }
 
 const limitPaginationQuery = (page: number, perPage: number) => {
-  const _page = page < 1 ? 1 : page
-  const _perPage = perPage > 10 ? 10 : perPage
+  const _page = isNaN(page) || page < 1 ? 1 : page
+  const _perPage = isNaN(perPage) || perPage > 10 ? 10 : perPage
   return [_page, _perPage]
 }
 
