@@ -64,6 +64,10 @@ const servicesService = {
       throw error
     }
   },
+
+  async getServiceById(serviceId:string){
+    return await Service.findByPk(serviceId)
+  }
 }
 
 const limitPaginationQuery = (page: number, perPage: number) => {
