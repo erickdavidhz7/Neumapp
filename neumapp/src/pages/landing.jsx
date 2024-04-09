@@ -7,12 +7,14 @@ import NavBar from "../components/NavBar";
 import LandingOne from "../components/landingOne";
 import LandingTwo from "../components/landingTwo";
 import Servicios from "../components/Servicios";
+import Generalogin from "../components/Login/Generalogin";
 
 export default function Landing() {
   return (
     <main className="bg-zinc-700">
       <NavBar />
       <div className="w-[90%] max-w-6xl mx-auto">
+        {/* <Generalogin></Generalogin> */}
         <LandingOne />
         <LandingTwo />
         <Servicios />
