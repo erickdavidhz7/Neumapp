@@ -5,13 +5,13 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import Pagina2 from "../pages/pagina2";
+import Generalogin from "../components/Login/Generalogin";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Landing />} />
-      <Route path="prueba" element={<Pagina2 />} />
+      <Route path="/ingresar" element={<Generalogin />} />
     </>
   )
 
