@@ -17,6 +17,7 @@ tags:
   - name: Users
   - name: Providers
   - name: Reviews
+  - name: Orders
 
 paths:
   /auth/register:
@@ -74,6 +75,98 @@ paths:
         '200':
           description: A JSON of a user.
 
+
+  /order:
+    get:
+      tags:
+        - Orders
+      summary: Returns a list of all orders.
+      responses:
+        '200':
+          description: A JSON of all orders.
+        '400':
+          description: A JSON with two properties ok and message
+        '500':
+          description: A JSON with two properties ok and message
+
+  /order/getByUserId/:id:
+    get:
+      tags:
+        - Orders
+      summary: Return all the orders from the given user's id
+      responses:
+        '200':
+          description: A JSON of all the orders from the given user's id
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: string
+        required: true  
+
+  /order/getByProviderId/:id:
+    get:
+      tags:
+        - Orders
+      summary: Return all the orders from the given provider's id
+      responses:
+        '200':
+          description: A JSON of all the orders from the given provider's id
+        '400':
+          description: A JSON with two properties ok and message
+        '500':
+          description: A JSON with two properties ok and message
+      parameters:
+      - in: path
+        name: id
+        schema: 
+          type: string
+        required: true
+
+  /order/createOrder:
+    post:
+      tags:
+        - Orders
+      summary: Creating an order
+      requestBody:
+        description: Creates an order the onyl required fields are location and description.
+        content:
+          aplication/json:
+            schema:
+              $ref: '#/components/schemas/Orders'
+        required: true
+      responses:
+        '201':
+          description: A JSON with all the fields of the new order created
+        '500':
+          description: A JSON with two properties ok and message
+      
+  /order/updateOrder:
+    patch:
+      tags:
+        - Orders
+      summary: Updating an order
+      requestBody:
+        description: Updates the information from an order(probably going to be used only with status field).
+        content:
+          aplication/json:
+            schema:
+              $ref: '#/components/schemas/Orders'
+        required: true
+      responses:
+        '201':
+          description: A JSON with all the fields of the new order created
+        '500':
+          description: A JSON with two properties ok and message
+      parameters:
+      - in: path
+        name: id
+        schema: 
+          type: string
+        required: true    
+    
+
+
 components:
   schemas:
     UserRegister:
@@ -114,5 +207,32 @@ components:
         password:
           type: string
           example: per43#784732#67y9
+    Orders:
+      required:
+        - location
+        - description
+      Type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - delivery
+          example: delivery
+        location:
+          type: string
+          example: Calle 931D#25-E
+        description:
+          type: string
+          example: Tengo un problema con mi llanta, tengo una moto de marca... modelo... año... 
+        status:
+          type: string
+          enum:
+          - started
+          - in process
+          - finished
+          - cancelled
+          example: started
+        
+
 
         
