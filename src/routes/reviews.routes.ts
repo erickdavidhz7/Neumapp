@@ -1,4 +1,4 @@
-import ReviewsControllers from "../controllers/reviews.controllers";
+import ReviewsControllers from '../controllers/reviews.controllers'
 import express from 'express'
 const router = express.Router()
 

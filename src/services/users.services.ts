@@ -25,13 +25,13 @@ const userServices = {
         password: hashPassword(user.password),
         phoneClient: user.phoneClient,
         photo: user.photo,
-        status: "active",
-        isVerified: true
-      });
-      return newUser;
+        status: 'active',
+        isVerified: true,
+      })
+      return newUser
     } catch (error) {
       console.log(error)
-      throw new Error(error as string);
+      throw new Error(error as string)
     }
   },
   getAllUsers: async () => {
@@ -48,10 +48,10 @@ const userServices = {
     try {
       const userEmail = await Users.findOne({
         where: {
-          email
-        }
+          email,
+        },
       })
-      
+
       return userEmail
     } catch (error) {
       throw new Error('Error Searching The Data')

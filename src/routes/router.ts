@@ -6,6 +6,7 @@ import reviewsRoutes from './reviews.routes'
 import servicesRouter from './services.routes'
 import authRoutes from './auth.routes'
 import providersRoutes from './providers.routes'
+import ordersRoutes from './orders.routes'
 
 const mainRouter = express.Router()
 //-------------------------------------------//
@@ -25,6 +26,7 @@ mainRouter.use('/auth', authRoutes)
 mainRouter.use('/users', usersRoutes)
 mainRouter.use('/reviews', reviewsRoutes)
 mainRouter.use('/providers', providersRoutes)
+mainRouter.use('/orders', ordersRoutes)
 mainRouter.use('/services', servicesRouter)
 
 //Aca van las distintas rutas para cada entidad

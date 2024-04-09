@@ -20,7 +20,7 @@ const ProvidersControllers = {
   },
   getAllProviders: async (req: Request, res: Response) => {
     try {
-      const allProviders: any = await providerServices.getAllPrviders()
+      const allProviders: any = await providerServices.getAllProviders()
       if (allProviders.length > 0) res.status(201).json(allProviders)
       else res.status(404).send('Providers not Found')
     } catch (error) {
