@@ -6,7 +6,8 @@ const OrdersControllers = {
     try {
       const orders = await ordersServices.getAllOrders()
       if (orders.length > 0) res.status(200).json(orders)
-      else res.status(400).send('No existen Ordenes en la Base de Datos')
+      else
+        res.status(400).json({ok: false,message: 'No existen Ordenes en la Base de Datos',})
     } catch (error) {
       res.status(500).json({ ok: false, message: 'Internal server error' })
     }
@@ -16,7 +17,8 @@ const OrdersControllers = {
     try {
       const orders = await ordersServices.getByUserId(id)
       if (orders) res.status(200).json(orders)
-      else res.status(400).json({ ok: false, message: 'No se han encontrado ordenes con este usuario'})
+      else
+        res.status(400).json({ok: false,message: 'No se han encontrado ordenes con este usuario',})
     } catch (error) {
       res.status(500).json({ ok: false, message: 'Internal server error' })
     }
@@ -26,7 +28,8 @@ const OrdersControllers = {
     try {
       const orders = await ordersServices.getByProviderId(id)
       if (orders) res.status(200).json(orders)
-      else res.status(400).json({ ok: false, message: 'No se han encontrado ordenes con este usuario'})
+      else
+        res.status(400).json({ok: false, message: 'No se han encontrado ordenes con este usuario',})
     } catch (error) {
       res.status(500).json({ ok: false, message: 'Internal server error' })
     }
