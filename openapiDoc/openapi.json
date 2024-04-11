@@ -1,0 +1,233 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Neumapp", "version": "1.0.0" },
+  "servers": [
+    {
+      "url": "https://neumapp.site:3001",
+      "description": "The development API server"
+    },
+    { "url": "https://neumapp.site:4001", "description": "The QA API server" },
+    {
+      "url": "https://neumapp.site:5001",
+      "description": "The production API server"
+    }
+  ],
+  "tags": [
+    { "name": "Auth" },
+    { "name": "Users" },
+    { "name": "Providers" },
+    { "name": "Reviews" },
+    { "name": "Orders" }
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register a user.",
+        "requestBody": {
+          "description": "Create a new user.",
+          "content": {
+            "multipart/form-data": {
+              "schema": { "$ref": "#/components/schemas/UserRegister" }
+            }
+          },
+          "required": true
+        },
+        "responses": { "201": { "description": "A JSON of user registered." } }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Loggin a user.",
+        "requestBody": {
+          "description": "Loggin a user.",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserLogin" }
+            }
+          },
+          "required": true
+        },
+        "responses": { "200": { "description": "User logged and token." } }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Returns a list of users",
+        "responses": {
+          "200": {
+            "description": "A JSON array of users. The image is a link from cloudinary."
+          },
+          "400": { "description": "Validation error" }
+        }
+      }
+    },
+    "/users/email/{email}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "email",
+          "schema": { "type": "string" },
+          "required": true
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Returns a user with the data.",
+        "responses": { "200": { "description": "A JSON of a user." } }
+      }
+    },
+    "/order": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Returns a list of all orders.",
+        "responses": {
+          "200": { "description": "A JSON of all orders." },
+          "400": { "description": "A JSON with two properties ok and message" },
+          "500": { "description": "A JSON with two properties ok and message" }
+        }
+      },
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Creating an order",
+        "requestBody": {
+          "description": "Creates an order the onyl required fields are location and description.",
+          "content": {
+            "aplication/json": {
+              "schema": { "$ref": "#/components/schemas/Orders" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A JSON with all the fields of the new order created"
+          },
+          "500": { "description": "A JSON with two properties ok and message" }
+        }
+      }
+    },
+    "/order/UserId/:id": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Return all the orders from the given user's id",
+        "responses": {
+          "200": {
+            "description": "A JSON of all the orders from the given user's id"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "schema": { "type": "string" },
+          "required": true
+        }
+      ]
+    },
+    "/order/ProviderId/:id": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Return all the orders from the given provider's id",
+        "responses": {
+          "200": {
+            "description": "A JSON of all the orders from the given provider's id"
+          },
+          "400": { "description": "A JSON with two properties ok and message" },
+          "500": { "description": "A JSON with two properties ok and message" }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ]
+      }
+    },
+    "/order/:id": {
+      "patch": {
+        "tags": ["Orders"],
+        "summary": "Updating an order",
+        "requestBody": {
+          "description": "Updates the information from an order(probably going to be used only with status field).",
+          "content": {
+            "aplication/json": {
+              "schema": { "$ref": "#/components/schemas/Orders" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A JSON with all the fields of the new order created"
+          },
+          "500": { "description": "A JSON with two properties ok and message" }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserRegister": {
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "password",
+          "phoneClient"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": { "type": "string", "example": "Arturo" },
+          "lastName": { "type": "string", "example": "Ortega Regil" },
+          "email": { "type": "string", "example": "olora@yahoo.com" },
+          "password": { "type": "string", "example": "per43#784732#67y9" },
+          "phoneClient": { "type": "string", "example": "+541112345678" },
+          "photo": { "type": "string" }
+        }
+      },
+      "UserLogin": {
+        "required": ["email", "password"],
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "example": "olora@yahoo.com" },
+          "password": { "type": "string", "example": "per43#784732#67y9" }
+        }
+      },
+      "Orders": {
+        "required": ["location", "description"],
+        "Type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["delivery"],
+            "example": "delivery"
+          },
+          "location": { "type": "string", "example": "Calle 931D#25-E" },
+          "description": {
+            "type": "string",
+            "example": "Tengo un problema con mi llanta, tengo una moto de marca... modelo... año..."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["started", "in process", "finished", "cancelled"],
+            "example": "started"
+          }
+        }
+      }
+    }
+  }
+}

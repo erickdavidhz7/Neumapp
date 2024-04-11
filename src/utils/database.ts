@@ -8,3 +8,21 @@ export const db = new Sequelize({
   password: envs.db.DB_PASSWORD,
   database: envs.db.DB_NAME,
 })
+
+export const initDb = () => {
+  db.authenticate()
+    .then(() => {
+      console.log('Database Authenticated')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+
+  db.sync()
+    .then(() => {
+      console.log('Database Synced')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
