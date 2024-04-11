@@ -35,7 +35,7 @@ export const envs = {
   jwt: {
     JWT_SECRET: get('JWT_SECRET').required().asString(),
     JWT_EXPIRATION: get('JWT_EXPIRATION').default('24h').asString(),
-    JWT_ISSUER: get('JWT_ISSUER').required().asString(),
+    JWT_ISSUER: get('JWT_ISSUER').default('neumapp').asString(),
   },
   db: {
     DB_HOST: get('DB_HOST').required().asString(),

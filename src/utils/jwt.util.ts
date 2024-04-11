@@ -2,13 +2,14 @@ import jwt from 'jsonwebtoken'
 import { envs } from './constants'
 import { JwtPayloadI } from '../interfaces/jwt-payload.interface'
 
-const verifyOptions : jwt.VerifyOptions = {
+const verifyOptions: jwt.VerifyOptions = {
   issuer: envs.jwt.JWT_ISSUER,
-  maxAge: envs.jwt.JWT_EXPIRATION
+  maxAge: envs.jwt.JWT_EXPIRATION,
 }
 
-const signOptions : jwt.SignOptions = {
-  expiresIn: envs.jwt.JWT_EXPIRATION
+const signOptions: jwt.SignOptions = {
+  expiresIn: envs.jwt.JWT_EXPIRATION,
+  issuer: envs.jwt.JWT_ISSUER,
 }
 
 export const signToken = (payload: JwtPayloadI) => {
