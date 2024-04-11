@@ -1,4 +1,5 @@
 import { comparePassword } from '../utils/crypto'
+import { signToken } from '../utils/jwt.util'
 import userServices from './users.services'
 
 interface UserLogin {
@@ -16,7 +17,12 @@ export const loginUser = async (email: string, password: string) => {
 
     const verifyPassword = comparePassword(password, userLogin.password)
 
-    if (verifyPassword) return userLogin
+    if (verifyPassword) {
+      return signToken({
+        email: user.dataValues.email,
+        id: user.dataValues.id,
+      })
+    }
 
     return false
   } catch (error) {

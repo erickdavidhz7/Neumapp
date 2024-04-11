@@ -16,7 +16,11 @@ export const sslPathOutsideRep: string | undefined = path.join(
 
 export const envs = {
   PORT: get('PORT').required().asPortNumber(),
-  JWT_SECRET: get('JWT_SECRET').required().asString(),
+  jwt: {
+    JWT_SECRET: get('JWT_SECRET').required().asString(),
+    JWT_EXPIRATION: get('JWT_EXPIRATION').default('24h').asString(),
+    JWT_ISSUER: get('JWT_ISSUER').required().asString(),
+  },
   db: {
     DB_HOST: get('DB_HOST').required().asString(),
     DB_USER: get('DB_USER').required().asString(),
