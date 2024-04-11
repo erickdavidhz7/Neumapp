@@ -19,5 +19,4 @@ export const tokenValidator = (
   } catch (error) {
     return res.status(403).json({ ok: false, message: 'Invalid token' })
   }
-  next()
 }
