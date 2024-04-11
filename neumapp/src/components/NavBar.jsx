@@ -60,7 +60,7 @@ function NavBar() {
     { name: "FAQ", path: "/faq" },
     { name: "Contacto", path: "/contacto" },
     { name: "Ingresar", path: "/ingresar" },
-    { name: "Registrarme", path: "/registrarme" },
+    { name: "Registrar", path: "/registrar" },
   ];
 
   return (
@@ -68,7 +68,7 @@ function NavBar() {
       {/* Vista Desktop */}
 
       <NavbarBrand>
-        <Logo width={30} color='#4036ED'/>
+        <Logo width={30} color="#4036ED" />
         <p className="font-bold text-inherit">Neumapp</p>
       </NavbarBrand>
 
@@ -96,8 +96,8 @@ function NavBar() {
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="/registrarme" variant="flat">
-            Registrarme
+          <Button as={Link} color="primary" href="/registrar" variant="flat">
+            Registrar
           </Button>
         </NavbarItem>
       </NavbarContent>
