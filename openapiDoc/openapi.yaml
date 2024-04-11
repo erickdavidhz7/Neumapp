@@ -88,8 +88,24 @@ paths:
           description: A JSON with two properties ok and message
         '500':
           description: A JSON with two properties ok and message
+    post:
+      tags:
+        - Orders
+      summary: Creating an order
+      requestBody:
+        description: Creates an order the onyl required fields are location and description.
+        content:
+          aplication/json:
+            schema:
+              $ref: '#/components/schemas/Orders'
+        required: true
+      responses:
+        '201':
+          description: A JSON with all the fields of the new order created
+        '500':
+          description: A JSON with two properties ok and message
 
-  /order/getByUserId/:id:
+  /order/UserId/:id:
     get:
       tags:
         - Orders
@@ -104,7 +120,7 @@ paths:
           type: string
         required: true  
 
-  /order/getByProviderId/:id:
+  /order/ProviderId/:id:
     get:
       tags:
         - Orders
@@ -122,26 +138,8 @@ paths:
         schema: 
           type: string
         required: true
-
-  /order/createOrder:
-    post:
-      tags:
-        - Orders
-      summary: Creating an order
-      requestBody:
-        description: Creates an order the onyl required fields are location and description.
-        content:
-          aplication/json:
-            schema:
-              $ref: '#/components/schemas/Orders'
-        required: true
-      responses:
-        '201':
-          description: A JSON with all the fields of the new order created
-        '500':
-          description: A JSON with two properties ok and message
       
-  /order/updateOrder:
+  /order/:id:
     patch:
       tags:
         - Orders
