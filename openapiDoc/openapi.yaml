@@ -89,7 +89,7 @@ paths:
         '500':
           description: A JSON with two properties ok and message
 
-  /order/getByUserId/:id:
+  /order/UserId/:id:
     get:
       tags:
         - Orders
@@ -104,7 +104,7 @@ paths:
           type: string
         required: true  
 
-  /order/getByProviderId/:id:
+  /order/ProviderId/:id:
     get:
       tags:
         - Orders
@@ -123,7 +123,7 @@ paths:
           type: string
         required: true
 
-  /order/createOrder:
+  /order:
     post:
       tags:
         - Orders
@@ -141,7 +141,7 @@ paths:
         '500':
           description: A JSON with two properties ok and message
       
-  /order/updateOrder:
+  /order/:id:
     patch:
       tags:
         - Orders
