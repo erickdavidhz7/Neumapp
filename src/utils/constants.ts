@@ -30,7 +30,7 @@ export const corsOptions: CorsOptions = {
 }
 
 export const envs = {
-  APP_DOMAIN: get('APP_DOMAIN').required().asString(),
+  APP_DOMAIN: get('APP_DOMAIN').default('localhost').asString(),
   PORT: get('PORT').required().asPortNumber(),
   jwt: {
     JWT_SECRET: get('JWT_SECRET').required().asString(),
