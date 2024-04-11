@@ -43,7 +43,7 @@
         "requestBody": {
           "description": "Loggin a user.",
           "content": {
-            "aplication/json": {
+            "application/json": {
               "schema": { "$ref": "#/components/schemas/UserLogin" }
             }
           },
