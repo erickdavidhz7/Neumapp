@@ -40,5 +40,15 @@ const ReviewsControllers = {
       res.status(500).send('Internal Server Error')
     }
   },
+  updateReview: async (req: Request, res: Response) => {
+    const { id } = req.params
+    const reviewData = req.body
+    try {
+      const updatedReview = await reviewsServices.updateReview(id, reviewData)
+      res.status(200).json(updatedReview)
+    } catch (err) {
+      res.status(500).json({ ok: false, message: 'Internal server error' })
+    }
+  },
 }
 export default ReviewsControllers
