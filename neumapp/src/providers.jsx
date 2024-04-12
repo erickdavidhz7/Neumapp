@@ -1,10 +1,12 @@
-
-import { NextUIProvider } from "@nextui-org/react"
+import { NextUIProvider } from "@nextui-org/react";
+import { ActiveSectionContextProvider } from "./context/ActiveSectionContext";
 
 export function Providers({ children }) {
-    return (
-        <NextUIProvider>
-            {children}
-        </NextUIProvider>
-    )
+  return (
+    <ActiveSectionContextProvider>
+      <NextUIProvider>
+        {children}
+      </NextUIProvider>
+    </ActiveSectionContextProvider>
+  );
 }

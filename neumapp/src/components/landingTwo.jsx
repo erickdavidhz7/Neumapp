@@ -1,8 +1,9 @@
 import React from "react";
 import { Button } from "@nextui-org/react";
+
 const LandingTwo = () => {
   return (
-    <section className="bg-zinc-700 mt-12 sm:h-auto sm:mt-28 flex justify-center items-center sm:text-start text-center">
+    <section className="bg-zinc-700 mt-12 sm:h-auto sm:mt-28 flex justify-center items-center sm:text-start text-center scroll-mt-0">
       <div className=" w-full flex flex-wrap-reverse sm:flex-nowrap justify-center content-between gap-5">
         <div className=" w-3/4 sm:w-full lg:mr-16">
           <div className="h-52 rounded-3xl  sm:min-h-[52vh] lg:min-h-[70vh] bg-cover bg-center bg-default-400 flex justify-center items-center">
