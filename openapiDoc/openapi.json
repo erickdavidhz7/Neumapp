@@ -79,6 +79,37 @@
         "responses": { "200": { "description": "A JSON of a user." } }
       }
     },
+    "/providers": {
+      "get": {
+        "tags": ["Providers"],
+        "summary": "Return a list of all providers.",
+        "responses": {
+          "200": { "description": "A JSON of all providers." },
+          "400": { "description": "A JSON with two properties ok and message" },
+          "500": { "description": "A JSON with two properties ok and message" }
+        }
+      }
+    },
+    "/createProvider": {
+      "post": {
+        "tags": ["Providers"],
+        "summary": "Create a Provider",
+        "requestBody": {
+          "description": "Create a new provider.",
+          "content": {
+            "multipart/form-data": {
+              "schema": { "$ref": "#/components/schemas/createProvider" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": { "description": "A JSON whit the created provider" },
+          "400": { "description": "A JSON with two properties ok and message" },
+          "500": { "description": "A JSON with two properties ok and message" }
+        }
+      }
+    },
     "/order": {
       "get": {
         "tags": ["Orders"],
@@ -205,6 +236,19 @@
         "properties": {
           "email": { "type": "string", "example": "olora@yahoo.com" },
           "password": { "type": "string", "example": "per43#784732#67y9" }
+        }
+      },
+      "CreateProvider": {
+        "required": [
+          "location",
+          "phoneProvider",
+          "UserId"
+        ],
+        "type": "object",
+        "properties": {
+          "location": { "type": "string", "example": "32°O 41°S" },
+          "phoneProvider": { "type": "string", "example": "+542994130232" },
+          "UserId": { "type": "string", "example": "UUID of the relationated User" }
         }
       },
       "Orders": {
