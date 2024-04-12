@@ -26,7 +26,7 @@ export const corsOptions: CorsOptions = {
   origin: '*',
   credentials: true,
   allowedHeaders: ['Origin, X-Requested-With, Content-Type, Accept'],
-  methods: ['GET, POST, OPTIONS, PUT, DELETE'],
+  methods: ['GET, POST, OPTIONS, PUT, DELETE, PATCH'],
 }
 
 export const envs = {
