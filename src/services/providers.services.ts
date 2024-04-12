@@ -29,5 +29,18 @@ const providerServices = {
       throw new Error(error as string)
     }
   },
+  getProviderById: async (id: string) => {
+    try {
+      const userId = await Providers.findOne({
+        where: {
+          id,
+        },
+        include: Reviews,
+      })
+      return userId
+    } catch (error) {
+      throw new Error('Error Searching The Data')
+    }
+  },
 }
 export default providerServices

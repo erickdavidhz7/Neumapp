@@ -27,5 +27,15 @@ const ProvidersControllers = {
       res.status(500).send('Internal Server Error')
     }
   },
+  getProviderById: async (req: Request, res: Response) => {
+    const { id } = req.params
+    try {
+      const provider: any = await providerServices.getProviderById(id)
+      if (provider) res.status(201).json(provider)
+      else res.status(404).send('Provider not Found')
+    } catch (error) {
+      res.status(500).send('Internal Server Error')
+    }
+  },
 }
 export default ProvidersControllers
