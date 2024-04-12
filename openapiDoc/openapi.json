@@ -208,6 +208,78 @@
           }
         ]
       }
+    },
+    "/reviews": {
+      "get": {
+        "tags": ["Reviews"],
+        "summary": "Returns a list of all reviews.",
+        "responses": {
+          "200": { "description": "A JSON of all reviews." },
+          "400": { "description": "A JSON with two properties ok and message" },
+          "500": { "description": "A JSON with two properties ok and message" }
+        }
+      }
+    },
+    "/reviews/createReview": {
+      "post": {
+        "tags": ["Reviews"],
+        "summary": "Creating a review",
+        "requestBody": {
+          "description": "Creates a review.",
+          "content": {
+            "aplication/json": {
+              "schema": { "$ref": "#/components/schemas/createReview"}
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A JSON with all the fields of the new review created"
+          },
+          "500": { "description": "A JSON with two properties ok and message" }
+        }
+      }
+    },
+    "/reviews/UserId/:id": {
+      "get": {
+        "tags": ["Reviews"],
+        "summary": "Return all the rwviews from the given user's id",
+        "responses": {
+          "200": {
+            "description": "A JSON of all the reviews from the given user's id"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "schema": { "type": "string" },
+          "required": true
+        }
+      ]
+    },
+    "/reviews/ProviderId/:id": {
+      "get": {
+        "tags": ["Reviews"],
+        "summary": "Return all the reviews from the given provider's id",
+        "responses": {
+          "200": {
+            "description": "A JSON of all the reviews from the given provider's id"
+          },
+          "400": { "description": "A JSON with two properties ok and message" },
+          "500": { "description": "A JSON with two properties ok and message" }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -238,7 +310,7 @@
           "password": { "type": "string", "example": "per43#784732#67y9" }
         }
       },
-      "CreateProvider": {
+      "createProvider": {
         "required": [
           "location",
           "phoneProvider",
@@ -249,6 +321,21 @@
           "location": { "type": "string", "example": "32°O 41°S" },
           "phoneProvider": { "type": "string", "example": "+542994130232" },
           "UserId": { "type": "string", "example": "UUID of the relationated User" }
+        }
+      },
+      "createReview": {
+        "required": [
+          "comment",
+          "rating",
+          "UserId",
+          "ProviderId"
+        ],
+        "type": "object",
+        "properties": {
+          "comment": { "type": "string", "example": "This is the review of your experience" },
+          "rating": { "type": "number", "example": "3,5" },
+          "UserId": { "type": "string", "example": "UUID of the reviewer User" },
+          "ProviderId": { "type": "string", "example":"UUID of the reviwed Provider"}
         }
       },
       "Orders": {
