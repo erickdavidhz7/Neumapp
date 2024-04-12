@@ -3,6 +3,7 @@ import cors from 'cors'
 import https from 'node:https'
 import http from 'node:http'
 import swaggerUi from 'swagger-ui-express'
+import fileUpload from 'express-fileupload'
 import { corsOptions, envs, httpsOptions } from './utils/constants'
 import routes from './routes/router'
 import { initDb } from './utils/database'
@@ -15,6 +16,13 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true, limit: '50mb' }))
 app.use(cors(corsOptions))
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp/',
+    createParentPath: true
+  })
+)
 
 initDb()
 initModels()

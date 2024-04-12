@@ -32,6 +32,7 @@ export const corsOptions: CorsOptions = {
 export const envs = {
   APP_DOMAIN: get('APP_DOMAIN').default('localhost').asString(),
   PORT: get('PORT').required().asPortNumber(),
+  CLOUDINARY_URL: get('CLOUDINARY_URL').required().asString(),
   jwt: {
     JWT_SECRET: get('JWT_SECRET').required().asString(),
     JWT_EXPIRATION: get('JWT_EXPIRATION').default('24h').asString(),
