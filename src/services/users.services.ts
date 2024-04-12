@@ -58,7 +58,7 @@ const userServices = {
   },
   findUserById: async (id: string) => {
     try {
-      const userId = Users.findOne({
+      const userId = await Users.findOne({
         where: {
           id,
         }
@@ -71,7 +71,7 @@ const userServices = {
   },
   updateUser: async (id: string, data: Partial<UserI>) => {
     try {
-      const user = Users.findOne({
+      const user = await Users.findOne({
         where: {
           id
         }

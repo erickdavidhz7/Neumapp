@@ -79,6 +79,21 @@
         "responses": { "200": { "description": "A JSON of a user." } }
       }
     },
+    "/users/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "schema": { "type": "string" },
+          "required": true
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Returns a user with the data.",
+        "responses": { "200": { "description": "A JSON of a user." } }
+      }
+    },
     "/providers": {
       "get": {
         "tags": ["Providers"],
@@ -90,7 +105,22 @@
         }
       }
     },
-    "/createProvider": {
+    "/providers/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "schema": { "type": "string" },
+          "required": true
+        }
+      ],
+      "get": {
+        "tags": ["Providers"],
+        "summary": "Returns a provider with the data.",
+        "responses": { "200": { "description": "A JSON of a provider." } }
+      }
+    },
+    "/providers/createProvider": {
       "post": {
         "tags": ["Providers"],
         "summary": "Create a Provider",
@@ -110,7 +140,7 @@
         }
       }
     },
-    "/order": {
+    "/orders": {
       "get": {
         "tags": ["Orders"],
         "summary": "Returns a list of all orders.",
@@ -140,7 +170,7 @@
         }
       }
     },
-    "/order/UserId/:id": {
+    "/orders/UserId/:id": {
       "get": {
         "tags": ["Orders"],
         "summary": "Return all the orders from the given user's id",
@@ -159,7 +189,7 @@
         }
       ]
     },
-    "/order/ProviderId/:id": {
+    "/orders/ProviderId/:id": {
       "get": {
         "tags": ["Orders"],
         "summary": "Return all the orders from the given provider's id",
@@ -180,7 +210,7 @@
         ]
       }
     },
-    "/order/:id": {
+    "/orders/:id": {
       "patch": {
         "tags": ["Orders"],
         "summary": "Updating an order",
