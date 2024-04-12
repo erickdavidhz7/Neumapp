@@ -13,8 +13,7 @@ const userServices = {
         !user.lastName ||
         !user.email ||
         !user.password ||
-        !user.phoneClient ||
-        !user.photo
+        !user.phoneClient
       ) {
         throw new Error('Missing Data')
       }
@@ -25,8 +24,8 @@ const userServices = {
         password: hashPassword(user.password),
         phoneClient: user.phoneClient,
         photo: user.photo,
-        status: 'active',
-        isVerified: true,
+        status: user.status,
+        isVerified: user.isVerified
       })
       return newUser
     } catch (error) {
@@ -57,5 +56,35 @@ const userServices = {
       throw new Error('Error Searching The Data')
     }
   },
+  findUserById: async (id: string) => {
+    try {
+      const userId = Users.findOne({
+        where: {
+          id,
+        }
+      })
+
+      return userId
+    } catch (error) {
+      throw new Error('Error Searching The Data')
+    }
+  },
+  updateUser: async (id: string, data: Partial<UserI>) => {
+    try {
+      const user = Users.findOne({
+        where: {
+          id
+        }
+      })
+
+      if (!user) {
+        throw new Error('Error Searching The Data')
+      }
+
+      Object.assign(user, data)
+    } catch (error) {
+      throw new Error('Error Updating The Data')
+    }
+  }
 }
 export default userServices
