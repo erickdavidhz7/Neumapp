@@ -7,6 +7,7 @@ const router = express.Router()
 router.get('/', ProvidersControllers.getAllProviders)
 router.get('/:id', ProvidersControllers.getProviderById)
 router.post('/createProvider', ProvidersControllers.createProvider)
+router.patch('updateProvider/:id', ProvidersControllers.updateProvider)
 
 //Aca debemos agregar las demas rutas de usuarios
 

@@ -128,7 +128,7 @@
           "description": "Create a new provider.",
           "content": {
             "multipart/form-data": {
-              "schema": { "$ref": "#/components/schemas/createProvider" }
+              "schema": { "$ref": "#/components/schemas/CreateProvider" }
             }
           },
           "required": true
@@ -138,6 +138,35 @@
           "400": { "description": "A JSON with two properties ok and message" },
           "500": { "description": "A JSON with two properties ok and message" }
         }
+      }
+    },
+    "/providers/updateProvider/{id}": {
+      "patch": {
+        "tags": ["Providers"],
+        "summary": "Updating a provider",
+        "requestBody": {
+          "description": "Updates the information from a provider.",
+          "content": {
+            "aplication/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateProvider" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A JSON with all the fields of the new provider created"
+          },
+          "500": { "description": "A JSON with two properties ok and message" }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ]
       }
     },
     "/orders": {
@@ -170,7 +199,7 @@
         }
       }
     },
-    "/orders/UserId/:id": {
+    "/orders/UserId/{id}": {
       "get": {
         "tags": ["Orders"],
         "summary": "Return all the orders from the given user's id",
@@ -189,7 +218,7 @@
         }
       ]
     },
-    "/orders/ProviderId/:id": {
+    "/orders/ProviderId/{id}": {
       "get": {
         "tags": ["Orders"],
         "summary": "Return all the orders from the given provider's id",
@@ -210,7 +239,7 @@
         ]
       }
     },
-    "/orders/:id": {
+    "/orders/{id}": {
       "patch": {
         "tags": ["Orders"],
         "summary": "Updating an order",
@@ -258,7 +287,7 @@
           "description": "Creates a review.",
           "content": {
             "aplication/json": {
-              "schema": { "$ref": "#/components/schemas/createReview"}
+              "schema": { "$ref": "#/components/schemas/CreateReview" }
             }
           },
           "required": true
@@ -271,7 +300,7 @@
         }
       }
     },
-    "/reviews/UserId/:id": {
+    "/reviews/UserId/{id}": {
       "get": {
         "tags": ["Reviews"],
         "summary": "Return all the rwviews from the given user's id",
@@ -290,7 +319,7 @@
         }
       ]
     },
-    "/reviews/ProviderId/:id": {
+    "/reviews/ProviderId/{id}": {
       "get": {
         "tags": ["Reviews"],
         "summary": "Return all the reviews from the given provider's id",
@@ -299,6 +328,35 @@
             "description": "A JSON of all the reviews from the given provider's id"
           },
           "400": { "description": "A JSON with two properties ok and message" },
+          "500": { "description": "A JSON with two properties ok and message" }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ]
+      }
+    },
+    "/reviews/updateReview/{id}": {
+      "patch": {
+        "tags": ["Reviews"],
+        "summary": "Updating a review",
+        "requestBody": {
+          "description": "Updates the information from a review.",
+          "content": {
+            "aplication/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateReview" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A JSON with all the fields of the new review created"
+          },
           "500": { "description": "A JSON with two properties ok and message" }
         },
         "parameters": [
@@ -340,32 +398,52 @@
           "password": { "type": "string", "example": "per43#784732#67y9" }
         }
       },
-      "createProvider": {
-        "required": [
-          "location",
-          "phoneProvider",
-          "UserId"
-        ],
+      "CreateProvider": {
+        "required": ["location", "phoneProvider", "UserId"],
         "type": "object",
         "properties": {
           "location": { "type": "string", "example": "32°O 41°S" },
           "phoneProvider": { "type": "string", "example": "+542994130232" },
-          "UserId": { "type": "string", "example": "UUID of the relationated User" }
+          "UserId": {
+            "type": "string",
+            "example": "UUID of the relationated User"
+          }
         }
       },
-      "createReview": {
-        "required": [
-          "comment",
-          "rating",
-          "UserId",
-          "ProviderId"
-        ],
+      "UpdateProvider": {
         "type": "object",
         "properties": {
-          "comment": { "type": "string", "example": "This is the review of your experience" },
+          "location": { "type": "string", "example": "32°O 41°S" },
+          "phoneProvider": { "type": "string", "example": "+542994130232" }
+        }
+      },
+      "CreateReview": {
+        "required": ["comment", "rating", "UserId", "ProviderId"],
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string",
+            "example": "This is the review of your experience"
+          },
           "rating": { "type": "number", "example": "3,5" },
-          "UserId": { "type": "string", "example": "UUID of the reviewer User" },
-          "ProviderId": { "type": "string", "example":"UUID of the reviwed Provider"}
+          "UserId": {
+            "type": "string",
+            "example": "UUID of the reviewer User"
+          },
+          "ProviderId": {
+            "type": "string",
+            "example": "UUID of the reviwed Provider"
+          }
+        }
+      },
+      "UpdateReview": {
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string",
+            "example": "This is the review of your experience"
+          },
+          "rating": { "type": "number", "example": "3,5" }
         }
       },
       "Orders": {

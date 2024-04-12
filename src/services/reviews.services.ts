@@ -50,5 +50,17 @@ const reviewsServices = {
       return 'Error al Crear la Review'
     }
   },
+  updateReview: async (id: string, newData: any) => {
+    try {
+      const reviewToUpdate = await Reviews.findByPk(id)
+      if (!reviewToUpdate) {
+        throw new Error('Id not found in database' as string)
+      }
+      const updatedReview = await reviewToUpdate.update(newData)
+      return updatedReview
+    } catch (error) {
+      throw new Error(error as string)
+    }
+  },
 }
 export default reviewsServices

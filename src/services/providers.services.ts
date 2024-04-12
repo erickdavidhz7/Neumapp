@@ -42,5 +42,17 @@ const providerServices = {
       throw new Error('Error Searching The Data')
     }
   },
+  updateProvider: async (id: string, newData: any) => {
+    try {
+      const providerToUpdate = await Providers.findByPk(id)
+      if (!providerToUpdate) {
+        throw new Error('Id not found in database' as string)
+      }
+      const updatedProvider = await providerToUpdate.update(newData)
+      return updatedProvider
+    } catch (error) {
+      throw new Error(error as string)
+    }
+  },
 }
 export default providerServices
