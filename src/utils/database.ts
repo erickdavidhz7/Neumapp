@@ -18,7 +18,7 @@ export const initDb = () => {
       console.log(err)
     })
 
-  db.sync()
+  db.sync({alter: true})
     .then(() => {
       console.log('Database Synced')
     })
