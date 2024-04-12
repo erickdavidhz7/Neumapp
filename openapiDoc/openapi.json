@@ -120,7 +120,7 @@
         "responses": { "200": { "description": "A JSON of a provider." } }
       }
     },
-    "/providers/createProvider": {
+    "/providers": {
       "post": {
         "tags": ["Providers"],
         "summary": "Create a Provider",
@@ -140,7 +140,7 @@
         }
       }
     },
-    "/providers/updateProvider/{id}": {
+    "/providers/{id}": {
       "patch": {
         "tags": ["Providers"],
         "summary": "Updating a provider",
@@ -279,7 +279,7 @@
         }
       }
     },
-    "/reviews/createReview": {
+    "/reviews": {
       "post": {
         "tags": ["Reviews"],
         "summary": "Creating a review",
@@ -340,7 +340,7 @@
         ]
       }
     },
-    "/reviews/updateReview/{id}": {
+    "/reviews/{id}": {
       "patch": {
         "tags": ["Reviews"],
         "summary": "Updating a review",
