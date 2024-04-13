@@ -95,11 +95,10 @@ Tuvimos en cuenta las semanas organizadas por No-Country para cumplir con los ti
 
 ## SPRINT 1
 - **Diseño de media fidelidad / BDD / página principal sin funcionalidades / servidor y ramas de trabajo:**
-
-- Creamos la arquitectura y el flujo de trabajo en los equipos.
-- Realizamos el diseño de la página principal y el LogIn, y se llevó a cabo el mismo desde el Front.
-- Establecimos la base de datos y los modelos.
-- Generamos los servidores, ramas de trabajo y dominio de la página
+  - Creamos la arquitectura y el flujo de trabajo en los equipos.
+  - Realizamos el diseño de la página principal y el LogIn, y se llevó a cabo el mismo desde el Front.
+  - Establecimos la base de datos y los modelos.
+  - Generamos los servidores, ramas de trabajo y dominio de la página
 
 ## SPRINT 2
 - **Flujo Login / Prototipado / **
