@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Generalogin from "../components/Login/Generalogin";
 import Register from "../components/Register";
+import ProviderRegister from "../components/providerRegister/ProviderRegister.jsx";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,7 @@ export const router = createBrowserRouter(
       <Route path="/" element={<Landing />} />
       <Route path="/ingresar" element={<Generalogin />} />
       <Route path="/registrar" element={<Register />} />
+      <Route path="/prestador" element={<ProviderRegister />} />
     </>
   )
 );
