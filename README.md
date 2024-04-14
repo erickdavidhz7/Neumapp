@@ -94,14 +94,21 @@ Tuvimos en cuenta las semanas organizadas por No-Country para cumplir con los ti
 ***
 
 ## SPRINT 1
-- **Diseño de media fidelidad / BDD / página principal sin funcionalidades / servidor y ramas de trabajo:**
+- **Diseño de media fidelidad / BDD / Página principal sin funcionalidades / Servidor y ramas de trabajo:**
   - Creamos la arquitectura y el flujo de trabajo en los equipos.
   - Realizamos el diseño de la página principal y el LogIn, y se llevó a cabo el mismo desde el Front.
   - Establecimos la base de datos y los modelos.
   - Generamos los servidores, ramas de trabajo y dominio de la página
+  - Creamos el plan de pruebas del proyecto
+  - Coordinación entre QA y UX del flujo de la APP.
 
 ## SPRINT 2
-- **Flujo Login / Prototipado / **
+- **Prototipado / Animaciones del Home y formularios / Casos de prueba / Documentación de endpoints**
+  - Interacciones de app (botones, formularios, menú, navbar, mapas)
+  - Creación de los scrollDown y animación de la homePage
+  - Formularios de Log In y Registro
+  - Documentación de endpoints para la utilización de la API desde front
+  - Creaación de escenarios de prueba
 
 ## SPRINT 3
 
