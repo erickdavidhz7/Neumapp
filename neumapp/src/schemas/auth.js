@@ -1,7 +1,14 @@
 import { z } from "zod";
+const MAX_FILE_SIZE = 5000000;
+const ACCEPTED_IMAGE_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
 
 export const lenderSchema = z.object({
-  name: z
+  firstName: z
     .string({ required_error: "Nombre es requerido" })
     .min(3, {
       message: "Debe tener mas de 3 caracteres",
@@ -24,12 +31,12 @@ export const lenderSchema = z.object({
     .max(12, { message: "La contraseña debe tener menos de 12 caracteres" }),
   codeP: z.string().regex(/^\+\d{2}$/, { message: "requerido" }),
   codeL: z.string().regex(/^\+\d{2}$/, { message: "requerido" }),
-  phonePersonal: z
+  phoneClient: z
     .string({ required_error: "Celular es requerido" })
     .regex(/^[0-9]{10}$/, {
       message: "Ingrese un numero valido",
     }),
-  phoneLaboral: z
+  phoneProvider: z
     .string({ required_error: "Celular es requerido" })
     .regex(/^[0-9]{10}$/, {
       message: "Ingrese un numero valido",
@@ -38,4 +45,17 @@ export const lenderSchema = z.object({
     message: "Debe aceptar los términos y condiciones",
     path: [],
   }),
+
+  photo: z
+    .any()
+    .nullable()
+    .refine((file) => {
+      if (file[0] === undefined || file[0] === null) return true; // Validación pasa si el campo es opcional
+      return file[0].size <= MAX_FILE_SIZE;
+    }, "La imagen debe tener un tamaño máximo de 5MB.")
+    .refine((file) => {
+      if (file[0] === undefined || file[0] === null) return true; // Validación pasa si el campo es opcional
+      return ACCEPTED_IMAGE_TYPES.includes(file[0].type);
+    }, "La imagen debe ser .jpg, .jpeg, .png o .webp."),
 });
+

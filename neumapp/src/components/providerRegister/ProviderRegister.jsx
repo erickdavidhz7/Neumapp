@@ -1,21 +1,30 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from '@hookform/resolvers/zod';
+import { zodResolver } from "@hookform/resolvers/zod";
 import Logo from "../../images/logo/Logo.jsx";
-import Upload from "../../images/upload.svg";
 import { lenderSchema } from "../../schemas/auth.js";
-import SelectConuntry from "./SelectConuntry.jsx";
-
+// import SelectConuntry from "./SelectConuntry.jsx";
+import { providerRegisterRequest } from "../../api/auth.js";
+import { formatData } from "../../utils/formatDataProvider.js";
 const ProviderRegister = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors,isValid, submitCount },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(lenderSchema),
   });
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+  const onSubmit = async (data) => {
+    try {
+      const formatedData = formatData(data);
+      console.log(formatedData);
+      const response = await providerRegisterRequest(formatedData);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+    
+  };
 
   return (
     <section
@@ -34,23 +43,25 @@ const ProviderRegister = () => {
               {/* input name */}
               <div className="w-4/5 mr-1 sm:mr-3">
                 <label
-                  htmlFor="name"
+                  htmlFor="firstName"
                   className="text-white block mb-2 text-base font-medium"
                 >
                   Nombre
                 </label>
                 <input
-                  name="name"
+                  name="firstName"
                   type="text"
-                  id="name"
+                  id="firstName"
                   className=" bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-full p-2.5"
                   placeholder="Jhon"
-                  {...register("name", {
+                  {...register("firstName", {
                     required: true,
                   })}
                 />
-                {errors.name && (
-                  <p className="text-red-300 text-sm">{errors.name.message}</p>
+                {errors.firstName && (
+                  <p className="text-red-300 text-sm">
+                    {errors.firstName.message}
+                  </p>
                 )}
               </div>
 
@@ -126,7 +137,7 @@ const ProviderRegister = () => {
             {/* Numero de celular personal */}
             <div className="mb-6">
               <label
-                htmlFor="phonePersonal"
+                htmlFor="phoneClient"
                 className="text-white block text-base mb-2 font-medium"
               >
                 Ingresa tu número personal
@@ -145,12 +156,12 @@ const ProviderRegister = () => {
                   />
                   {/* <SelectConuntry register={register}/> */}
                   <input
-                    name="phonePersonal"
+                    name="phoneClient"
                     type="number"
-                    id="phonePersonal"
+                    id="phoneClient"
                     className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-2/3 p-2.5"
                     placeholder="1193475762"
-                    {...register("phonePersonal", {
+                    {...register("phoneClient", {
                       required: true,
                     })}
                   />
@@ -164,9 +175,9 @@ const ProviderRegister = () => {
                     )}
                   </div>
                   <div className="block w-2/3">
-                    {errors.phonePersonal && (
+                    {errors.phoneClient && (
                       <p className="text-red-300 text-xs">
-                        {errors.phonePersonal.message}
+                        {errors.phoneClient.message}
                       </p>
                     )}
                   </div>
@@ -177,7 +188,7 @@ const ProviderRegister = () => {
 
             <div className="mb-6">
               <label
-                htmlFor="phoneLaboral"
+                htmlFor="phoneProvider"
                 className="text-white block text-base mb-2 font-medium"
               >
                 Ingresa tu número laboral
@@ -195,12 +206,12 @@ const ProviderRegister = () => {
                     })}
                   />
                   <input
-                    name="phoneLaboral"
+                    name="phoneProvider"
                     type="number"
-                    id="phoneLaboral"
+                    id="phoneProvider"
                     className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-2/3 p-2.5"
                     placeholder="1193475762"
-                    {...register("phoneLaboral", {
+                    {...register("phoneProvider", {
                       required: true,
                     })}
                   />
@@ -214,9 +225,9 @@ const ProviderRegister = () => {
                     )}
                   </div>
                   <div className="block w-2/3">
-                    {errors.phoneLaboral && (
+                    {errors.phoneProvider && (
                       <p className="text-red-300 text-xs">
-                        {errors.phoneLaboral.message}
+                        {errors.phoneProvider.message}
                       </p>
                     )}
                   </div>
@@ -227,22 +238,30 @@ const ProviderRegister = () => {
             {/* input subir imagen */}
             <div className="mb-6">
               <label
-                htmlFor="upload"
-                className="text-white block text-base mb-2 font-medium text-center"
+                className="block mb-2 text-sm font-medium text-white dark:text-gray-900 text-center"
+                htmlFor="photo"
               >
                 Adjunta una foto de perfil (opcional)
               </label>
-              <div className="flex justify-center items-center w-full">
-                <label htmlFor="upload" className="w-full">
-                  <img src={Upload} alt="Upload" className="w-full" />
-                </label>
-                <input
-                  name="upload"
-                  type="file"
-                  id="upload"
-                  className="hidden"
-                  {...register("upload")}
-                />
+              <input
+                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                type="file"
+                name="photo"
+                id="photo"
+                accept=".png, .jpg, .jpeg"
+                {...register("photo")}
+              />
+              <div className="flex gap-x-4">
+                {errors.photo ? (
+                  <p className="text-red-300 text-sm">{errors.photo.message}</p>
+                ) : (
+                  <p
+                    className="mt-1 text-sm text-gray-300 dark:text-gray-900"
+                    id="photo_help"
+                  >
+                    JPG ,JPGE ,PNG o WEBP (5MB Max).
+                  </p>
+                )}
               </div>
             </div>
             <div className="mb-6 flex-col">
