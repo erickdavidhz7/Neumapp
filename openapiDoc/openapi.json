@@ -587,15 +587,14 @@
           "providerId": {"type": "string", "example:": "c0a0a31f-f2df-4184-83ca-57c352b6cf77"}
         }
         
-      }
-    },
+      },
       "GeneralResponseError": {
         "Type": "object",
         "properties": {
           "OK": {"type" :"boolean", "example": "false"},
           "message": {"type": "string", "example": "Internal server error"}
         }
-        
-      }
+      }      
+    }
   }
 }
