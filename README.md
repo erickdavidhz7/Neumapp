@@ -44,7 +44,7 @@ Esta idea surge con el fin de mejorar el servicio de auxilio a los vehículos re
 - [Nciolas Mennichelli](https://github.com/michiqueli)
 
 ### TL
-- name
+- [Verónica](http://github.com/veritoa45)
 
 ***
 ## TECNOLOGIAS UTILIZADAS
