@@ -65,7 +65,9 @@ const UsersControllers = {
         phoneProvider,
         location,
       } = req.body
-
+      console.log("---------------------------------------------------------------------------");
+      console.log(req.files);
+      console.log("---------------------------------------------------------------------------");
       if (!req.files || !req.files.photo) {
         return res.status(400).json({ ok: false, message: 'No photo file provided' })
       }
