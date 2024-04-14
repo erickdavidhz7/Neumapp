@@ -1,15 +1,23 @@
-import axios from "./axios";
+import axiosInstance from "./axios";
 
-export const loginRequest = async (user) => axios.post(`/auth/login`, user);
+export const loginRequest = async (user) =>
+  axiosInstance.post(`/auth/login`, user);
 
 export const registerRequest = async (user) =>
-  axios.post(`/auth/register/client`, user);
+  axiosInstance.post(`/auth/register/client`, user);
 
-export const providerRegisterRequest = async (user) => {
-   axios.post(`/auth/register/provider`, user);
+export const providerRegisterRequest = async (formData) => {
+  axiosInstance.post(`/auth/register/provider`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 
-export const logoutRequest = async () => axios.post("/auth/logout");
+export const logoutRequest = async () => axiosInstance.post("/auth/logout");
 
 export const forgotPasswordRequest = async () =>
-  axios.get(`/auth/forgotPassword`);
+  axiosInstance.get(`/auth/forgotPassword`);
+
+
+

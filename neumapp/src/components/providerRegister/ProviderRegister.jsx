@@ -16,6 +16,7 @@ const ProviderRegister = () => {
   });
   const onSubmit = async (data) => {
     try {
+      // const img = document.querySelector('#photo').files
       const formatedData = formatData(data);
       console.log(formatedData);
       const response = await providerRegisterRequest(formatedData);
