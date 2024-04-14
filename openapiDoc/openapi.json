@@ -101,7 +101,14 @@
         "responses": {
           "200": { "description": "A JSON of all providers." },
           "400": { "description": "A JSON with two properties ok and message" },
-          "500": { "description": "A JSON with two properties ok and message" }
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }  }
         }
       }
     },
@@ -135,8 +142,22 @@
         },
         "responses": {
           "200": { "description": "A JSON whit the created provider" },
-          "400": { "description": "A JSON with two properties ok and message" },
-          "500": { "description": "A JSON with two properties ok and message" }
+          "400": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }    },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }  }
         }
       }
     },
@@ -157,7 +178,15 @@
           "201": {
             "description": "A JSON with all the fields of the new provider created"
           },
-          "500": { "description": "A JSON with two properties ok and message" }
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }  
+          }
         },
         "parameters": [
           {
@@ -302,10 +331,10 @@
         "tags": ["Orders"],
         "summary": "Updating an order",
         "requestBody": {
-          "description": "Updates the information from an order(probably going to be used only with status field).",
+          "description": "Updates the information from an order(this feature is probably going to be used only with status field).",
           "content": {
             "aplication/json": {
-              "schema": { "$ref": "#/components/schemas/OrdersResponse"}
+              "schema": { "$ref": "#/components/schemas/Orders"}
             }
           },
           "required": true
@@ -391,10 +420,28 @@
     "/reviews/UserId/{id}": {
       "get": {
         "tags": ["Reviews"],
-        "summary": "Return all the rwviews from the given user's id",
+        "summary": "Return all the reviews from the given user's id",
         "responses": {
           "200": {
             "description": "A JSON of all the reviews from the given user's id"
+          },
+          "400": {"description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }
+          },
+          "500": {"description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }
           }
         }
       },
@@ -415,7 +462,14 @@
           "200": {
             "description": "A JSON of all the reviews from the given provider's id"
           },
-          "400": { "description": "A JSON with two properties ok and message" },
+          "400": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } },
           "500": { "description": "A JSON with two properties ok and message",
           "content": {
             "application/json": {
@@ -584,14 +638,14 @@
           "createdAt": {"type": "string", "example" : "2024-04-09T19:30:59.785Z"},
           "updatedAt": {"type": "string", "example" : "2024-04-09T19:30:59.785Z"},
           "userId": {"type": "string", "example": "77817f25-2fab-42bb-b589-b48c7db80bf4"},
-          "providerId": {"type": "string", "example:": "c0a0a31f-f2df-4184-83ca-57c352b6cf77"}
+          "providerId": {"type": "string", "example": "c0a0a31f-f2df-4184-83ca-57c352b6cf77"}
         }
         
       },
       "GeneralResponseError": {
         "Type": "object",
         "properties": {
-          "OK": {"type" :"boolean", "example": "false"},
+          "ok": {"type" :"boolean", "example": "false"},
           "message": {"type": "string", "example": "Internal server error"}
         }
       }      

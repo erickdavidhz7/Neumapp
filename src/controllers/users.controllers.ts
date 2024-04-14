@@ -6,6 +6,7 @@ import {v2 as cloudinary} from 'cloudinary'
 import { signToken } from '../utils/jwt.util'
 import { FileI } from '../interfaces/file.interface'
 import { envs } from '../utils/constants'
+import { ok } from 'assert'
 
 cloudinary.config({cloudinary: envs.CLOUDINARY_URL})
 
@@ -22,7 +23,7 @@ const UsersControllers = {
       } = req.body
 
       if (!firstName || !lastName || !email || !password || !phoneClient) {
-        return res.status(400).json({ message: 'Missing User Data' })
+        return res.status(400).json({ ok: false, message: 'Missing User Data' })
       }
 
       const user = await userServices.createUsers({
@@ -66,7 +67,7 @@ const UsersControllers = {
       } = req.body
 
       if (!req.files || !req.files.photo) {
-        return res.status(400).json({ error: 'No photo file provided' })
+        return res.status(400).json({ ok: false, message: 'No photo file provided' })
       }
 
       const photoFile = req.files.photo as FileI
@@ -76,11 +77,11 @@ const UsersControllers = {
       const fileSize = 10000000;
       
       if (!firstName || !lastName || !email || !password || !phoneClient || !phoneProvider || !location) {
-        return res.status(400).json({ message: 'Missing User Data' })
+        return res.status(400).json({ ok: false, message: 'Missing User Data' })
       }
 
       if (!fileTypes.includes(photoFile.mimetype)) {
-        return res.status(400).json({ message: 'File types: png, jpeg and jpg' })
+        return res.status(400).json({ ok: false, message: 'File types: png, jpeg and jpg' })
       }
 
       if (!fileExtensions.includes(photoFile.name.split('.')[1])) {
@@ -90,7 +91,7 @@ const UsersControllers = {
       }
 
       if (photoFile.size > fileSize) {
-        return res.status(400).json({ message: 'File size: 10Mb' })
+        return res.status(400).json({ ok: false, message: 'File size: 10Mb' })
       }
 
       const uploadedPhoto = await cloudinary.uploader.upload(
@@ -133,7 +134,7 @@ const UsersControllers = {
         })
       })
     } catch (error) {
-      res.status(500).json('Internal Server Error')
+      res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   },
   getAllUsers: async (req: Request, res: Response) => {
@@ -141,7 +142,7 @@ const UsersControllers = {
       const users = await userServices.getAllUsers()
       res.status(200).send(users)
     } catch (error) {
-      res.status(500).send('Internal Server Error')
+      res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   },
   getUserByEmail: async (req: Request, res: Response) => {
@@ -149,14 +150,14 @@ const UsersControllers = {
       const { email } = req.params
 
       if (!email) {
-        return res.status(404).json({ message: 'Data not found' })
+        return res.status(404).json({ ok: false, message: 'Data not found' })
       }
 
       const userEmail = await userServices.findUserByEmail(email)
 
       return res.status(200).json(userEmail)
     } catch (error) {
-      res.status(500).json('Internal Server Error')
+      res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   },
   getUserById: async (req: Request, res: Response) => {
@@ -164,14 +165,14 @@ const UsersControllers = {
       const { id } = req.params
 
       if (!id) {
-        return res.status(404).json({ message: 'Data not found' })
+        return res.status(404).json({ ok: false, message: 'Data not found' })
       }
 
       const userId = await userServices.findUserById(id)
 
       return res.status(200).json(userId)
     } catch (error) {
-      res.status(500).json('Internal Server Error')
+      res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   }
 }

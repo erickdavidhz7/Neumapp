@@ -6,7 +6,7 @@ const ProvidersControllers = {
     try {
       const { UserId, phoneProvider, location } = req.body
       if (!UserId || !phoneProvider || !location) {
-        res.status(400).json({ message: 'Missing Provider Data' })
+        res.status(400).json({ ok: false, message: 'Missing Provider Data' })
       }
       const provider: any = await providerServices.createProvider({
         UserId,
@@ -15,7 +15,7 @@ const ProvidersControllers = {
       })
       res.status(201).json(provider)
     } catch (error) {
-      res.status(500).json('Internal Server Error')
+      res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   },
   getAllProviders: async (req: Request, res: Response) => {
@@ -24,7 +24,7 @@ const ProvidersControllers = {
       if (allProviders.length > 0) res.status(201).json(allProviders)
       else res.status(404).send('Providers not Found')
     } catch (error) {
-      res.status(500).send('Internal Server Error')
+      res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   },
   getProviderById: async (req: Request, res: Response) => {
@@ -34,14 +34,17 @@ const ProvidersControllers = {
       if (provider) res.status(201).json(provider)
       else res.status(404).send('Provider not Found')
     } catch (error) {
-      res.status(500).send('Internal Server Error')
+      res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   },
   updateProvider: async (req: Request, res: Response) => {
     const { id } = req.params
     const providerData = req.body
     try {
-      const updatedProvider = await providerServices.updateProvider(id, providerData)
+      const updatedProvider = await providerServices.updateProvider(
+        id,
+        providerData
+      )
       res.status(200).json(updatedProvider)
     } catch (err) {
       res.status(500).json({ ok: false, message: 'Internal server error' })
