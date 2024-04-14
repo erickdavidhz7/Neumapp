@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Generalogin from "../components/Login/Generalogin";
 import Register from "../components/Register";
-import ProviderRegister from "../components/providerRegister/ProviderRegister.jsx";
+import ProviderRegister from "../components/providerRegister/ProviderRegister";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
