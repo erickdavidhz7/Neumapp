@@ -1,15 +1,20 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Logo from "../images/Neumapp.svg";
-import Upload from "../images/upload.svg";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Logo from "../../images/Neumapp.svg";
+import Upload from "../../images/upload.svg";
+import { lenderSchema } from "../../schemas/auth.js";
 
-const Register = () => {
+const UserRegister = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+  } = useForm({
+    resolver: zodResolver(lenderSchema),
+  });
+
+  const onSubmit = (data) => console.log(data.file);
 
   return (
     <section
@@ -36,14 +41,12 @@ const Register = () => {
                 id="username"
                 className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-full p-2.5"
                 placeholder="jhon smith"
-                {...register("username", {
-                  required: "Nombre de usuario es requerido",
+                {...register("name", {
+                  required: true,
                 })}
               />
-              {errors.username && (
-                <p className="text-red-300 text-sm">
-                  {errors.username.message}
-                </p>
+              {errors.name && (
+                <p className="text-red-300 text-sm">{errors.name.message}</p>
               )}
             </div>
             <div className="mb-6">
@@ -60,7 +63,7 @@ const Register = () => {
                 className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-full p-2.5"
                 placeholder="myemail@gmail.com"
                 {...register("email", {
-                  required: "Email es requerido",
+                  required: true,
                 })}
               />
               {errors.email && (
@@ -81,7 +84,7 @@ const Register = () => {
                 className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-full p-2.5"
                 placeholder="****************"
                 {...register("password", {
-                  required: "Password es requerido",
+                  required: true,
                 })}
               />
               {errors.password && (
@@ -106,8 +109,8 @@ const Register = () => {
                   type="file"
                   id="upload"
                   className="hidden"
-                  {...register("upload", {
-                    required: "Cargar archivo es requerido",
+                  {...register("file", {
+                    required: true,
                   })}
                 />
               </div>
@@ -130,8 +133,8 @@ const Register = () => {
                     id="code"
                     className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-1/3 p-2.5"
                     placeholder="+54"
-                    {...register("code", {
-                      required: "Código es requerido",
+                    {...register("codeP", {
+                      required: true,
                     })}
                   />
                   <input
@@ -140,23 +143,23 @@ const Register = () => {
                     id="cellphone"
                     className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-2/3 p-2.5"
                     placeholder="1193475762"
-                    {...register("cellphone", {
-                      required: "Celular es requerido",
+                    {...register("phonePersonal", {
+                      required: true,
                     })}
                   />
                 </div>
                 <div className="flex gap-x-4">
                   <div className="block w-1/3">
-                    {errors.code && (
+                    {errors.codeP && (
                       <p className="text-red-300 text-xs">
-                        {errors.code.message}
+                        {errors.codeP.message}
                       </p>
                     )}
                   </div>
                   <div className="block w-2/3">
-                    {errors.cellphone && (
+                    {errors.phonePersonal && (
                       <p className="text-red-300 text-xs">
-                        {errors.cellphone.message}
+                        {errors.phonePersonal.message}
                       </p>
                     )}
                   </div>
@@ -171,15 +174,14 @@ const Register = () => {
                   type="checkbox"
                   id="agreements"
                   {...register("agreements", {
-                    required: "Debes aceptar los términos y condiciones",
+                    required: true,
                   })}
                 />
-                <label className="ml-2 text-xs" htmlFor="checkbox">
+                <label className="ml-2 text-xs text-white" htmlFor="checkbox">
                   Estoy de acuerdo con los términos y condicones y politicas de
                   seguridad y confirmo que soy mayor de edad
                 </label>
               </div>
-
               <div className="flex gap-x-4">
                 {errors.agreements && (
                   <p className="text-red-300 text-sm">
@@ -201,4 +203,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default UserRegister;

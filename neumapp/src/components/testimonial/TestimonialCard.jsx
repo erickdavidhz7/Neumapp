@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-import TestimonialsData from "../data/testimonial.json";
+import TestimonialsData from "../../data/testimonial.json";
 
 export default function TestimonialCard() {
   return (
