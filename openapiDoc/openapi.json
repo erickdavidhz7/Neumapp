@@ -1,0 +1,654 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Neumapp", "version": "1.0.0" },
+  "servers": [
+    {
+      "url": "https://neumapp.site:3001",
+      "description": "The development API server"
+    },
+    { "url": "https://neumapp.site:4001", "description": "The QA API server" },
+    {
+      "url": "https://neumapp.site:5001",
+      "description": "The production API server"
+    }
+  ],
+  "tags": [
+    { "name": "Auth" },
+    { "name": "Users" },
+    { "name": "Providers" },
+    { "name": "Reviews" },
+    { "name": "Orders" }
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register a user.",
+        "requestBody": {
+          "description": "Create a new user.",
+          "content": {
+            "multipart/form-data": {
+              "schema": { "$ref": "#/components/schemas/UserRegister" }
+            }
+          },
+          "required": true
+        },
+        "responses": { "201": { "description": "A JSON of user registered." } }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Loggin a user.",
+        "requestBody": {
+          "description": "Loggin a user.",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserLogin" }
+            }
+          },
+          "required": true
+        },
+        "responses": { "200": { "description": "User logged and token." } }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Returns a list of users",
+        "responses": {
+          "200": {
+            "description": "A JSON array of users. The image is a link from cloudinary."
+          },
+          "400": { "description": "Validation error" }
+        }
+      }
+    },
+    "/users/email/{email}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "email",
+          "schema": { "type": "string" },
+          "required": true
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Returns a user with the data.",
+        "responses": { "200": { "description": "A JSON of a user." } }
+      }
+    },
+    "/users/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "schema": { "type": "string" },
+          "required": true
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Returns a user with the data.",
+        "responses": { "200": { "description": "A JSON of a user." } }
+      }
+    },
+    "/providers": {
+      "get": {
+        "tags": ["Providers"],
+        "summary": "Return a list of all providers.",
+        "responses": {
+          "200": { "description": "A JSON of all providers." },
+          "400": { "description": "A JSON with two properties ok and message" },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }  }
+        }
+      }
+    },
+    "/providers/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "schema": { "type": "string" },
+          "required": true
+        }
+      ],
+      "get": {
+        "tags": ["Providers"],
+        "summary": "Returns a provider with the data.",
+        "responses": { "200": { "description": "A JSON of a provider." } }
+      }
+    },
+    "/providers": {
+      "post": {
+        "tags": ["Providers"],
+        "summary": "Create a Provider",
+        "requestBody": {
+          "description": "Create a new provider.",
+          "content": {
+            "multipart/form-data": {
+              "schema": { "$ref": "#/components/schemas/CreateProvider" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": { "description": "A JSON whit the created provider" },
+          "400": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }    },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }  }
+        }
+      }
+    },
+    "/providers/{id}": {
+      "patch": {
+        "tags": ["Providers"],
+        "summary": "Updating a provider",
+        "requestBody": {
+          "description": "Updates the information from a provider.",
+          "content": {
+            "aplication/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateProvider" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A JSON with all the fields of the new provider created"
+          },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }  
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ]
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Returns a list of all orders.",
+        "responses": {
+          "200": { "description": "A JSON of all orders." },
+          "400": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } }
+        }
+      },
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Creating an order",
+        "requestBody": {
+          "description": "Creates an order the only required fields are location and description.",
+          "content": {
+            "aplication/json": {
+              "schema": { "$ref": "#/components/schemas/Orders" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A JSON with all the fields of the new order created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrdersResponse"
+                }
+              }
+            }
+          },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } }
+        }
+      }
+    },
+    "/orders/UserId/{id}": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Return all the orders from the given user's id",
+        "responses": {
+          "200": {
+            "description": "A JSON of all the orders from the given user's id"
+          },
+          "400": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } }
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "schema": { "type": "string" },
+          "required": true
+        }
+      ]
+    },
+    "/orders/ProviderId/{id}": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Return all the orders from the given provider's id",
+        "responses": {
+          "200": {
+            "description": "A JSON of all the orders from the given provider's id"
+          },
+          "400": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ]
+      }
+    },
+    "/orders/{id}": {
+      "patch": {
+        "tags": ["Orders"],
+        "summary": "Updating an order",
+        "requestBody": {
+          "description": "Updates the information from an order(this feature is probably going to be used only with status field).",
+          "content": {
+            "aplication/json": {
+              "schema": { "$ref": "#/components/schemas/Orders"}
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A JSON with all the fields of the order updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrdersResponse"
+                }
+              }
+            }
+          },
+          "500": { 
+            "description": "A JSON with two properties ok and message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralResponseError"
+                }
+              }
+            }
+           }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ]
+      }
+    },
+    "/reviews": {
+      "get": {
+        "tags": ["Reviews"],
+        "summary": "Returns a list of all reviews.",
+        "responses": {
+          "200": { "description": "A JSON of all reviews." },
+          "400": { "description": "A JSON with two properties ok and message" },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } }
+        }
+      }
+    },
+    "/reviews": {
+      "post": {
+        "tags": ["Reviews"],
+        "summary": "Creating a review",
+        "requestBody": {
+          "description": "Creates a review.",
+          "content": {
+            "aplication/json": {
+              "schema": { "$ref": "#/components/schemas/CreateReview" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A JSON with all the fields of the new review created"
+          },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } }
+        }
+      }
+    },
+    "/reviews/UserId/{id}": {
+      "get": {
+        "tags": ["Reviews"],
+        "summary": "Return all the reviews from the given user's id",
+        "responses": {
+          "200": {
+            "description": "A JSON of all the reviews from the given user's id"
+          },
+          "400": {"description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }
+          },
+          "500": {"description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "schema": { "type": "string" },
+          "required": true
+        }
+      ]
+    },
+    "/reviews/ProviderId/{id}": {
+      "get": {
+        "tags": ["Reviews"],
+        "summary": "Return all the reviews from the given provider's id",
+        "responses": {
+          "200": {
+            "description": "A JSON of all the reviews from the given provider's id"
+          },
+          "400": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ]
+      }
+    },
+    "/reviews/{id}": {
+      "patch": {
+        "tags": ["Reviews"],
+        "summary": "Updating a review",
+        "requestBody": {
+          "description": "Updates the information from a review.",
+          "content": {
+            "aplication/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateReview" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "A JSON with all the fields of the new review created"
+          },
+          "500": { "description": "A JSON with two properties ok and message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralResponseError"
+              }
+            }
+          } }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserRegister": {
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "password",
+          "phoneClient"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": { "type": "string", "example": "Arturo" },
+          "lastName": { "type": "string", "example": "Ortega Regil" },
+          "email": { "type": "string", "example": "olora@yahoo.com" },
+          "password": { "type": "string", "example": "per43#784732#67y9" },
+          "phoneClient": { "type": "string", "example": "+541112345678" },
+          "photo": { "type": "string" }
+        }
+      },
+      "UserLogin": {
+        "required": ["email", "password"],
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "example": "olora@yahoo.com" },
+          "password": { "type": "string", "example": "per43#784732#67y9" }
+        }
+      },
+      "CreateProvider": {
+        "required": ["location", "phoneProvider", "UserId"],
+        "type": "object",
+        "properties": {
+          "location": { "type": "string", "example": "32°O 41°S" },
+          "phoneProvider": { "type": "string", "example": "+542994130232" },
+          "UserId": {
+            "type": "string",
+            "example": "UUID of the relationated User"
+          }
+        }
+      },
+      "UpdateProvider": {
+        "type": "object",
+        "properties": {
+          "location": { "type": "string", "example": "32°O 41°S" },
+          "phoneProvider": { "type": "string", "example": "+542994130232" }
+        }
+      },
+      "CreateReview": {
+        "required": ["comment", "rating", "UserId", "ProviderId"],
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string",
+            "example": "This is the review of your experience"
+          },
+          "rating": { "type": "number", "example": "3,5" },
+          "UserId": {
+            "type": "string",
+            "example": "UUID of the reviewer User"
+          },
+          "ProviderId": {
+            "type": "string",
+            "example": "UUID of the reviwed Provider"
+          }
+        }
+      },
+      "UpdateReview": {
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string",
+            "example": "This is the review of your experience"
+          },
+          "rating": { "type": "number", "example": "3,5" }
+        }
+      },
+      "Orders": {
+        "required": ["location", "description"],
+        "Type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["delivery"],
+            "example": "delivery"
+          },
+          "location": { "type": "string", "example": "Calle 931D#25-E" },
+          "description": {
+            "type": "string",
+            "example": "Tengo un problema con mi llanta, tengo una moto de marca... modelo... año..."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["started", "in process", "finished", "cancelled"],
+            "example": "started"
+          }
+        }
+      },
+      "OrdersResponse": {
+        "Type": "object",
+        "properties": {
+          "id": {"type" :"string", "example": "89352dd1-6a0d-460b-a1ec-22bc9d11c279"},
+          "type": {"type": "string", "example": "Internal server error"},
+          "location": {"type" :"string", "example": "en un lugar de la mancha"},
+          "code": {"type": "number", "example": "224158"},
+          "description": {"type": "string", "example": "cambio de neumaticos moto"},
+          "status": {
+            "type": "string", "enum": ["started", "in process", "finished", "cancelled"],
+            "example": "started"
+          },
+          "createdAt": {"type": "string", "example" : "2024-04-09T19:30:59.785Z"},
+          "updatedAt": {"type": "string", "example" : "2024-04-09T19:30:59.785Z"},
+          "userId": {"type": "string", "example": "77817f25-2fab-42bb-b589-b48c7db80bf4"},
+          "providerId": {"type": "string", "example": "c0a0a31f-f2df-4184-83ca-57c352b6cf77"}
+        }
+        
+      },
+      "GeneralResponseError": {
+        "Type": "object",
+        "properties": {
+          "ok": {"type" :"boolean", "example": "false"},
+          "message": {"type": "string", "example": "Internal server error"}
+        }
+      }      
+    }
+  }
+}
