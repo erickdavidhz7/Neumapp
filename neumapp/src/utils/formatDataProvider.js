@@ -6,26 +6,30 @@
 //     password: data.password,
 //     phoneProvider: `${data.codeP}${data.phoneProvider}`,
 //     photo: img.photo.item(0),
-//     location: "americas"
+//     location: "americas",
 //   };
 
 //   return formatedData;
 // }
 
-// export { formatData };
-
-
 function formatData(data) {
-    const formData = new FormData();
-    formData.append("firstName", data.firstName);
-    formData.append("lastName", data.lastName);
-    formData.append("email", data.email);
-    formData.append("password", data.password);
-    formData.append("location", 'asdasd');
-    formData.append("phoneProvider", `${data.codeP}${data.phoneProvider}`);
-    formData.append("photo", data.photo.item(0));
-  
-    return formData;
+  const formData = new FormData();
+  formData.append("firstName", data.firstName);
+  formData.append("lastName", data.lastName);
+  formData.append("email", data.email);
+  formData.append("password", data.password);
+  formData.append("location", "argentina"); // aun no se define en el back, asi que se deja predefinido
+  formData.append("phoneProvider", `${data.codeP}${data.phoneProvider}`);
+  formData.append("phoneClient", `${data.codeP}${data.phoneClient}`);
+  formData.append("photo", data.photo.item(0));
+
+  return formData;
+}
+
+const onKeyNumbers = (e) => {
+  if (!/^([0-9])*$/.test(e.key) && e.key !== "Backspace") {
+    e.preventDefault();
   }
-  
-  export { formatData };
+};
+
+export { formatData, onKeyNumbers };
