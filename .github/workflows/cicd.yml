@@ -44,6 +44,12 @@ jobs:
           run: |
               echo "${{ secrets.OPT_SRV }}" > neumapp/build/.htaccess
               rsync -ra --delete neumapp/build/ ubuntu@neumapp.site:/var/www/dev.neumapp.site/public_html/
+
+  deploy_to_qa:
+      # The type of runner that the job will run on
+
+      runs-on: ubuntu-latest
+
 #Deploy qa      
       if: github.ref == 'refs/heads/front-qa.neumapp.site' # run this job only for the dev branch
       steps:
