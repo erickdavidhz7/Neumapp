@@ -1,9 +1,9 @@
+import { ProviderI } from '../interfaces/provider.interface'
 import { Providers } from '../models/provider.model'
 import { Reviews } from '../models/review.model'
-import { Users } from '../models/user.model'
 
 const providerServices = {
-  createProvider: async (provider: any) => {
+  createProvider: async (provider: ProviderI) => {
     try {
       if (!provider.phoneProvider || !provider.location || !provider.UserId) {
         throw new Error('Mission Data')
