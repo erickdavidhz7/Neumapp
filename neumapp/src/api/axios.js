@@ -5,7 +5,7 @@ import axios from "axios";
 const API_URL = "https://neumapp.site:3001";
 const instance = axios.create({
   baseURL: API_URL,
-  withCredentials: true,
+  withCredentials: false, // Cambiar esta opcion si en el server cambian la configuracion de los CORS Access-Control-Allow-Origin *  por ==> un dominio en especifico Access-Control-Allow-Origin: http://develop.neumapp.site
 });
 
 export default instance;
