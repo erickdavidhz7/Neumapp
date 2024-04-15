@@ -1,7 +1,6 @@
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useState } from "react";
-import { loginRequest } from "../api/auth";
 // import { useNavigate } from "react-router-dom";
 
 function useAuthUser() {
@@ -31,11 +30,10 @@ function useAuthUser() {
   }
 
   async function loginUser(data) {
-    // const url = "https://neumapp.site:3001/auth/login";
+    const url = "https://neumapp.site:3001/auth/login";
 
     try {
-      const res = await loginRequest(data);
-      // const res = await axios.post(url, data);
+      const res = await axios.post(url, data);
       if (res) {
         context.handlerLogin(res.data.token, "user");
         console.log("Inicio de sesión exitoso");
