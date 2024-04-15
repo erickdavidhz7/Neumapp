@@ -1,7 +1,6 @@
 import { useSectionInView } from "../hooks/useSectionInView";
 import { motion } from "framer-motion";
 export default function Faq() {
-
   const { ref } = useSectionInView("FAQ", 0.75);
 
   return (
@@ -23,11 +22,11 @@ export default function Faq() {
                       <svg
                         fill="none"
                         height="24"
-                        shape-rendering="geometricPrecision"
+                        shapeRendering="geometricPrecision"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
                         viewBox="0 0 24 24"
                         width="24"
                       >
@@ -38,8 +37,8 @@ export default function Faq() {
                   <p className="group-open:animate-fadeIn mt-3 text-neutral-600">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Laborum incidunt sequi quia laboriosam omnis fuga id
-                    praesentium doloremque nobis porro facilis illo, rerum tempora
-                    nisi cumque asperiores ab eius qui.
+                    praesentium doloremque nobis porro facilis illo, rerum
+                    tempora nisi cumque asperiores ab eius qui.
                   </p>
                 </details>
               </div>
@@ -51,11 +50,11 @@ export default function Faq() {
                       <svg
                         fill="none"
                         height="24"
-                        shape-rendering="geometricPrecision"
+                        shapeRendering="geometricPrecision"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
                         viewBox="0 0 24 24"
                         width="24"
                       >
@@ -66,8 +65,8 @@ export default function Faq() {
                   <p className="group-open:animate-fadeIn mt-3 text-neutral-600">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Laborum incidunt sequi quia laboriosam omnis fuga id
-                    praesentium doloremque nobis porro facilis illo, rerum tempora
-                    nisi cumque asperiores ab eius qui.
+                    praesentium doloremque nobis porro facilis illo, rerum
+                    tempora nisi cumque asperiores ab eius qui.
                   </p>
                 </details>
               </div>
@@ -79,11 +78,11 @@ export default function Faq() {
                       <svg
                         fill="none"
                         height="24"
-                        shape-rendering="geometricPrecision"
+                        shapeRendering="geometricPrecision"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
                         viewBox="0 0 24 24"
                         width="24"
                       >
@@ -94,8 +93,8 @@ export default function Faq() {
                   <p className="group-open:animate-fadeIn mt-3 text-neutral-600">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Laborum incidunt sequi quia laboriosam omnis fuga id
-                    praesentium doloremque nobis porro facilis illo, rerum tempora
-                    nisi cumque asperiores ab eius qui.
+                    praesentium doloremque nobis porro facilis illo, rerum
+                    tempora nisi cumque asperiores ab eius qui.
                   </p>
                 </details>
               </div>
@@ -107,11 +106,11 @@ export default function Faq() {
                       <svg
                         fill="none"
                         height="24"
-                        shape-rendering="geometricPrecision"
+                        shapeRendering="geometricPrecision"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
                         viewBox="0 0 24 24"
                         width="24"
                       >
@@ -122,8 +121,8 @@ export default function Faq() {
                   <p className="group-open:animate-fadeIn mt-3 text-neutral-600">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Laborum incidunt sequi quia laboriosam omnis fuga id
-                    praesentium doloremque nobis porro facilis illo, rerum tempora
-                    nisi cumque asperiores ab eius qui.
+                    praesentium doloremque nobis porro facilis illo, rerum
+                    tempora nisi cumque asperiores ab eius qui.
                   </p>
                 </details>
               </div>

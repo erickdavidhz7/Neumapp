@@ -1,9 +1,8 @@
 import TeamCard from "./TeamCard";
-import Logo from "../images/Logo.svg";
-import TeamsData from "../data/team.json";
+import Logo from "../../images/Logo.svg";
+import TeamsData from "../../data/team.json";
 
 export default function AboutSection() {
-  console.log(TeamsData);
   return (
     <section id="about" className="bg-zinc-700 mt-8">
       <img src={Logo} alt="Logo" className="h-20 lg:h-40 w-full" />

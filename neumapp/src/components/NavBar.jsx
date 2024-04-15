@@ -62,7 +62,7 @@ function NavBar() {
                   {item.name}
                   {item.name === activeSection && (
                     <motion.span
-                      className="border-b-3 mt-6 border-[#4036ED] absolute inset-0 -z-10 "
+                      className="border-b-3 mt-6 border-[#4036ED] absolute inset-0 -z-10"
                       layoutId="activeSection"
                       transition={{
                         type: "spring",

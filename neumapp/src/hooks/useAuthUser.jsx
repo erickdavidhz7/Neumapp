@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function useAuthUser() {
   const [error, setError] = useState();
@@ -9,7 +9,7 @@ function useAuthUser() {
 
   const context = useContext(AuthContext);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   async function createUser(data) {
     const url = "https://neumapp.site:3001/auth/register/client";

@@ -26,11 +26,16 @@ export default function Contact() {
               <div className="flex flex-row items-center justify-around sm:justify-around">
                 <div className="flex flex-row justify-between mt-10 text-base sm:w-3/4 sm:mt-0 sm:gap-40">
                   <li className="flex flex-col w-3/4 text-start">
-                    <div className="text-white font-bold">${"(icon-rueda)"}</div>
+                    <div className="text-white font-bold">
+                      ${"(icon-rueda)"}
+                    </div>
                     <a href=""> inicio </a>
                     <a href=""> About </a>
                     <a href=""> FAQ </a>
-                    <a className="items-center" href=""> Trabajá con nosotros </a>
+                    <a className="items-center" href="">
+                      {" "}
+                      Trabajá con nosotros{" "}
+                    </a>
                   </li>
                   <li className="flex flex-col w-3/4 text-start ">
                     <p className="text-white font-bold">Servicios</p>
@@ -49,17 +54,19 @@ export default function Contact() {
             </div>
             <div className="flex flex-row text-white font-bold items-center sm:h-1/2 w-[100%] justify-around">
               <div className="text-white text-4xl sm:text-7xl"> Logo </div>
-                <div className="flex flex-col justify-center items-center">
-                  <p className="text-sm sm:text-2xl">Unite a nuestro newsletter</p>
-                  <div className=" flex flex-row h-[40px] w-[200px] bg-white rounded-full mt-5 sm:w-[300px] justify-around">
-                    <input
-                      className="w-[90px] m-2 text-sm "
-                      type="text"
-                      placeholder="Email adress"
-                    />
-                    <button className="bg-zinc-500 hover:bg-zinc-700 text-white text-sm text-base font-bold py-0.5 px-0.5 rounded-lg m-1">
-                      Contactar
-                    </button>
+              <div className="flex flex-col justify-center items-center">
+                <p className="text-sm sm:text-2xl">
+                  Unite a nuestro newsletter
+                </p>
+                <div className=" flex flex-row h-[40px] w-[200px] bg-white rounded-full mt-5 sm:w-[300px] justify-around">
+                  <input
+                    className="w-[90px] m-2 text-sm "
+                    type="text"
+                    placeholder="Email adress"
+                  />
+                  <button className="bg-zinc-500 hover:bg-zinc-700 text-white text-sm font-bold py-0.5 px-0.5 rounded-lg m-1">
+                    Contactar
+                  </button>
                 </div>
               </div>
             </div>

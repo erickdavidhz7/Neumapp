@@ -9,7 +9,7 @@ const UserRegister = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, submitCount },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(lenderSchema),
   });
@@ -177,7 +177,7 @@ const UserRegister = () => {
                     required: true,
                   })}
                 />
-                <label className="ml-2 text-xs" htmlFor="checkbox">
+                <label className="ml-2 text-xs text-white" htmlFor="checkbox">
                   Estoy de acuerdo con los términos y condicones y politicas de
                   seguridad y confirmo que soy mayor de edad
                 </label>
