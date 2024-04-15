@@ -45,7 +45,6 @@ export const lenderSchema = z.object({
     message: "Debe aceptar los términos y condiciones",
     path: [],
   }),
-
   photo: z
     .any()
     .nullable()
@@ -59,3 +58,11 @@ export const lenderSchema = z.object({
     }, "La imagen debe ser .jpg, .jpeg, .png o .webp."),
 });
 
+export const userSchema = z.object({
+  email: z.string().email({
+    message: "Introduzca una dirección de correo electrónico válida",
+  }),
+  password: z.string().min(6, {
+    message: "La contraseña debe tener al menos 6 caracteres",
+  }),
+});
