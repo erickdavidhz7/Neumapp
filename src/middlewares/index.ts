@@ -6,7 +6,7 @@ export * from './auth.middleware'
 export * from './reviews.middleware'
 export * from './service.middleware'
 
-export const uudiV4Validator = (paramName: string) => {
+export const uuidV4Validator = (paramName: string) => {
     // Closure to capture paramName
     return (req: Request, res: Response, next: NextFunction) => {
       const errors = validate(req, paramName);
