@@ -10,10 +10,6 @@
     {
       "url": "https://neumapp.site:5001",
       "description": "The production API server"
-    },
-    {
-      "url": "https://localhost:3100",
-      "description": "The production API server"
     }
   ],
   "tags": [
@@ -184,16 +180,19 @@
       "get": {
         "tags": ["Providers"],
         "summary": "Returns a provider with the data.",
-        "responses": { "200": { "description": "A JSON of a provider." },"400": {
-          "description": "Validation errors",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ValidationErrors"
+        "responses": {
+          "200": { "description": "A JSON of a provider." },
+          "400": {
+            "description": "Validation errors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrors"
+                }
               }
             }
           }
-        } }
+        }
       }
     },
     "/providers": {
@@ -538,6 +537,16 @@
             "description": "A JSON of all the reviews from the given user's id"
           },
           "400": {
+            "description": "Validation errors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrors"
+                }
+              }
+            }
+          },
+          "404": {
             "description": "A JSON with two properties ok and message",
             "content": {
               "application/json": {
@@ -577,6 +586,16 @@
             "description": "A JSON of all the reviews from the given provider's id"
           },
           "400": {
+            "description": "Validation errors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrors"
+                }
+              }
+            }
+          },
+          "404": {
             "description": "A JSON with two properties ok and message",
             "content": {
               "application/json": {
@@ -623,6 +642,16 @@
         "responses": {
           "201": {
             "description": "A JSON with all the fields of the new review created"
+          },
+          "400": {
+            "description": "Validation errors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrors"
+                }
+              }
+            }
           },
           "500": {
             "description": "A JSON with two properties ok and message",

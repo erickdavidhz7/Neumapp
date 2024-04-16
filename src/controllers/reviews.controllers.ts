@@ -6,7 +6,7 @@ const ReviewsControllers = {
     try {
       const reviews = await reviewsServices.getAllReviews()
       if (reviews.length > 0) res.status(200).send(reviews)
-      else res.status(400).send('No existen Reviews en la Base de Datos')
+      else res.status(404).send('No existen Reviews en la Base de Datos')
     } catch (error) {
       res.status(500).json({ ok: false, message: 'Internal server error' })
     }
@@ -16,7 +16,7 @@ const ReviewsControllers = {
     try {
       const reviews = await reviewsServices.getByUserId(id)
       if (reviews) res.status(200).send(reviews)
-      else res.status(400).send(reviews)
+      else res.status(404).send(reviews)
     } catch (error) {
       res.status(500).json({ ok: false, message: 'Internal server error' })
     }
@@ -25,8 +25,8 @@ const ReviewsControllers = {
     const { id } = req.params
     try {
       const reviews = await reviewsServices.getByProviderId(id)
-      if (reviews) res.status(201).json(reviews)
-      else res.status(400).send(reviews)
+      if (reviews) res.status(200).json(reviews)
+      else res.status(404).send(reviews)
     } catch (error) {
       res.status(500).json({ ok: false, message: 'Internal server error' })
     }
