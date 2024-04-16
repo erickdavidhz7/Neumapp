@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useState } from "react";
-import { loginRequest } from "../api/auth";
+import { loginRequest, userRegisterRequest } from "../api/auth";
 // import { useNavigate } from "react-router-dom";
 
 function useAuthUser() {
@@ -13,10 +13,8 @@ function useAuthUser() {
   // const navigate = useNavigate();
 
   async function createUser(data) {
-    const url = "https://neumapp.site:3001/auth/register/client";
-
     try {
-      const res = await axios.post(url, data);
+      const res = await userRegisterRequest(data);
       if (res) {
         console.log("Registrado exitosamente");
       } else {

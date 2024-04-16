@@ -3,18 +3,31 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Logo from "../../images/Neumapp.svg";
 import Upload from "../../images/upload.svg";
-import { lenderSchema } from "../../schemas/auth.js";
+import { registerUserSchema } from "../../schemas/auth.js";
+import useAuthUser from "../../hooks/useAuthUser";
+import {  registUserformatData } from "../../utils/formatDataProvider.js";
 
 const UserRegister = () => {
+  const { createUser } = useAuthUser();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(lenderSchema),
+    resolver: zodResolver(registerUserSchema),
   });
 
-  const onSubmit = (data) => console.log(data.file);
+  const onSubmit = (data) => {
+    try {
+      // const img = document.querySelector('#photo').files
+      const formatedData = createUser(data);
+      console.log(formatedData);
+      // const response = await providerRegisterRequest(formatedData);
+      // console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <section
@@ -30,23 +43,44 @@ const UserRegister = () => {
           <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-6">
               <label
-                htmlFor="username"
+                htmlFor="firstName"
                 className="text-white block mb-2 text-base font-medium"
               >
-                Nombre de Usuario
+                Nombre
               </label>
               <input
-                name="username"
+                name="firstName"
                 type="text"
-                id="username"
+                id="firstName"
                 className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-full p-2.5"
-                placeholder="jhon smith"
-                {...register("name", {
+                placeholder="jhon"
+                {...register("firstName", {
                   required: true,
                 })}
               />
-              {errors.name && (
-                <p className="text-red-300 text-sm">{errors.name.message}</p>
+              {errors.firstName && (
+                <p className="text-red-300 text-sm">{errors.firstName.message}</p>
+              )}
+            </div>
+            <div className="mb-6">
+              <label
+                htmlFor="lastName"
+                className="text-white block mb-2 text-base font-medium"
+              >
+                Apellido
+              </label>
+              <input
+                name="lastName"
+                type="text"
+                id="lastName"
+                className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-full p-2.5"
+                placeholder="smith"
+                {...register("lastName", {
+                  required: true,
+                })}
+              />
+              {errors.lastName && (
+                <p className="text-red-300 text-sm">{errors.lastName.message}</p>
               )}
             </div>
             <div className="mb-6">
@@ -94,33 +128,35 @@ const UserRegister = () => {
               )}
             </div>
             <div className="mb-6">
-              <label
-                htmlFor="upload"
-                className="text-white block text-base mb-2 font-medium"
+            <label
+                className="block mb-2 text-sm font-medium text-white dark:text-gray-900 text-center"
+                htmlFor="photo"
               >
                 Adjunta una foto de perfil (opcional)
               </label>
-              <div className="flex justify-center items-center">
-                <label htmlFor="upload" className="w-full">
-                  <img src={Upload} alt="Upload" className="w-full" />
-                </label>
-                <input
-                  name="upload"
-                  type="file"
-                  id="upload"
-                  className="hidden"
-                  {...register("file", {
-                    required: true,
-                  })}
-                />
+              <input
+                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 p-1"
+                type="file"
+                name="photo"
+                id="photo"
+                {...register("photo")}
+              />
+              <div className="flex gap-x-4">
+                {errors.photo ? (
+                  <p className="text-red-300 text-sm">{errors.photo.message}</p>
+                ) : (
+                  <p
+                    className="mt-1 text-sm text-gray-300 dark:text-gray-900"
+                    id="photo_help"
+                  >
+                    JPG ,JPGE ,PNG o WEBP (5MB Max).
+                  </p>
+                )}
               </div>
-              {errors.upload && (
-                <p className="text-red-300 text-sm">{errors.upload.message}</p>
-              )}
             </div>
             <div className="mb-6">
               <label
-                htmlFor="cellphone"
+                htmlFor="phoneClient"
                 className="text-white block text-base mb-2 font-medium"
               >
                 Ingresa tu número de celular
@@ -128,9 +164,9 @@ const UserRegister = () => {
               <div className="flex flex-col">
                 <div className="flex gap-x-4">
                   <input
-                    name="code"
+                    name="codeP"
                     type="text"
-                    id="code"
+                    id="codeP"
                     className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-1/3 p-2.5"
                     placeholder="+54"
                     {...register("codeP", {
@@ -138,12 +174,12 @@ const UserRegister = () => {
                     })}
                   />
                   <input
-                    name="cellphone"
+                    name="phoneClient"
                     type="text"
-                    id="cellphone"
+                    id="phoneClient"
                     className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-2/3 p-2.5"
                     placeholder="1193475762"
-                    {...register("phonePersonal", {
+                    {...register("phoneClient", {
                       required: true,
                     })}
                   />
@@ -157,9 +193,9 @@ const UserRegister = () => {
                     )}
                   </div>
                   <div className="block w-2/3">
-                    {errors.phonePersonal && (
+                    {errors.phoneClient && (
                       <p className="text-red-300 text-xs">
-                        {errors.phonePersonal.message}
+                        {errors.phoneClient.message}
                       </p>
                     )}
                   </div>
@@ -177,7 +213,7 @@ const UserRegister = () => {
                     required: true,
                   })}
                 />
-                <label className="ml-2 text-xs text-white" htmlFor="checkbox">
+                <label className="ml-2 text-xs text-white" htmlFor="agreements">
                   Estoy de acuerdo con los términos y condicones y politicas de
                   seguridad y confirmo que soy mayor de edad
                 </label>

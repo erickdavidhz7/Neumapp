@@ -8,7 +8,7 @@ const LandingOne = () => {
   return (
     <section
       ref={ref}
-      className="bg-zinc-700 mt-12 sm:h-auto sm:mt-52 flex  justify-center items-cente scroll-mt-32"
+      className="bg-zinc-700 sm:h-screen flex  justify-center items-cente scroll-mt-32"
       id="inicio"
     >
       <div className=" w-full flex flex-col sm:flex-row items-center justify-center gap-5">
