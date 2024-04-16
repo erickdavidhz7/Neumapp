@@ -137,7 +137,19 @@
       "get": {
         "tags": ["Users"],
         "summary": "Returns a user with the data.",
-        "responses": { "200": { "description": "A JSON of a user." } }
+        "responses": {
+          "200": { "description": "A JSON of a user." },
+          "400": {
+            "description": "Validation errors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrors"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/providers": {
@@ -172,7 +184,16 @@
       "get": {
         "tags": ["Providers"],
         "summary": "Returns a provider with the data.",
-        "responses": { "200": { "description": "A JSON of a provider." } }
+        "responses": { "200": { "description": "A JSON of a provider." },"400": {
+          "description": "Validation errors",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidationErrors"
+              }
+            }
+          }
+        } }
       }
     },
     "/providers": {
@@ -229,6 +250,16 @@
         "responses": {
           "201": {
             "description": "A JSON with all the fields of the new provider created"
+          },
+          "400": {
+            "description": "Validation errors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrors"
+                }
+              }
+            }
           },
           "500": {
             "description": "A JSON with two properties ok and message",
