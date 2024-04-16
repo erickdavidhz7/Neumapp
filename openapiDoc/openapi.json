@@ -20,15 +20,31 @@
     { "name": "Orders" }
   ],
   "paths": {
-    "/auth/register": {
+    "/auth/register/client": {
       "post": {
         "tags": ["Auth"],
-        "summary": "Register a user.",
+        "summary": "Register a user client.",
         "requestBody": {
           "description": "Create a new user.",
           "content": {
             "multipart/form-data": {
-              "schema": { "$ref": "#/components/schemas/UserRegister" }
+              "schema": { "$ref": "#/components/schemas/UserClient" }
+            }
+          },
+          "required": true
+        },
+        "responses": { "201": { "description": "A JSON of user registered." } }
+      }
+    },
+    "/auth/register/provider": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register a user provider.",
+        "requestBody": {
+          "description": "Create a new user.",
+          "content": {
+            "multipart/form-data": {
+              "schema": { "$ref": "#/components/schemas/UserProvider" }
             }
           },
           "required": true
@@ -528,7 +544,7 @@
   },
   "components": {
     "schemas": {
-      "UserRegister": {
+      "UserClient": {
         "required": [
           "firstName",
           "lastName",
@@ -543,7 +559,36 @@
           "email": { "type": "string", "example": "olora@yahoo.com" },
           "password": { "type": "string", "example": "per43#784732#67y9" },
           "phoneClient": { "type": "string", "example": "+541112345678" },
-          "photo": { "type": "string" }
+          "photo": { 
+            "type": "string", 
+            "format": "binary", 
+            "contentMediaType": "image/jpeg - image/jpg - image/png",
+            "example": "Content-Type: image/jpg - image/jpeg - image/png\nContent-Disposition: form-data; name='image'; filename='example.jpg'\n(Binary file content)\n"
+          }
+        }
+      },
+      "UserProvider": {
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "password",
+          "phoneClient",
+          "photo"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": { "type": "string", "example": "Arturo" },
+          "lastName": { "type": "string", "example": "Ortega Regil" },
+          "email": { "type": "string", "example": "olora@yahoo.com" },
+          "password": { "type": "string", "example": "per43#784732#67y9" },
+          "phoneClient": { "type": "string", "example": "+541112345678" },
+          "photo": { 
+            "type": "string", 
+            "format": "binary", 
+            "contentMediaType": "image/jpeg - image/jpg - image/png",
+            "example": "Content-Type: image/jpg - image/jpeg - image/png\nContent-Disposition: form-data; name='image'; filename='example.jpg'\n(Binary file content)\n"
+          }
         }
       },
       "UserLogin": {
