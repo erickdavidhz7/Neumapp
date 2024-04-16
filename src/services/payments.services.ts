@@ -1,4 +1,4 @@
-import { MercadoPagoConfig, Preference } from 'mercadopago'
+import { MercadoPagoConfig, Payment, Preference } from 'mercadopago'
 import { envs } from '../utils/constants'
 import { PaymentItem } from '../interfaces/payments.interface'
 
@@ -29,8 +29,8 @@ const paymentsServices = {
           items,
           payer,
           back_urls: {
-            success: `https://localhost:3001/payments/callback`,
-            failure: `https://localhost:3001/payments/callback`,
+            success: `https://localhost:3001/payments/feedback`,
+            failure: `https://localhost:3001/payments/feedback`,
           },
           auto_return: 'all',
         },
@@ -45,12 +45,6 @@ const paymentsServices = {
       )
       throw error
     }
-  },
-
-  resultCallback: async (status: string) => {
-    status === null
-      ? console.log('pago Rechazado')
-      : console.log('Pago Aprobado')
-  },
+  }
 }
 export default paymentsServices
