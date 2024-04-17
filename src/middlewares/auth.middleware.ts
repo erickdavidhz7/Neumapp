@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import { verifyToken } from '../utils/jwt.util'
 import { Validator } from '../utils/validations'
 import UserI from '../interfaces/user.interface'
+import { Users } from '../models/user.model'
 
 export const tokenValidator = (
   req: Request,
@@ -20,6 +21,58 @@ export const tokenValidator = (
     next()
   } catch (error) {
     return res.status(403).json({ ok: false, message: 'Invalid token' })
+  }
+}
+
+export const uniqueEmailValidator = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { email } = req.body
+    const existingEmail = await Users.findOne({ where: { email } })
+    if (existingEmail) {
+      return res.status(400).json({
+        errors: {
+          email: ['Email already in use'],
+        },
+      })
+    }
+    next()
+  } catch (error) {
+    console.error('Error al verificar la unicidad del usuario:', error)
+    res.status(500).json({
+      ok: false,
+      error:
+        'Ocurrió un error al procesar la solicitud. Por favor, inténtelo de nuevo más tarde.',
+    })
+  }
+}
+
+export const uniquePhoneValidator = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { phoneClient } = req.body
+    const existingPhoneClient = await Users.findOne({ where: { phoneClient } })
+    if (existingPhoneClient) {
+      return res.status(400).json({
+        errors: {
+          phoneClient: ['Phone already in use'],
+        },
+      })
+    }
+    next()
+  } catch (error) {
+    console.error('Error al verificar la unicidad del usuario:', error)
+    res.status(500).json({
+      ok: false,
+      error:
+        'Ocurrió un error al procesar la solicitud. Por favor, inténtelo de nuevo más tarde.',
+    })
   }
 }
 
@@ -133,7 +186,7 @@ export const signinProviderValidator = (
     ...password,
     ...phoneProvider,
     ...phoneClient,
-    ...location
+    ...location,
   }
   if (Object.keys(errors).length > 0) {
     return res.status(400).json({ errors })
