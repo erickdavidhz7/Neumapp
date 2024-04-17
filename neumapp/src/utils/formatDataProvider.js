@@ -31,5 +31,16 @@ const onKeyNumbers = (e) => {
     e.preventDefault();
   }
 };
+function registUserformatData(data) {
+  const formData = new FormData();
+  formData.append("firstName", data.firstName);
+  formData.append("lastName", data.lastName);
+  formData.append("email", data.email);
+  formData.append("password", data.password);
+  formData.append("phoneClient", `${data.codeP}${data.phoneClient}`);
+  formData.append("photo", data.photo.item(0));
 
-export { formatData, onKeyNumbers };
+  return formData;
+}
+
+export {registUserformatData, formatData, onKeyNumbers };

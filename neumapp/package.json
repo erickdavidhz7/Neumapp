@@ -23,6 +23,7 @@
     "zod": "^3.22.4"
   },
   "scripts": {
+
     "dev": "set PORT=4001 && react-scripts start",
     "build": "set PORT=4001 && react-scripts build",
     "test": "react-scripts test",

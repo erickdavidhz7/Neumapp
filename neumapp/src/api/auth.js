@@ -3,8 +3,12 @@ import axiosInstance from "./axios";
 export const loginRequest = async (user) =>
   axiosInstance.post(`/auth/login`, user);
 
-export const registerRequest = async (user) =>
-  axiosInstance.post(`/auth/register/client`, user);
+export const userRegisterRequest = async (user) =>
+  axiosInstance.post(`/auth/register/client`, user, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 
 export const providerRegisterRequest = async (formData) => {
   axiosInstance.post(`/auth/register/provider`, formData, {

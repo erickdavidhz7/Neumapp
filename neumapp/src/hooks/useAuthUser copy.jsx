@@ -1,8 +1,7 @@
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useState } from "react";
-import { loginRequest, userRegisterRequest } from "../api/auth";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function useAuthUser() {
   const [error, setError] = useState();
@@ -10,14 +9,15 @@ function useAuthUser() {
 
   const context = useContext(AuthContext);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   async function createUser(data) {
+    const url = "https://neumapp.site:3001/auth/register/client";
+
     try {
-      const res = await userRegisterRequest(data);
+      const res = await axios.post(url, data);
       if (res) {
         console.log("Registrado exitosamente");
-        navigate("/ingresar");
       } else {
         console.error("Error: Respuesta inesperada del servidor");
       }
@@ -30,16 +30,15 @@ function useAuthUser() {
   }
 
   async function loginUser(data) {
-    // const url = "https://neumapp.site:3001/auth/login";
+    const url = "https://neumapp.site:3001/auth/login";
 
     try {
-      const res = await loginRequest(data);
-      // const res = await axios.post(url, data);
+      const res = await axios.post(url, data);
       if (res) {
         context.handlerLogin(res.data.token, "user");
         console.log("Inicio de sesión exitoso");
         setSuccess("Inicio de sesión exitoso");
-        navigate("/servicios");
+        // navigate("/");
       } else {
         console.error("Error: Respuesta inesperada del servidor");
       }
