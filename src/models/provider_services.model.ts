@@ -8,29 +8,35 @@ export const ProviderServices = db.define(
         type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
-        defaultValue: DataTypes.UUIDV4
+        defaultValue: DataTypes.UUIDV4,
+        field:'id'
       },
       price: {
         type: DataTypes.DECIMAL(10,2),
-        allowNull: false
+        allowNull: false,
+        field:'price'
       },
-      estimated_minutes: {
+      estimatedMinutes: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: true,
+        field:'estimated_minutes'
       },
-      provider_description: {
+      providerDescription: {
         type: DataTypes.TEXT,
         allowNull:true,
+        field: 'provider_description'
       },
-      is_active: {
+      isActive: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true,
+        field: 'is_active'
       },
-      is_deleted: {
+      isDeleted: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false,
+        field: 'is_deleted'
       }
     },
     { timestamps: true }
