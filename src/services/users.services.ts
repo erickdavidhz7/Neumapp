@@ -25,7 +25,7 @@ const userServices = {
         phoneClient: user.phoneClient,
         photo: user.photo,
         status: user.status,
-        isVerified: user.isVerified
+        isVerified: user.isVerified,
       })
       return newUser
     } catch (error) {
@@ -49,6 +49,7 @@ const userServices = {
         where: {
           email,
         },
+        include: { model: Providers, attributes: ['id'] },
       })
 
       return userEmail
@@ -61,7 +62,7 @@ const userServices = {
       const userId = await Users.findOne({
         where: {
           id,
-        }
+        },
       })
 
       return userId
@@ -73,8 +74,8 @@ const userServices = {
     try {
       const user = await Users.findOne({
         where: {
-          id
-        }
+          id,
+        },
       })
 
       if (!user) {
@@ -85,6 +86,6 @@ const userServices = {
     } catch (error) {
       throw new Error('Error Updating The Data')
     }
-  }
+  },
 }
 export default userServices

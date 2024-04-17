@@ -10,6 +10,10 @@
     {
       "url": "https://neumapp.site:5001",
       "description": "The production API server"
+    },
+    {
+      "url": "https://localhost:3100",
+      "description": "The production API server"
     }
   ],
   "tags": [
@@ -34,7 +38,16 @@
           "required": true
         },
         "responses": {
-          "201": { "description": "A JSON of user registered." },
+          "201": {
+            "description": "User data.",
+            "content": {
+              "aplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Validation errors",
             "content": {
@@ -62,7 +75,16 @@
           "required": true
         },
         "responses": {
-          "201": { "description": "A JSON of user registered." },
+          "201": {
+            "description": "User ldata",
+            "content": {
+              "aplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Validation errors",
             "content": {
@@ -90,7 +112,33 @@
           "required": true
         },
         "responses": {
-          "200": { "description": "User logged and token." }
+          "200": {
+            "description": "User logged and token.",
+            "content": {
+              "aplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Errors on email or password",
+            "content": {
+              "aplication/json": {
+                "schema": {
+                  "Type": "object",
+                  "properties": {
+                    "ok": { "type": "boolean", "example": "false" },
+                    "message": {
+                      "type": "string",
+                      "example": "User not registered"
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -861,14 +909,7 @@
                   "type": "string"
                 }
               },
-              "field_name_2": {
-                "type": "array",
-                "description": "Descripción del error para el campo 2",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "field_name_etc": {
+              "field_name_n": {
                 "type": "array",
                 "description": "Descripción del error para el campo n",
                 "items": {
@@ -876,6 +917,37 @@
                 }
               }
             }
+          }
+        }
+      },
+      "UserResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "Authentication token"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User's email address"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "User's first name"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "User's last name"
+          },
+          "isProv": {
+            "type": "boolean",
+            "description": "True if is provider"
+          },
+          "photo": {
+            "type": "string",
+            "format": "uri",
+            "description": "Photo Cloudinary URL, resized to 100 px on width"
           }
         }
       }

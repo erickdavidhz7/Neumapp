@@ -5,6 +5,7 @@ import { Validator } from '../utils/validations'
 export * from './auth.middleware'
 export * from './reviews.middleware'
 export * from './service.middleware'
+export * from './files.middleware'
 
 export const uuidV4Validator = (paramName: string) => {
     // Closure to capture paramName

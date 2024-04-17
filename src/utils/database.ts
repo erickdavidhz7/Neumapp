@@ -7,6 +7,7 @@ export const db = new Sequelize({
   username: envs.db.DB_USER,
   password: envs.db.DB_PASSWORD,
   database: envs.db.DB_NAME,
+  logging:false
 })
 
 export const initDb = () => {

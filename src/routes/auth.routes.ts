@@ -4,18 +4,31 @@ import { login } from '../controllers/auth.controllers'
 import {
   signinProviderValidator,
   signinUserValidator,
-} from '../middlewares/auth.middleware'
+  uniqueEmailValidator,
+  uniquePhoneValidator,
+  userPhotoValidator,
+} from '../middlewares'
 const router = express.Router()
 
 router.post('/login', login)
 router.post(
   '/register/client',
-  [signinUserValidator],
+  [
+    uniqueEmailValidator,
+    uniquePhoneValidator,
+    userPhotoValidator('optional'),
+    signinUserValidator,
+  ],
   UsersControllers.registerClient
 )
 router.post(
   '/register/provider',
-  [signinProviderValidator],
+  [
+    uniqueEmailValidator,
+    uniquePhoneValidator,
+    userPhotoValidator('required'),
+    signinProviderValidator,
+  ],
   UsersControllers.registerProvider
 )
 
