@@ -2,55 +2,66 @@
 import userServices from '../services/users.services'
 import providerServices from '../services/providers.services'
 import { Request, Response } from 'express'
-import {v2 as cloudinary} from 'cloudinary'
+import { v2 as cloudinary } from 'cloudinary'
 import { signToken } from '../utils/jwt.util'
 import { FileI } from '../interfaces/file.interface'
 import { envs } from '../utils/constants'
-import { ok } from 'assert'
+import { getCloudinaryResizedImage } from '../utils/cloudinary'
 
-cloudinary.config({cloudinary: envs.CLOUDINARY_URL})
+cloudinary.config({ cloudinary: envs.CLOUDINARY_URL })
+export const defaultPhotoUrl = envs.DFLT_USR_PHOTO_URL
+
+const uploadPhoto = async (photoFile: FileI) => {
+  return await cloudinary.uploader.upload(photoFile.tempFilePath, {
+    folder: 'Neumapp/providers',
+    use_filename: true,
+    unique_filename: false,
+  })
+}
 
 const UsersControllers = {
   registerClient: async (req: Request, res: Response) => {
     try {
-      const {
-        firstName,
-        lastName,
-        email,
-        password,
-        phoneClient,
-        photo,
-      } = req.body
+      const { firstName, lastName, email, password, phoneClient, photo } =
+        req.body
 
       if (!firstName || !lastName || !email || !password || !phoneClient) {
         return res.status(400).json({ ok: false, message: 'Missing User Data' })
       }
 
-      const user = await userServices.createUsers({
+      const newUser = {
         firstName,
         lastName,
         email,
         password,
         phoneClient,
-        photo: 'https://res.cloudinary.com/dnautzk6f/image/upload/v1712867008/Neumapp/neumapp-users_uadggc.png',
-      })
+        photo: defaultPhotoUrl,
+      }
+
+      if (req.files?.photo) {
+        const uploadedFile = await uploadPhoto(req.files?.photo as FileI)
+        newUser.photo = uploadedFile.secure_url
+      }
+
+      const user = await userServices.createUsers(newUser)
 
       return res.status(201).json({
-        firstName, 
-        lastName, 
-        email, 
-        phoneClient, 
-        photo,
+        firstName,
+        lastName,
+        email,
+        photo:
+          user.dataValues.photo !== defaultPhotoUrl
+            ? getCloudinaryResizedImage(user.dataValues.photo, 100)
+            : defaultPhotoUrl,
+        isProv: false,
         token: signToken({
           email: user.dataValues.email,
           id: user.dataValues.id,
-        })
+        }),
       })
-
-      //TOdO: Caso cuando se suba foto
-
     } catch (error) {
-      res.status(500).json('Internal Server Error')
+      console.log(error)
+      return res.status(500).json('Internal Server Error')
     }
   },
   registerProvider: async (req: Request, res: Response) => {
@@ -69,51 +80,31 @@ const UsersControllers = {
       console.log(req.files);
       console.log("---------------------------------------------------------------------------");
       if (!req.files || !req.files.photo) {
-        return res.status(400).json({ ok: false, message: 'No photo file provided' })
+        return res
+          .status(400)
+          .json({ ok: false, message: 'No photo file provided' })
       }
 
-      const photoFile = req.files.photo as FileI
-
-      const fileTypes = ["image/jpg", "image/png", "image/jpeg"];
-      const fileExtensions = ["jpg", "png", "jpeg"];
-      const fileSize = 10000000;
-      
-      if (!firstName || !lastName || !email || !password || !phoneClient || !phoneProvider || !location) {
+      if (
+        !firstName ||
+        !lastName ||
+        !email ||
+        !password ||
+        !phoneClient ||
+        !phoneProvider ||
+        !location
+      ) {
         return res.status(400).json({ ok: false, message: 'Missing User Data' })
       }
 
-      if (!fileTypes.includes(photoFile.mimetype)) {
-        return res.status(400).json({ ok: false, message: 'File types: png, jpeg and jpg' })
-      }
-
-      if (!fileExtensions.includes(photoFile.name.split('.')[1])) {
-        return res
-          .status(400)
-          .json({ message: 'File extensions: png, jpeg and jpg' })
-      }
-
-      if (photoFile.size > fileSize) {
-        return res.status(400).json({ ok: false, message: 'File size: 10Mb' })
-      }
-
-      const uploadedPhoto = await cloudinary.uploader.upload(
-        photoFile.tempFilePath,
-        {
-          folder: 'Neumapp/providers',
-          use_filename: true,
-          unique_filename: false
-        }
-      )
-
-      const photoUrl = uploadedPhoto.secure_url
-      console.log("photoURL: ", photoUrl)
+      const uploadedPhoto = await uploadPhoto(req.files.photo as FileI)
       const user: any = await userServices.createUsers({
         firstName,
         lastName,
         email,
         password,
         phoneClient,
-        photo: photoUrl,
+        photo: uploadedPhoto.secure_url,
       })
 
       const provider = {
@@ -121,19 +112,19 @@ const UsersControllers = {
         location: location,
         UserId: user.id,
       }
-  
+
       await providerServices.createProvider(provider)
 
       return res.status(201).json({
-        firstName, 
-        lastName, 
-        email,  
-        photo: photoUrl,
-        phoneProvider,
+        firstName,
+        lastName,
+        email,
+        photo: getCloudinaryResizedImage(user.dataValues.photo, 100),
+        isProv: true,
         token: signToken({
           email: user.dataValues.email,
           id: user.dataValues.id,
-        })
+        }),
       })
     } catch (error) {
       res.status(500).json({ ok: false, message: 'Internal server error' })
@@ -176,6 +167,6 @@ const UsersControllers = {
     } catch (error) {
       res.status(500).json({ ok: false, message: 'Internal server error' })
     }
-  }
+  },
 }
 export default UsersControllers
