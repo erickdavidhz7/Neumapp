@@ -9,6 +9,7 @@ import {
 import Login from "../components/login/Login.jsx";
 import UserRegister from "../components/userRegister/UserRegister.jsx";
 import ProviderRegister from "../components/providerRegister/ProviderRegister.jsx";
+import OurServices from "../components/ourServices/OurServices.jsx"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +18,7 @@ export const router = createBrowserRouter(
       <Route path="/ingresar" element={<Login />} />
       <Route path="/registrar" element={<UserRegister />} />
       <Route path="/prestador" element={<ProviderRegister />} />
+      <Route path="/servicios" element={<OurServices />} />
     </>
   )
 );
