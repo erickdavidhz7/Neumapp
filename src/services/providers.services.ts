@@ -1,6 +1,7 @@
+import { CreateServiceProviderI } from '../interfaces/providers.interface'
 import { Providers } from '../models/provider.model'
+import { ProviderServices } from '../models/provider_services.model'
 import { Reviews } from '../models/review.model'
-import { Users } from '../models/user.model'
 
 const providerServices = {
   createProvider: async (provider: any) => {
@@ -52,6 +53,31 @@ const providerServices = {
       return updatedProvider
     } catch (error) {
       throw new Error(error as string)
+    }
+  },
+  createServiceProvider: async (
+    providerId: string,
+    serviceData: CreateServiceProviderI
+  ) => {
+    try {
+      const [instance, created] = await ProviderServices.findOrCreate({
+        where: {
+          ProviderId: providerId,
+          ServiceId: serviceData.ServiceId,
+        },
+        defaults: {
+          ProviderId: providerId,
+          ServiceId: serviceData.ServiceId,
+          price: serviceData.price,
+          providerDescription: serviceData.providerDescription,
+          estimatedMinutes: serviceData.estimatedMinutes,
+        },
+      })
+      if (!created) {
+        throw { status: 400, msg: 'Provider already has the service' }
+      }
+    } catch (error: any) {
+      throw error
     }
   },
 }

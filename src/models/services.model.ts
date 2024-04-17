@@ -23,5 +23,19 @@ export const Service = db.define(
       field: 'description',
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    hooks: {
+      afterSync: () => {
+        Service.findOrCreate({
+          where: { name: 'Parche de neumáticos' },
+          defaults: { description: 'Default Service' },
+        }).then(() => {
+          console.log('Default service created')
+        }).catch((err)=>{
+          console.log('Error at create default service')
+        })
+      },
+    },
+  }
 )
