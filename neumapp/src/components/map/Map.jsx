@@ -74,8 +74,7 @@ export default function Maping() {
             <Marker longitude={provider.lng} latitude={provider.lat} anchor="bottom" >
               <MarkerProvider img={provider.img}></MarkerProvider>
             </Marker>
-          )) }
-          
+        ))}
         </Map>
      </>
     );

@@ -9,6 +9,8 @@ import {
 import Login from "../components/login/Login.jsx";
 import Register from "../components/register/Register.jsx";
 import OurServices from "../components/ourServices/OurServices.jsx";
+import ForgotPassword from "../components/forgotPassword/ForgotPassword.jsx";
+import Maping from "../components/map/Map.jsx";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
