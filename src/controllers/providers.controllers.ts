@@ -4,14 +4,15 @@ import { Request, Response } from 'express'
 const ProvidersControllers = {
   createProvider: async (req: Request, res: Response) => {
     try {
-      const { UserId, phoneProvider, location } = req.body
-      if (!UserId || !phoneProvider || !location) {
+      const { UserId, phoneProvider, latitude, longitude } = req.body
+      if (!UserId || !phoneProvider || !latitude || !longitude) {
         res.status(400).json({ ok: false, message: 'Missing Provider Data' })
       }
       const provider: any = await providerServices.createProvider({
         UserId,
         phoneProvider,
-        location,
+        latitude,
+        longitude,
       })
       res.status(201).json(provider)
     } catch (error) {

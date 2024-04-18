@@ -17,27 +17,34 @@ export const Providers = db.define(
       allowNull: true,
       field: 'phone_provider',
     },
-    location: {
-      type: DataTypes.STRING,
-      allowNull: true,
+    latitude: {
+      type: DataTypes.DOUBLE,
+      allowNull: false,
+    },
+    longitude: {
+      type: DataTypes.DOUBLE,
+      allowNull: false,
     },
   },
   {
     hooks: {
       afterCreate: async (attributes, options) => {
-        try{
+        try {
           const service = await Service.findOne({
             where: {
               name: 'Parche de neumáticos',
             },
           })
-          await providerServices.createServiceProvider(attributes.dataValues.id, {
-            estimatedMinutes: 30,
-            price: 10000,
-            ServiceId: service?.dataValues.id,
-            providerDescription: '',
-          })
-        } catch(error){
+          await providerServices.createServiceProvider(
+            attributes.dataValues.id,
+            {
+              estimatedMinutes: 30,
+              price: 10000,
+              ServiceId: service?.dataValues.id,
+              providerDescription: '',
+            }
+          )
+        } catch (error) {
           console.log(error)
         }
       },

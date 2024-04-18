@@ -174,9 +174,14 @@ export const signinProviderValidator = (
     .minLength(6)
     .maxLength(24)
     .getErrors()
-  const location = new Validator('location', data.location)
+  const latitude = new Validator('latitude', data.latitude)
     .isRequired()
-    .isAlpha()
+    .isFloat()
+    .maxLength(128)
+    .getErrors()
+  const longitude = new Validator('longitude', data.longitude)
+    .isRequired()
+    .isFloat()
     .maxLength(128)
     .getErrors()
   const errors = {
@@ -186,7 +191,8 @@ export const signinProviderValidator = (
     ...password,
     ...phoneProvider,
     ...phoneClient,
-    ...location,
+    ...latitude,
+    ...longitude
   }
   if (Object.keys(errors).length > 0) {
     return res.status(400).json({ errors })

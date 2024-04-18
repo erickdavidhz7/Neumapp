@@ -45,9 +45,9 @@ const OrdersControllers = {
   },
   updateOrder: async (req: Request, res: Response) => {
     const { id } = req.params
-    const orderData = req.body
+    const data = req.body
     try {
-      const updatedOrder = await ordersServices.updateOrder(id, orderData)
+      const updatedOrder = await ordersServices.updateOrder(id, data)
       res.status(200).json(updatedOrder)
     } catch (err) {
       res.status(500).json({ ok: false, message: 'Internal server error' })

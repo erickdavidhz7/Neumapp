@@ -42,6 +42,14 @@ export const Users = db.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    latitude: {
+      type: DataTypes.DOUBLE,
+      allowNull: true,
+    },
+    longitude: {
+      type: DataTypes.DOUBLE,
+      allowNull: true,
+    },
     status: {
       type: DataTypes.STRING,
       allowNull: false,

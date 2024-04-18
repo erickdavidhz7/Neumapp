@@ -61,7 +61,9 @@ const UsersControllers = {
       })
     } catch (error) {
       console.log(error)
-      return res.status(500).json('Internal Server Error')
+      return res
+        .status(500)
+        .json({ ok: false, message: 'Internal Server Error' })
     }
   },
   registerProvider: async (req: Request, res: Response) => {
@@ -74,7 +76,8 @@ const UsersControllers = {
         phoneClient,
         photo,
         phoneProvider,
-        location,
+        latitude,
+        longitude,
       } = req.body
 
       if (!req.files || !req.files.photo) {
@@ -90,7 +93,8 @@ const UsersControllers = {
         !password ||
         !phoneClient ||
         !phoneProvider ||
-        !location
+        !latitude ||
+        !longitude
       ) {
         return res.status(400).json({ ok: false, message: 'Missing User Data' })
       }
@@ -103,12 +107,15 @@ const UsersControllers = {
         password,
         phoneClient,
         photo: uploadedPhoto.secure_url,
+        latitude,
+        longitude,
       })
 
       const provider = {
         phoneProvider: phoneProvider,
-        location: location,
         UserId: user.id,
+        latitude,
+        longitude,
       }
 
       await providerServices.createProvider(provider)
@@ -125,6 +132,7 @@ const UsersControllers = {
         }),
       })
     } catch (error) {
+      console.log(error);
       res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   },
@@ -166,5 +174,15 @@ const UsersControllers = {
       res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   },
+  updateUser: async (req: Request, res: Response) => {
+    const { id } = req.params
+    const data = req.body
+    try {
+      const userUpdated = await userServices.updateUser(id, data)
+      res.status(200).json(userUpdated)
+    } catch (err) {
+      res.status(500).json({ ok: false, message: 'Internal server error' })
+    }
+  }
 }
 export default UsersControllers
