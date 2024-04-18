@@ -111,7 +111,7 @@ export const signinUserValidator = (
   const phoneClient = new Validator('phoneClient', data.phoneClient)
     .isRequired()
     .notEmpty()
-    .matches(/^\d+$/)
+    .matches(/^\+(?:\d{1,3})?[-]?\d{1,14}$/)
     .minLength(6)
     .maxLength(24)
     .getErrors()
