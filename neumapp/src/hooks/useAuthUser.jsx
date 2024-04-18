@@ -1,8 +1,16 @@
-import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useState } from "react";
-import { loginRequest, userRegisterRequest } from "../api/auth";
+import {
+  loginRequest,
+  userRegisterRequest,
+  providerRegisterRequest,
+} from "../api/auth";
 import { useNavigate } from "react-router-dom";
+import {
+  formatDataClient,
+  formatDataProvider,
+  getFormData
+} from "../utils/formatDataProvider";
 
 function useAuthUser() {
   const [error, setError] = useState();
@@ -13,8 +21,31 @@ function useAuthUser() {
   const navigate = useNavigate();
 
   async function createUser(data) {
+    const formData = formatDataClient(data);
     try {
-      const res = await userRegisterRequest(data);
+      const res = await userRegisterRequest(formData);
+      console.log(res);
+      console.log(res.data.token);
+      if (res) {
+        console.log("Registrado exitosamente");
+        navigate("/ingresar");
+      } else {
+        console.error("Error: Respuesta inesperada del servidor");
+      }
+    } catch (error) {
+      console.error(
+        "Error al iniciar sesión",
+        error.response?.data || error.message
+      );
+    }
+  }
+
+  async function createProvider(data) {
+    const formData = formatDataProvider(data);
+    try {
+      const res = await providerRegisterRequest(formData);
+      console.log(res);
+      console.log(res.data.token);
       if (res) {
         console.log("Registrado exitosamente");
         navigate("/ingresar");
@@ -52,7 +83,7 @@ function useAuthUser() {
     }
   }
 
-  return { success, error, createUser, loginUser };
+  return { success, error, createUser, loginUser, createProvider };
 }
 
 export default useAuthUser;
