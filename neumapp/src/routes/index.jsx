@@ -7,16 +7,17 @@ import {
 } from "react-router-dom";
 
 import Login from "../components/login/Login.jsx";
-import Register from "../components/register/Register.jsx"
-import OurServices from "../components/ourServices/OurServices.jsx"
-
+import Register from "../components/register/Register.jsx";
+import OurServices from "../components/ourServices/OurServices.jsx";
+import ForgotPassword from "../components/forgotPassword/ForgotPassword.jsx";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Landing />} />
       <Route path="/ingresar" element={<Login />} />
-      <Route path="/registrar" element={<Register />} />     
+      <Route path="/registrar" element={<Register />} />
+      <Route path="/recuperar" element={<ForgotPassword />} />
       <Route path="/servicios" element={<OurServices />} />
     </>
   )

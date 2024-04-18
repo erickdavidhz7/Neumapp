@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Logo from "../../images/logo/Logo.jsx";
 import { userSchema } from "../../schemas/auth.js";
-import { FaArrowLeft, FaEyeSlash, FaEye } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 import useAuthUser from "../../hooks/useAuthUser.jsx";
 import { Link, Button } from "@nextui-org/react";
 
-const Login = () => {
-  const [isVisible, setIsVisible] = useState(false);
+const ForgotPassword = () => {
   const { loginUser } = useAuthUser();
   const {
     register,
@@ -17,8 +16,6 @@ const Login = () => {
   } = useForm({
     resolver: zodResolver(userSchema),
   });
-
-  const toggleVisibility = () => setIsVisible(!isVisible);
 
   const onSubmit = async (data) => {
     loginUser(data);
@@ -60,7 +57,7 @@ const Login = () => {
                 htmlFor="email"
                 className="text-white block text-base mb-2 font-medium"
               >
-                Correo
+                Ingresa tu correo electrónico
               </label>
               <input
                 name="email"
@@ -74,61 +71,32 @@ const Login = () => {
                 <p className="text-red-300 text-sm">{errors.email.message}</p>
               )}
             </div>
-            <div className="mb-6 relative">
-              <label
-                htmlFor="password"
-                className="text-white block text-base mb-2 font-medium"
-              >
-                Contraseña
-              </label>
-              <input
-                name="password"
-                type={isVisible ? "text" : "password"}
-                id="password"
-                className="bg-white border border-[#33353F] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
-                placeholder="****************"
-                {...register("password")}
-              />
-              <button
-                className=" absolute inset-y-0 right-0 pr-2.5 flex items-center  focus:outline-none  mt-7"
-                type="button"
-                onClick={toggleVisibility}
-              >
-                {isVisible ? (
-                  <FaEye className="text-2xl text-default-400 pointer-events-none" />
-                ) : (
-                  <FaEyeSlash className="text-2xl text-default-400 pointer-events-none" />
-                )}
-              </button>
-              {errors.password && (
-                <p className="text-red-300 text-sm">
-                  {errors.password.message}
-                </p>
-              )}
-            </div>
-            <div className="mb-6 flex justify-end">
-              <Link
-                href="/recuperar"
-                className="ml-2 text-primary font-semibold"
-              >
-                Olvidé mi contraseña
-              </Link>
-            </div>
             <button
               type="submit"
               className="bg-[#929292] hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
             >
-              Ingresar
+              Recuperar Contraseña
             </button>
           </form>
-          <div className="text-center mt-4">
+          <div className="text-center mt-10">
             <span className="text-white">
-              ¿Aún no tienes una cuenta?{" "}
+              ¿Aún no tienes una cuenta?
               <Link
-                className="ml-2 text-primary font-semibold"
                 href="/registrar"
+                className="ml-2 text-primary font-semibold"
               >
                 Registrate
+              </Link>
+            </span>
+          </div>
+          <div className="text-center mt-2">
+            <span className="text-white">
+              ¿Ya tienes una cuenta?
+              <Link
+                href="/ingresar"
+                className="ml-2 text-primary font-semibold"
+              >
+                Inicia Sesión
               </Link>
             </span>
           </div>
@@ -138,4 +106,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;
