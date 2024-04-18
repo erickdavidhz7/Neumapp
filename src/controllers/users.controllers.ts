@@ -74,7 +74,9 @@ const UsersControllers = {
         phoneClient,
         photo,
         phoneProvider,
-        location,
+        latitude,
+        longitude
+
       } = req.body
 
       if (!req.files || !req.files.photo) {
@@ -90,7 +92,8 @@ const UsersControllers = {
         !password ||
         !phoneClient ||
         !phoneProvider ||
-        !location
+        !latitude ||
+        !longitude
       ) {
         return res.status(400).json({ ok: false, message: 'Missing User Data' })
       }
@@ -103,12 +106,16 @@ const UsersControllers = {
         password,
         phoneClient,
         photo: uploadedPhoto.secure_url,
+        latitude,
+        longitude
       })
 
       const provider = {
         phoneProvider: phoneProvider,
         location: location,
         UserId: user.id,
+        latitude,
+        longitude
       }
 
       await providerServices.createProvider(provider)

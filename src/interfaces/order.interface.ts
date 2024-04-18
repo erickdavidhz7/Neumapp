@@ -1,7 +1,8 @@
 interface OrderI {
   id?: string
   type?: string
-  location?: string
+  latitude?: string
+  longitude?: string
   code?: number
   description?: string
   status?: string

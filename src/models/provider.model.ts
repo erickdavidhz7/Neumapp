@@ -17,17 +17,13 @@ export const Providers = db.define(
       allowNull: true,
       field: 'phone_provider',
     },
-    location: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     latitude: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      type: DataTypes.DOUBLE,
+      allowNull: false,
     },
     longitude: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      type: DataTypes.DOUBLE,
+      allowNull: false,
     },
   },
   {

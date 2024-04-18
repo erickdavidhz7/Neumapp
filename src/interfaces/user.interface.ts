@@ -6,6 +6,8 @@ interface UserI {
   password: string
   phoneClient: string
   photo: string
+  latitude?: number
+  longitude?: number
   status?: string
   isVerified?: string
 }
