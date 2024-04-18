@@ -6,12 +6,13 @@ import { Reviews } from '../models/review.model'
 const providerServices = {
   createProvider: async (provider: any) => {
     try {
-      if (!provider.phoneProvider || !provider.location || !provider.UserId) {
+      if (!provider.phoneProvider || !provider.latitude || !provider.UserId || !provider.longitude) {
         throw new Error('Mission Data')
       }
       const newProvider = await Providers.create({
         phoneProvider: provider.phoneProvider,
-        location: provider.location,
+        latitude: provider.latitude,
+        longitude: provider.longitude,
         UserId: provider.UserId,
       })
       return newProvider

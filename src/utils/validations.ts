@@ -60,6 +60,14 @@ export class Validator {
     return this
   }
 
+  public isFloat(options?: ValidationOptions){
+    const floatNumberOnly = /^[+-]?\d+(\.\d+)?$/
+    if (this.isPresent && !floatNumberOnly.test(this.toValidate)){
+      this.addErrorMsg('Must be a float number', options?.message)
+    }
+    return this
+  }
+
   public maxLength(maxLength: number, options?:ValidationOptions) {
     if (this.isPresent) {
       const stringified = this.toValidate.toString()
@@ -97,7 +105,7 @@ export class Validator {
   }
 
   public isAlpha(options?:ValidationOptions) {
-    const regex = /^[a-zA-Z ]+$/
+    const regex = /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/
     if (this.isPresent && !regex.test(this.toValidate)) {
       this.addErrorMsg(`Not valid format, alpha only`, options?.message)
     }

@@ -61,7 +61,9 @@ const UsersControllers = {
       })
     } catch (error) {
       console.log(error)
-      return res.status(500).json('Internal Server Error')
+      return res
+        .status(500)
+        .json({ ok: false, message: 'Internal Server Error' })
     }
   },
   registerProvider: async (req: Request, res: Response) => {
@@ -75,8 +77,7 @@ const UsersControllers = {
         photo,
         phoneProvider,
         latitude,
-        longitude
-
+        longitude,
       } = req.body
 
       if (!req.files || !req.files.photo) {
@@ -107,15 +108,14 @@ const UsersControllers = {
         phoneClient,
         photo: uploadedPhoto.secure_url,
         latitude,
-        longitude
+        longitude,
       })
 
       const provider = {
         phoneProvider: phoneProvider,
-        location: location,
         UserId: user.id,
         latitude,
-        longitude
+        longitude,
       }
 
       await providerServices.createProvider(provider)
@@ -132,6 +132,7 @@ const UsersControllers = {
         }),
       })
     } catch (error) {
+      console.log(error);
       res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   },
