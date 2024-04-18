@@ -36,7 +36,8 @@ const ordersServices = {
         !orderData.ServiceId ||
         !orderData.ProviderId ||
         !orderData.UserId ||
-        !orderData.location
+        !orderData.latitude ||
+        !orderData.longitude
       ) {
         throw new Error('Missing Data' as string)
       }
@@ -44,7 +45,8 @@ const ordersServices = {
 
       const newOrder = await Orders.create({
         type: 'delivery',
-        location: orderData.location,
+        latitude: orderData.latitude,
+        longitude: orderData.longitude,
         code: randomSixDigitNumber,
         description: orderData.description || '',
         status: 'started',
