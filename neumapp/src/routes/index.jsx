@@ -9,7 +9,6 @@ import {
 import Login from "../components/login/Login.jsx";
 import Register from "../components/register/Register.jsx";
 import OurServices from "../components/ourServices/OurServices.jsx";
-import ForgotPassword from "../components/forgotPassword/ForgotPassword.jsx";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +18,7 @@ export const router = createBrowserRouter(
       <Route path="/registrar" element={<Register />} />
       <Route path="/recuperar" element={<ForgotPassword />} />
       <Route path="/servicios" element={<OurServices />} />
+      <Route path="/mapa" element={<Maping />} />
     </>
   )
 );
