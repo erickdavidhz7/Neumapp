@@ -7,7 +7,7 @@ export const db = new Sequelize({
   username: envs.db.DB_USER,
   password: envs.db.DB_PASSWORD,
   database: envs.db.DB_NAME,
-  logging:false
+  logging: false,
 })
 
 export const initDb = () => {
@@ -19,7 +19,7 @@ export const initDb = () => {
       console.log(err)
     })
 
-  db.sync({alter: true})
+  db.sync({ alter: true })
     .then(() => {
       console.log('Database Synced')
     })
