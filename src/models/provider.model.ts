@@ -19,11 +19,11 @@ export const Providers = db.define(
     },
     latitude: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
     },
     longitude: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
     },
   },
   {
