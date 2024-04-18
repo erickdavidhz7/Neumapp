@@ -59,7 +59,7 @@ const ordersServices = {
       throw new Error(error as string)
     }
   },
-  updateOrder: async (id: string, newData: any) => {
+  updateOrder: async (id: string, newData: Partial<OrderI>) => {
     try {
       const orderToUpdate = await Orders.findByPk(id)
       if (!orderToUpdate) {

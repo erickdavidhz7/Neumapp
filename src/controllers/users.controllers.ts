@@ -174,5 +174,15 @@ const UsersControllers = {
       res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   },
+  updateUser: async (req: Request, res: Response) => {
+    const { id } = req.params
+    const data = req.body
+    try {
+      const userUpdated = await userServices.updateUser(id, data)
+      res.status(200).json(userUpdated)
+    } catch (err) {
+      res.status(500).json({ ok: false, message: 'Internal server error' })
+    }
+  }
 }
 export default UsersControllers
