@@ -755,7 +755,9 @@
           "email",
           "password",
           "phoneClient",
-          "photo"
+          "photo",
+          "latitude",
+          "longitude"
         ],
         "type": "object",
         "properties": {
@@ -764,6 +766,8 @@
           "email": { "type": "string", "example": "olora@yahoo.com" },
           "password": { "type": "string", "example": "per43#784732#67y9" },
           "phoneClient": { "type": "string", "example": "+541112345678" },
+          "latitude": {"type": "number", "example": "6.201733"},
+          "longitude": {"type": "number", "example": "-75.578731"},
           "photo": {
             "type": "string",
             "format": "binary",
@@ -781,10 +785,11 @@
         }
       },
       "CreateProvider": {
-        "required": ["location", "phoneProvider", "UserId"],
+        "required": ["latitude", "longitude", "phoneProvider", "UserId"],
         "type": "object",
         "properties": {
-          "location": { "type": "string", "example": "32°O 41°S" },
+          "latitude": {"type": "number", "example": "6.201733"},
+          "longitude": {"type": "number", "example": "-75.578731"},
           "phoneProvider": { "type": "string", "example": "+542994130232" },
           "UserId": {
             "type": "string",
@@ -795,7 +800,8 @@
       "UpdateProvider": {
         "type": "object",
         "properties": {
-          "location": { "type": "string", "example": "32°O 41°S" },
+          "latitude": {"type": "number", "example": "6.201733"},
+          "longitude": {"type": "number", "example": "-75.578731"},
           "phoneProvider": { "type": "string", "example": "+542994130232" }
         }
       },
@@ -829,7 +835,7 @@
         }
       },
       "Orders": {
-        "required": ["location", "description"],
+        "required": ["latitude", "longitude", "description"],
         "Type": "object",
         "properties": {
           "type": {
@@ -837,7 +843,8 @@
             "enum": ["delivery"],
             "example": "delivery"
           },
-          "location": { "type": "string", "example": "Calle 931D#25-E" },
+          "latitude": {"type": "number", "example": "6.201733"},
+          "longitude": {"type": "number", "example": "-75.578731"},
           "description": {
             "type": "string",
             "example": "Tengo un problema con mi llanta, tengo una moto de marca... modelo... año..."
@@ -857,10 +864,8 @@
             "example": "89352dd1-6a0d-460b-a1ec-22bc9d11c279"
           },
           "type": { "type": "string", "example": "Internal server error" },
-          "location": {
-            "type": "string",
-            "example": "en un lugar de la mancha"
-          },
+          "latitude": {"type": "number", "example": "6.201733"},
+          "longitude": {"type": "number", "example": "-75.578731"},
           "code": { "type": "number", "example": "224158" },
           "description": {
             "type": "string",
