@@ -36,7 +36,7 @@ export const envs = {
   ACCESS_TOKEN: get('ACCESS_TOKEN').required().asString(),
   DFLT_USR_PHOTO_URL: get('DFLT_USR_PHOTO_URL')
     .default(
-      'https://res.cloudinary.com/dnautzk6f/image/upload/v1712867008/Neumapp/neumapp-users_uadggc.png'
+      'https://res.cloudinary.com/disv40hau/image/upload/v1713480345/Neumapp/providers/tmp-5-1713480345236.png'
     )
     .asUrlString(),
   jwt: {

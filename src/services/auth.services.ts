@@ -30,10 +30,7 @@ export const loginUser = async (email: string, password: string) => {
         email: user.dataValues.email,
         firstName: user.dataValues.firstName,
         lastName: user.dataValues.lastName,
-        photo:
-          user.dataValues.photo != defaultPhotoUrl
-            ? getCloudinaryResizedImage(user.dataValues.photo, 100)
-            : defaultPhotoUrl,
+        photo: getCloudinaryResizedImage(user.dataValues.photo, 100),
         isProv: !!user.dataValues.Provider,
       }
     }

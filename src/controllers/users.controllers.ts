@@ -49,10 +49,7 @@ const UsersControllers = {
         firstName,
         lastName,
         email,
-        photo:
-          user.dataValues.photo !== defaultPhotoUrl
-            ? getCloudinaryResizedImage(user.dataValues.photo, 100)
-            : defaultPhotoUrl,
+        photo: getCloudinaryResizedImage(user.dataValues.photo, 100),
         isProv: false,
         token: signToken({
           email: user.dataValues.email,
