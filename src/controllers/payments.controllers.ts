@@ -17,13 +17,13 @@ const PaymentsControllers = {
     try {
       switch (req.query.status) {
         case 'null':
-          res.redirect('https://dev.neumapp.site/')
+          res.redirect('https://dev.neumapp.site/mapa')
           break
         case 'approved':
-          res.redirect('https://dev.neumapp.site/')
+          res.redirect('https://dev.neumapp.site/mapa')
           break
         case 'rejected':
-          res.redirect('https://dev.neumapp.site/')
+          res.redirect('https://dev.neumapp.site/mapa')
           break
         default:
           break
