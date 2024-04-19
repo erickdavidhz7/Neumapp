@@ -37,25 +37,28 @@ jobs:
            run: |
                rsync -ra --delete ./ ubuntu@neumapp.site:/home/ubuntu/neumapp/dev/s14-35-n-node-react/
                ssh -f ubuntu@${{ secrets.SSH_HOST }} /home/ubuntu/neumapp/dev/dev.sh
-#        - name: checkout repo#
-#          uses: actions/checkout@v2
-#
-#        - name: Set up QEMU
-#          uses: docker/setup-qemu-action@v1
-#      
-#        - name: Set up Docker Buildx
-#          uses: docker/setup-buildx-action@v1
-#
-#        - name: Login to DockerHub
-#          uses: docker/login-action@v1
-#          with:
-#            username: ${{ secrets.DOCKERHUB_USERNAME }}
-#            password: ${{ secrets.DOCKERHUB_TOKEN }}
-#      
-#        - name: Build and push Back
-#          uses: docker/build-push-action@v2
-#          with:
-#            context: ./Back
-#            file: ./Back/Dockerfile
-#            push: true
-#            tags: ${{ secrets.DOCKERHUB_USERNAME }}/serviapp:back-${{ github.ref_name }}
+  deploy_to_qa:
+      # The type of runner that the job will run on
+
+      runs-on: ubuntu-latest
+
+#Deploy qa-test        
+      if: github.ref == 'refs/heads/back-qa.neumapp.site' # run this job only for the dev branch
+      steps:
+         - name: Hello world
+           run: |
+               echo "Hi!"
+        #Back
+         - name: checkout repo
+           uses: actions/checkout@v2
+
+         - name: Create SSH key
+           run: |
+               install -m 600 -D /dev/null ~/.ssh/id_rsa
+               echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+               ssh-keyscan neumapp.site > ~/.ssh/known_hosts          
+        
+         - name: Deploy Back
+           run: |
+               rsync -ra --delete ./ ubuntu@neumapp.site:/home/ubuntu/neumapp/qa/s14-35-n-node-react/
+               ssh -f ubuntu@${{ secrets.SSH_HOST }} /home/ubuntu/neumapp/qa/qa.sh

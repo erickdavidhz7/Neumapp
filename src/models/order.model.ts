@@ -14,10 +14,13 @@ export const Orders = db.define('Orders', {
     allowNull: false,
     field: 'type',
   },
-  location: {
-    type: DataTypes.STRING,
+  latitude: {
+    type: DataTypes.DOUBLE,
     allowNull: false,
-    field: 'location',
+  },
+  longitude: {
+    type: DataTypes.DOUBLE,
+    allowNull: false,
   },
   code: {
     type: DataTypes.INTEGER,

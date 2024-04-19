@@ -1,7 +1,5 @@
 import { Request, Response } from 'express'
-import jwt from 'jsonwebtoken'
 import { loginUser } from '../services/auth.services'
-import { envs } from '../utils/constants'
 
 export const login = async (req: Request, res: Response) => {
   try {
@@ -9,15 +7,18 @@ export const login = async (req: Request, res: Response) => {
     if (!email || !password) {
       return res.status(400).json({ ok: false, message: 'Missing Data' })
     }
+    const userData = await loginUser(email, password)
 
-    const token = await loginUser(email, password)
-
-    if (token) {
-      return res.status(200).json({ ok: true, message: 'User Logged', token })
+    if (userData) {
+      return res.status(200).json({ ok: true, ...userData })
     } else {
-      res.status(401).json({ ok: false, message: 'Invalid Credentials' })
+      throw { status: 400, msg: 'Invalid Credentials' }
     }
-  } catch (error) {
-    throw new Error('Un error en aut controller')
+  } catch (error: any) {
+    console.log(error)
+    if (error.status) {
+      return res.status(error.status).json({ ok: false, message: error.msg })
+    }
+    return res.status(500).json({ ok: false, message: 'Internal server error' })
   }
 }

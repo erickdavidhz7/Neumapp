@@ -34,6 +34,11 @@ export const envs = {
   PORT: get('PORT').required().asPortNumber(),
   CLOUDINARY_URL: get('CLOUDINARY_URL').required().asString(),
   ACCESS_TOKEN: get('ACCESS_TOKEN').required().asString(),
+  DFLT_USR_PHOTO_URL: get('DFLT_USR_PHOTO_URL')
+    .default(
+      'https://res.cloudinary.com/dnautzk6f/image/upload/v1712867008/Neumapp/neumapp-users_uadggc.png'
+    )
+    .asUrlString(),
   jwt: {
     JWT_SECRET: get('JWT_SECRET').required().asString(),
     JWT_EXPIRATION: get('JWT_EXPIRATION').default('24h').asString(),

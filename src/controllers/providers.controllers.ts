@@ -4,14 +4,15 @@ import { Request, Response } from 'express'
 const ProvidersControllers = {
   createProvider: async (req: Request, res: Response) => {
     try {
-      const { UserId, phoneProvider, location } = req.body
-      if (!UserId || !phoneProvider || !location) {
+      const { UserId, phoneProvider, latitude, longitude } = req.body
+      if (!UserId || !phoneProvider || !latitude || !longitude) {
         res.status(400).json({ ok: false, message: 'Missing Provider Data' })
       }
       const provider: any = await providerServices.createProvider({
         UserId,
         phoneProvider,
-        location,
+        latitude,
+        longitude,
       })
       res.status(201).json(provider)
     } catch (error) {
@@ -48,6 +49,25 @@ const ProvidersControllers = {
       res.status(200).json(updatedProvider)
     } catch (err) {
       res.status(500).json({ ok: false, message: 'Internal server error' })
+    }
+  },
+  getProvidersByDistance: async (req: Request, res: Response) => {
+    try {
+      const { distance, lat, long, serviceId } = req.query
+      const data = await providerServices.getProvidersByDistance(
+        parseFloat(lat as string),
+        parseFloat(long as string),
+        parseInt(distance as string),
+      )
+      return res.json(data)
+    } catch (error: any) {
+      console.log(error)
+      if (error.status) {
+        return res.status(error.status).json({ ok: false, message: error.msg })
+      }
+      return res
+        .status(500)
+        .json({ ok: false, message: 'Internal server error' })
     }
   },
 }

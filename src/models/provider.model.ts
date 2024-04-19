@@ -1,20 +1,53 @@
 import { DataTypes } from 'sequelize'
 import { db } from '../utils/database'
+import { Service } from './services.model'
+import providerServices from '../services/providers.services'
 
-export const Providers = db.define('Providers', {
-  id: {
-    type: DataTypes.UUID,
-    primaryKey: true,
-    allowNull: false,
-    defaultValue: DataTypes.UUIDV4,
+export const Providers = db.define(
+  'Providers',
+  {
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      allowNull: false,
+      defaultValue: DataTypes.UUIDV4,
+    },
+    phoneProvider: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      field: 'phone_provider',
+    },
+    latitude: {
+      type: DataTypes.DOUBLE,
+      allowNull: true,
+    },
+    longitude: {
+      type: DataTypes.DOUBLE,
+      allowNull: true,
+    },
   },
-  phoneProvider: {
-    type: DataTypes.STRING,
-    allowNull: true,
-    field: 'phone_provider',
-  },
-  location: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-})
+  {
+    hooks: {
+      afterCreate: async (attributes, options) => {
+        try {
+          const service = await Service.findOne({
+            where: {
+              name: 'Parche de neumáticos',
+            },
+          })
+          await providerServices.createServiceProvider(
+            attributes.dataValues.id,
+            {
+              estimatedMinutes: 30,
+              price: 10000,
+              ServiceId: service?.dataValues.id,
+              providerDescription: '',
+            }
+          )
+        } catch (error) {
+          console.log(error)
+        }
+      },
+    },
+  }
+)

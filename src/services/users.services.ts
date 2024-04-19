@@ -25,7 +25,7 @@ const userServices = {
         phoneClient: user.phoneClient,
         photo: user.photo,
         status: user.status,
-        isVerified: user.isVerified
+        isVerified: user.isVerified,
       })
       return newUser
     } catch (error) {
@@ -49,6 +49,7 @@ const userServices = {
         where: {
           email,
         },
+        include: { model: Providers, attributes: ['id'] },
       })
 
       return userEmail
@@ -61,7 +62,7 @@ const userServices = {
       const userId = await Users.findOne({
         where: {
           id,
-        }
+        },
       })
 
       return userId
@@ -71,20 +72,16 @@ const userServices = {
   },
   updateUser: async (id: string, data: Partial<UserI>) => {
     try {
-      const user = await Users.findOne({
-        where: {
-          id
-        }
-      })
-
-      if (!user) {
+      const userToUpdate = await Users.findByPk(id)
+      if (!userToUpdate) {
         throw new Error('Error Searching The Data')
       }
-
-      Object.assign(user, data)
+      userToUpdate.update(data)
+      await userToUpdate.save()
+      return userToUpdate
     } catch (error) {
       throw new Error('Error Updating The Data')
     }
-  }
+  },
 }
 export default userServices
