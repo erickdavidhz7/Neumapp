@@ -33,6 +33,7 @@ export const envs = {
   APP_DOMAIN: get('APP_DOMAIN').default('localhost').asString(),
   PORT: get('PORT').required().asPortNumber(),
   CLOUDINARY_URL: get('CLOUDINARY_URL').required().asString(),
+  ACCESS_TOKEN: get('ACCESS_TOKEN').required().asString(),
   DFLT_USR_PHOTO_URL: get('DFLT_USR_PHOTO_URL')
     .default(
       'https://res.cloudinary.com/dnautzk6f/image/upload/v1712867008/Neumapp/neumapp-users_uadggc.png'

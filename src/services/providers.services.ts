@@ -1,3 +1,4 @@
+import { ProviderI } from '../interfaces/provider.interface'
 import { FindOptions, Op } from 'sequelize'
 import { CreateServiceProviderI } from '../interfaces/providers.interface'
 import { Providers } from '../models/provider.model'
@@ -9,7 +10,7 @@ import { getCloudinaryResizedImage } from '../utils/cloudinary'
 const EARTH_RADIUS = 6371000
 
 const providerServices = {
-  createProvider: async (provider: any) => {
+  createProvider: async (provider: ProviderI) => {
     try {
       if (!provider.phoneProvider || !provider.latitude || !provider.UserId || !provider.longitude) {
         throw new Error('Mission Data')

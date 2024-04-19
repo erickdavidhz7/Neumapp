@@ -1,3 +1,4 @@
+import { ReviewData } from '../interfaces/review.interface'
 import { Reviews } from '../models/review.model'
 
 const reviewsServices = {
@@ -29,7 +30,7 @@ const reviewsServices = {
       return 'Error al buscar Reviews'
     }
   },
-  createReview: async (reviewData: any) => {
+  createReview: async (reviewData: ReviewData) => {
     try {
       if (
         !reviewData.comment ||
@@ -50,7 +51,7 @@ const reviewsServices = {
       return 'Error al Crear la Review'
     }
   },
-  updateReview: async (id: string, newData: any) => {
+  updateReview: async (id: string, newData: ReviewData) => {
     try {
       const reviewToUpdate = await Reviews.findByPk(id)
       if (!reviewToUpdate) {
