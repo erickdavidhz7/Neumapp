@@ -375,6 +375,64 @@
         ]
       }
     },
+    "/providers/search/d":{
+      "get": {
+        "tags":["Providers"],
+        "summary": "Returns a list of providers near to a position",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "lat",
+            "schema": {
+              "type": "number"
+            },
+            "required": true,
+            "description": "Latitude value"
+          },
+          {
+            "in": "query",
+            "name": "long",
+            "schema": {
+              "type": "number"
+            },
+            "required": true,
+            "description": "Longitude value"
+          },
+          {
+            "in": "query",
+            "name": "distance",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Distance value in meters"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"A JSON of providers.",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/ProvidersResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation errors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrors"
+                }
+              }
+            }
+          }
+        }
+      }
+      
+    },
     "/orders": {
       "get": {
         "tags": ["Orders"],
@@ -1008,6 +1066,33 @@
             "type": "string",
             "format": "uri",
             "description": "Photo Cloudinary URL, resized to 100 px on width"
+          }
+        }
+      },
+      "ProvidersResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Provider UUIDv4 identificator (not User id)",
+            "example":"77817f25-2fab-42bb-b589-b48c7db80bf4"
+          },
+          "name": {
+            "type": "string",
+            "format": "string",
+            "description": "User's full name (First + Last)"
+          },
+          "img": {
+            "type": "string",
+            "description": "User's photo w=100"
+          },
+          "lat": {
+            "type": "number",
+            "description": "User's last name"
+          },
+          "lng": {
+            "type": "number",
+            "description": "True if is provider"
           }
         }
       }
