@@ -15,11 +15,19 @@ const PaymentsControllers = {
   },
   paymentFeedback: async (req: Request, res: Response) => {
     try {
-      res.status(201).json({
-        Payment: req.query.payment_id,
-        Status: req.query.status,
-        MerchantOrder: req.query.merchant_order_id
-      });
+      switch (req.query.status) {
+        case 'null':
+          res.redirect('https://dev.neumapp.site/')
+          break
+        case 'approved':
+          res.redirect('https://dev.neumapp.site/')
+          break
+        case 'rejected':
+          res.redirect('https://dev.neumapp.site/')
+          break
+        default:
+          break
+      }
     } catch (error) {
       res.status(500).json({ ok: false, message: 'Internal Server Error' })
     }
