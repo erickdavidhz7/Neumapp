@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
+    "@mercadopago/sdk-react": "^0.0.19",
     "@nextui-org/react": "^2.2.10",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -12,6 +13,7 @@
     "axios": "^1.6.8",
     "framer-motion": "^11.0.25",
     "mapbox-gl": "^3.3.0",
+    "mercadopago": "^2.0.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.3",
