@@ -1,5 +1,6 @@
 export interface ProviderI {
   phoneProvider: string
-  location: string
+  longitude: string
+  latitude: string
   UserId: string
 }
