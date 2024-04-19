@@ -10,6 +10,7 @@ import Login from "../components/login/Login.jsx";
 import Register from "../components/register/Register.jsx"
 import OurServices from "../components/ourServices/OurServices.jsx"
 import Maping from "../components/map/Map.jsx"
+import { MapProvider } from "../components/map/MapProvider.jsx";
 
 
 export const router = createBrowserRouter(
@@ -20,6 +21,7 @@ export const router = createBrowserRouter(
       <Route path="/registrar" element={<Register />} />     
       <Route path="/servicios" element={<OurServices />} />
       <Route path="/mapa" element={<Maping />} />
+      <Route path="/mapaprestador" element={<MapProvider />} />
     </>
   )
 );

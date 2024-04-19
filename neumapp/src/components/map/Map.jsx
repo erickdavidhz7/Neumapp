@@ -1,9 +1,11 @@
-import React, { useRef, useEffect, useState } from 'react';
-import Map, { Marker } from 'react-map-gl';
+import React, { useState } from 'react';
+import Map, { Marker, Popup } from 'react-map-gl';
 import { MarkerClient, MarkerProvider } from './Markers';
-import { array } from 'zod';
+import { CustomPopUp } from './Popup';
 
 export default function Maping() {
+
+  const [showPopup, setShowPopup] = useState(false);
 
     const arrayProviders = [{
         id: 1,
@@ -71,10 +73,29 @@ export default function Maping() {
             <MarkerClient></MarkerClient>
           </Marker>
           { arrayProviders.map((provider) => (
-            <Marker longitude={provider.lng} latitude={provider.lat} anchor="bottom" >
+            
+            <Marker onClick={() => {setShowPopup(true); console.log(showPopup)}} longitude={provider.lng} latitude={provider.lat} anchor="bottom" >
               <MarkerProvider img={provider.img}></MarkerProvider>
             </Marker>
-          )) }
+            
+          )) }  
+           {
+            arrayProviders.map((provider) => {
+              if (showPopup) {
+                return (
+                  <Popup
+                    style={{top:"-120px"}}
+                    longitude={provider.lng}
+                    latitude={provider.lat}
+                    anchor="bottom"
+                    onClose={() => setShowPopup(false)}
+                  >
+                    <CustomPopUp name={provider.name} img={provider.img}/>
+                  </Popup>
+                )
+              }
+            })
+           }
           
         </Map>
      </>

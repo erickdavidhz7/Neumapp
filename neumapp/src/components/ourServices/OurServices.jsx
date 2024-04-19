@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-
+import { useNavigate } from "react-router-dom";
 // Datos de los servicios, reemplaza estos con tus datos reales
 const serviceData = [
   {
@@ -44,6 +44,8 @@ const serviceData = [
 ];
 
 const OurServices = () => {
+
+  const navigate = useNavigate();
   return (
     <motion.section
       id="servicios"
@@ -65,7 +67,7 @@ const OurServices = () => {
             <h3 className="text-xl font-semibold text-white">{service.title}</h3>
             <p className="text-white my-2">{service.includes}</p>
             <p className="text-white mb-4">{service.value}</p>
-            <button className="text-white bg-blue-500 hover:bg-blue-600 font-bold py-2 px-4 rounded">
+            <button onClick={() => {navigate('/mapa')}} className="text-white bg-blue-500 hover:bg-blue-600 font-bold py-2 px-4 rounded">
               Solicitar
             </button>
           </li>
