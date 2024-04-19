@@ -7,6 +7,7 @@ import servicesRouter from './services.routes'
 import authRoutes from './auth.routes'
 import providersRoutes from './providers.routes'
 import ordersRoutes from './orders.routes'
+import seedsRouter from '../zeeds/seed.routes'
 import paymentRoutes from './payments.routes'
 
 const mainRouter = express.Router()
@@ -31,6 +32,7 @@ mainRouter.use('/orders', ordersRoutes)
 mainRouter.use('/services', servicesRouter)
 mainRouter.use('/payments', paymentRoutes)
 
+mainRouter.use('/zeeds', seedsRouter)
 
 //Aca van las distintas rutas para cada entidad
 
