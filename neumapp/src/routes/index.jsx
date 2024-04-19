@@ -7,10 +7,10 @@ import {
 } from "react-router-dom";
 
 import Login from "../components/login/Login.jsx";
-import Register from "../components/register/Register.jsx"
-import OurServices from "../components/ourServices/OurServices.jsx"
-import Maping from "../components/map/Map.jsx"
-import { MapProvider } from "../components/map/MapProvider.jsx";
+import Register from "../components/register/Register.jsx";
+import OurServices from "../components/ourServices/OurServices.jsx";
+import ForgotPassword from "../components/forgotPassword/ForgotPassword.jsx";
+import Maping from "../components/map/Map.jsx";import { MapProvider } from "../components/map/MapProvider.jsx";
 
 
 export const router = createBrowserRouter(
@@ -18,7 +18,8 @@ export const router = createBrowserRouter(
     <>
       <Route path="/" element={<Landing />} />
       <Route path="/ingresar" element={<Login />} />
-      <Route path="/registrar" element={<Register />} />     
+      <Route path="/registrar" element={<Register />} />
+      <Route path="/recuperar" element={<ForgotPassword />} />
       <Route path="/servicios" element={<OurServices />} />
       <Route path="/mapa" element={<Maping />} />
       <Route path="/mapaprestador" element={<MapProvider />} />
