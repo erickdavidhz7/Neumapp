@@ -1,5 +1,6 @@
 import providerServices from '../services/providers.services'
 import { Request, Response } from 'express'
+//-34.576723,-58.403042, //Museo de arte Latinoamericano de Buenos Aires... esquina
 
 const ProvidersControllers = {
   createProvider: async (req: Request, res: Response) => {
@@ -49,6 +50,25 @@ const ProvidersControllers = {
       res.status(200).json(updatedProvider)
     } catch (err) {
       res.status(500).json({ ok: false, message: 'Internal server error' })
+    }
+  },
+  getProvidersByDistance: async (req: Request, res: Response) => {
+    try {
+      const { distance, lat, long, serviceId } = req.query
+      const data = await providerServices.getProvidersByDistance(
+        parseFloat(lat as string),
+        parseFloat(long as string),
+        parseInt(distance as string),
+      )
+      return res.json(data)
+    } catch (error: any) {
+      console.log(error)
+      if (error.status) {
+        return res.status(error.status).json({ ok: false, message: error.msg })
+      }
+      return res
+        .status(500)
+        .json({ ok: false, message: 'Internal server error' })
     }
   },
 }
