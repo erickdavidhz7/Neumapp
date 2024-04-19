@@ -1,6 +1,5 @@
 import providerServices from '../services/providers.services'
 import { Request, Response } from 'express'
-//-34.576723,-58.403042, //Museo de arte Latinoamericano de Buenos Aires... esquina
 
 const ProvidersControllers = {
   createProvider: async (req: Request, res: Response) => {
