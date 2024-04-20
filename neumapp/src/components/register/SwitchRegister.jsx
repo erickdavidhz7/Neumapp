@@ -3,7 +3,7 @@ import { Tabs, Tab, Link } from "@nextui-org/react";
 import UserRegister from "../register/userRegister/UserRegister.jsx";
 import ProviderRegister from "../register/providerRegister/ProviderRegister";
 
-function SwitchRegister() {
+function SwitchRegister({onOpen}) {
   const [selected, setSelected] = useState("usuario");
 
   return (
@@ -22,12 +22,12 @@ function SwitchRegister() {
         }}
         disableAnimation
       >
-        <Tab key="usuario" title="Usuario" children={<UserRegister />}></Tab>
+        <Tab key="usuario" title="Usuario" children={<UserRegister/>}></Tab>
 
         <Tab
           key="prestador"
           title="Prestador"
-          children={<ProviderRegister />}
+          children={<ProviderRegister onOpen={onOpen}/>}
         ></Tab>
       </Tabs>
       <div className="text-center mt-2">

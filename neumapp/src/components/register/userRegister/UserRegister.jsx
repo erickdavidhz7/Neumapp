@@ -6,7 +6,7 @@ import { registerUserSchema } from "../../../schemas/auth.js";
 import useAuthUser from "../../../hooks/useAuthUser";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 
-const UserRegister = () => {
+const UserRegister = ({ onOpen }) => {
   const { createUser } = useAuthUser();
   const [isVisible, setIsVisible] = useState(false);
   const [selectedFile, setSelectedFile] = useState("Seleccionar archivo");
@@ -18,6 +18,7 @@ const UserRegister = () => {
     resolver: zodResolver(registerUserSchema),
   });
   const toggleVisibility = () => setIsVisible(!isVisible);
+
   const handleFileInputChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -26,10 +27,11 @@ const UserRegister = () => {
       setSelectedFile("Seleccionar archivo");
     }
   };
-
+  const handleDataModal = (dataForm) => {
+    createUser(dataForm);
+  };
   return (
-    // <Tab key="usuario" title="Usuario" >
-    <form className="flex flex-col" onSubmit={handleSubmit((onSubmit) => createUser(onSubmit))}>
+    <form className="flex flex-col" onSubmit={handleSubmit(handleDataModal)}>
       <div className="mb-6">
         <label
           htmlFor="firstName"
@@ -127,56 +129,6 @@ const UserRegister = () => {
       </div>
       <div className="mb-6">
         <label
-          className="block mb-2 text-sm font-medium text-white dark:text-gray-900 text-center"
-          htmlFor="photo"
-        >
-          Adjunta una foto de perfil (opcional)
-        </label>
-        <input
-          type="file"
-          id="photo"
-          name="photo"
-          hidden
-          {...register("photo", {
-            required: true,
-            onChange: handleFileInputChange,
-          })}
-        />
-        {selectedFile === "Seleccionar archivo" ? (
-          <label
-            htmlFor="photo"
-            className="block mr-4 py-2 px-4
-            rounded-md border-0 text-sm font-semibold bg-purple-50
-            text-primary hover:bg-purple-100 cursor-pointer text-center"
-          >
-            Seleccionar archivo
-          </label>
-        ) : (
-          <label
-            htmlFor="photo"
-            className="block mr-4 py-2 px-4
-            rounded-md border-0 text-sm font-semibold bg-purple-400
-            text-white hover:bg-purple-500 cursor-pointer text-center"
-          >
-            {selectedFile}
-          </label>
-        )}
-
-        <div className="flex gap-x-4">
-          {errors.photo ? (
-            <p className="text-red-300 text-sm">{errors.photo.message}</p>
-          ) : (
-            <p
-              className="mt-1 text-sm text-gray-300 dark:text-gray-900"
-              id="photo_error"
-            >
-              JPG ,JPGE ,PNG o WEBP (5MB Max).
-            </p>
-          )}
-        </div>
-      </div>
-      <div className="mb-6">
-        <label
           htmlFor="phoneClient"
           className="text-white block text-base mb-2 font-medium"
         >
@@ -222,6 +174,56 @@ const UserRegister = () => {
           </div>
         </div>
       </div>
+      <div className="mb-6">
+        <label
+          className="block mb-2 text-sm font-medium text-white dark:text-gray-900 text-center"
+          htmlFor="photo"
+        >
+          Adjunta una foto de perfil (opcional)
+        </label>
+        <input
+          type="file"
+          id="photo"
+          name="photo"
+          hidden
+          {...register("photo", {
+            required: true,
+            onChange: handleFileInputChange,
+          })}
+        />
+        {selectedFile === "Seleccionar archivo" ? (
+          <label
+            htmlFor="photo"
+            className="block mr-4 py-2 px-4
+            rounded-md border-0 text-sm font-semibold bg-purple-50
+            text-primary hover:bg-purple-100 cursor-pointer text-center"
+          >
+            Seleccionar archivo
+          </label>
+        ) : (
+          <label
+            htmlFor="photo"
+            className="block mr-4 py-2 px-4
+            rounded-md border-0 text-sm font-semibold bg-purple-400
+            text-white hover:bg-purple-500 cursor-pointer text-center"
+          >
+            {selectedFile}
+          </label>
+        )}
+
+        <div className="flex gap-x-4">
+          {errors.photo ? (
+            <p className="text-red-300 text-sm">{errors.photo.message}</p>
+          ) : (
+            <p
+              className="mt-1 text-sm text-gray-300 dark:text-gray-900"
+              id="photo_error"
+            >
+              JPG ,JPGE ,PNG o WEBP (10MB Max).
+            </p>
+          )}
+        </div>
+      </div>
       <div className="mb-6 flex-col">
         <div className="flex gap-x-4">
           <input
@@ -251,7 +253,6 @@ const UserRegister = () => {
         Crear Usuario
       </button>
     </form>
-    // </Tab>
   );
 };
 

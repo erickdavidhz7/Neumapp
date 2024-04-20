@@ -10,8 +10,8 @@ export const userRegisterRequest = async (user) =>
     },
   });
 
-export const providerRegisterRequest = async (formData) => {
-  axiosInstance.post(`/auth/register/provider`, formData, {
+export const providerRegisterRequest = async (user) => {
+  axiosInstance.post(`/auth/register/provider`, user, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
