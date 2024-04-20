@@ -1,5 +1,6 @@
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 import {
   loginRequest,
   userRegisterRequest,
@@ -9,8 +10,12 @@ import { useNavigate } from "react-router-dom";
 import {
   formatDataClient,
   formatDataProvider,
-  getFormData
+  getFormData,
 } from "../utils/formatDataProvider";
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 function useAuthUser() {
   const [error, setError] = useState();
@@ -25,43 +30,24 @@ function useAuthUser() {
     try {
       const res = await userRegisterRequest(formData);
       console.log(res);
-      console.log(res.data.token);
-      if (res) {
-        console.log("Registrado exitosamente");
-        navigate("/ingresar");
-      } else {
-        console.error("Error: Respuesta inesperada del servidor");
-      }
     } catch (error) {
-      console.error(
-        "Error al iniciar sesión",
-        error.response?.data || error.message
-      );
+      console.log(res);
     }
   }
-
-  async function createProvider(data) {
-    const formData = formatDataProvider(data);
-    for (const entry of formData.entries()) {
-      const [key, value] = entry;
-      console.log(`${key}:${value}`);
+  async function createProvider(data, coordenadas) {
+    try {
+      const formData = await formatDataProvider(data, coordenadas);
+      const response = await providerRegisterRequest(formData);
+      
+      toast.success("Registro exitoso", {
+        position: "bottom-right",
+        toastId: "registerProviderSuccess"
+      });
+      await delay(2000);
+      navigate("/mapaprestador");
+    } catch (error) {
+      toast.error(error.message, { position: "bottom-right" });
     }
-    // try {
-    //   const res = await providerRegisterRequest(formData);
-    //   console.log(res);
-    //   console.log(res.data.token);
-    //   if (res) {
-    //     console.log("Registrado exitosamente");
-    //     navigate("/ingresar");
-    //   } else {
-    //     console.error("Error: Respuesta inesperada del servidor");
-    //   }
-    // } catch (error) {
-    //   console.error(
-    //     "Error al registrar el usuario",
-    //     error.response?.data || error.message
-    //   );
-    // }
   }
 
   async function loginUser(data) {
