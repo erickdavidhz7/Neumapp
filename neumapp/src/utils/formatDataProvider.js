@@ -1,16 +1,14 @@
-import { grantPermission } from "./locationData";
-
-async function formatDataProvider(data) {
-  const { latitude, longitude } = await grantPermission();
+async function formatDataProvider(data, coordenadas) {
+ 
   const formData = new FormData();
   formData.append("firstName", data.firstName);
   formData.append("lastName", data.lastName);
   formData.append("email", data.email);
   formData.append("password", data.password);
-  formData.append("latitude", latitude);
-  formData.append("longitude", longitude);
-  formData.append("phoneClient", `${data.codeP}${data.phoneClient}`);
-  formData.append("phoneProvider", `${data.codeP}${data.phoneProvider}`);
+  formData.append("latitude", coordenadas.latitude);
+  formData.append("longitude", coordenadas.longitude);
+  formData.append("phoneClient", `${data.codeP}-${data.phoneClient}`);
+  formData.append("phoneProvider", `${data.codeP}-${data.phoneProvider}`);
   formData.append("photo", data.photo.item(0));
 
   return formData;

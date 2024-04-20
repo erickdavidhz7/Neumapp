@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import IconLocation from "../../images/logo/IconLocation";
-import { toast, ToastContainer } from "react-toastify";
+
 import {
   Modal,
   ModalContent,
@@ -9,27 +9,13 @@ import {
   ModalFooter,
   Button,
 } from "@nextui-org/react";
-import { grantPermission } from "../../utils/locationData";
 import "react-toastify/dist/ReactToastify.css";
 
-function AccessLocation({ isOpen, onOpenChange, onClose }) {
-    
-  const handleGrantPermission = async () => {
-    try {
-      const coordenadas = await grantPermission(onClose);
-      onClose();
-      toast.success("Locacion guardada !", {
-        position: "bottom-right",
-      });
-    } catch (error) {
-      onClose();
-      toast.error(error.message, { position: "bottom-right" });
-    }
-  };
+function AccessLocation({ isOpen, onOpenChange, onClose, handleGrantPermission }) {
 
   return (
     <>
-      <ToastContainer />
+      
       <Modal
         backdrop="opaque"
         isOpen={isOpen}
@@ -41,7 +27,7 @@ function AccessLocation({ isOpen, onOpenChange, onClose }) {
         }}
       >
         <ModalContent>
-            {(onClose) => (
+          {(onClose) => (
             <>
               <div className="flex justify-center items-center">
                 <IconLocation width="200" color="#4036ED" />

@@ -1,18 +1,22 @@
 export const grantPermission = async () => {
+  let latitude = null;
+  let longitude = null;
   try {
-    const position = await new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(
         (pos) => {
           resolve(pos.coords);
+          latitude = pos.coords.latitude;
+          longitude = pos.coords.longitude;
         },
-        (err) => {
-          reject(err);
+        (error) => {
+          reject(error);
         }
       );
     });
     return {
-      latitude : position.latitude,
-      longitude : position.latitude,
+      latitude,
+      longitude,
     };
   } catch (error) {
     throw new Error("Error, usuario denego la geolocalización.");

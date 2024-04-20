@@ -2,20 +2,11 @@ import SwitchRegister from "./SwitchRegister";
 import Logo from "../../images/logo/Logo.jsx";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, Button } from "@nextui-org/react";
-import AccessLocation from "../modal/AccessLocation.jsx";
-import { useDisclosure } from "@nextui-org/react";
 
 const Register = () => {
-  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   return (
     <section className="min-h-screen bg-zinc-700 flex justify-center items-center">
       <div className="flex flex-col lg:flex-row justify-between w-full max-w-7xl mx-auto gap-y-8 lg:gap-0">
-        <AccessLocation
-          isOpen={isOpen}
-          onOpenChange={onOpenChange}
-          onClose={onClose}
-        />
-        
         <div className="flex flex-row-reverse justify-center items-center mx-10 mt-10 lg:flex-col lg:m-0 lg:items-start">
           <section className="flex  justify-start items-center mx-auto lg:mx-0 h-full">
             <Logo width={"10vw"} color="white" />
@@ -40,7 +31,7 @@ const Register = () => {
         </div>
 
         <section className="h-full w-full lg:w-1/3 p-8 rounded-2xl">
-          <SwitchRegister onOpen={onOpen}/>
+          <SwitchRegister />
         </section>
       </div>
     </section>
