@@ -62,7 +62,7 @@ function NavBar() {
                   {item.name}
                   {item.name === activeSection && (
                     <motion.span
-                      className="border-b-3 mt-6 border-[#4036ED] absolute inset-0 -z-10"
+                      className="border-b-3 mt-6 border-secundary absolute inset-0 -z-10"
                       layoutId="activeSection"
                       transition={{
                         type: "spring",
@@ -79,7 +79,7 @@ function NavBar() {
 
       <NavbarContent justify="end" className="hidden sm:flex">
         <NavbarItem>
-          <Button as={Link} color="primary" href="/ingresar" variant="flat">
+          <Button as={Link} href="/ingresar" variant="flat" className=" bg-secondary text-white">
             Ingresar
           </Button>
         </NavbarItem>

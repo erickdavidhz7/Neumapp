@@ -7,7 +7,7 @@ import { onKeyNumbers } from "../../../utils/formatDataProvider.js";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import useAuthUser from "../../../hooks/useAuthUser.jsx";
 
-const ProviderRegister = () => {
+const ProviderRegister = ({onOpen}) => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
   const { createProvider } = useAuthUser();
@@ -27,11 +27,14 @@ const ProviderRegister = () => {
       setSelectedFile("Seleccionar archivo");
     }
   };
- 
+  const handleDataModal = (dataForm) => {
+    onOpen();
+    createProvider(dataForm);
+  };
   return (
     <form
       className="flex flex-col"
-      onSubmit={handleSubmit((data) => createProvider(data))}
+      onSubmit={handleSubmit(handleDataModal)}
     >
       <div className="mb-6 flex flex-row justify-center w-full">
         {/* input name */}
@@ -242,7 +245,7 @@ const ProviderRegister = () => {
           className="block mb-2 text-sm font-medium text-white dark:text-gray-900 text-center"
           htmlFor="photo"
         >
-          Adjunta una foto de perfil (opcional)
+          Adjunta una foto de perfil.
         </label>
         <input
           type="file"
@@ -282,7 +285,7 @@ const ProviderRegister = () => {
               className="mt-1 text-sm text-gray-300 dark:text-gray-900"
               id="photo_error"
             >
-              JPG ,JPGE ,PNG o WEBP (5MB Max).
+              JPG ,JPGE ,PNG o WEBP (10MB Max).
             </p>
           )}
         </div>

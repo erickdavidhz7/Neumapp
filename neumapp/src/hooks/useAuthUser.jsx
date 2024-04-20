@@ -42,22 +42,26 @@ function useAuthUser() {
 
   async function createProvider(data) {
     const formData = formatDataProvider(data);
-    try {
-      const res = await providerRegisterRequest(formData);
-      console.log(res);
-      console.log(res.data.token);
-      if (res) {
-        console.log("Registrado exitosamente");
-        navigate("/ingresar");
-      } else {
-        console.error("Error: Respuesta inesperada del servidor");
-      }
-    } catch (error) {
-      console.error(
-        "Error al iniciar sesión",
-        error.response?.data || error.message
-      );
+    for (const entry of formData.entries()) {
+      const [key, value] = entry;
+      console.log(`${key}:${value}`);
     }
+    // try {
+    //   const res = await providerRegisterRequest(formData);
+    //   console.log(res);
+    //   console.log(res.data.token);
+    //   if (res) {
+    //     console.log("Registrado exitosamente");
+    //     navigate("/ingresar");
+    //   } else {
+    //     console.error("Error: Respuesta inesperada del servidor");
+    //   }
+    // } catch (error) {
+    //   console.error(
+    //     "Error al registrar el usuario",
+    //     error.response?.data || error.message
+    //   );
+    // }
   }
 
   async function loginUser(data) {

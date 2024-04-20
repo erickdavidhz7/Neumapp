@@ -12,7 +12,6 @@ import OurServices from "../components/ourServices/OurServices.jsx";
 import ForgotPassword from "../components/forgotPassword/ForgotPassword.jsx";
 import Maping from "../components/map/Map.jsx";import { MapProvider } from "../components/map/MapProvider.jsx";
 
-
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -23,6 +22,8 @@ export const router = createBrowserRouter(
       <Route path="/servicios" element={<OurServices />} />
       <Route path="/mapa" element={<Maping />} />
       <Route path="/mapaprestador" element={<MapProvider />} />
+      
+
     </>
   )
 );
