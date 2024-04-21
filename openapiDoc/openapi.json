@@ -375,9 +375,9 @@
         ]
       }
     },
-    "/providers/search/d":{
+    "/providers/search/d": {
       "get": {
-        "tags":["Providers"],
+        "tags": ["Providers"],
         "summary": "Returns a list of providers near to a position",
         "parameters": [
           {
@@ -408,13 +408,13 @@
             "description": "Distance value in meters"
           }
         ],
-        "responses":{
-          "200":{
-            "description":"A JSON of providers.",
-            "content":{
-              "application/json":{
-                "schema":{
-                  "$ref":"#/components/schemas/ProvidersResponse"
+        "responses": {
+          "200": {
+            "description": "A JSON of providers.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProvidersResponse"
                 }
               }
             }
@@ -431,7 +431,6 @@
           }
         }
       }
-      
     },
     "/orders": {
       "get": {
@@ -825,6 +824,24 @@
           }
         ]
       }
+    },
+    "/services": {
+      "get": {
+        "tags": ["Services"],
+        "summary": "Get all servicespaginated",
+        "responses": {
+          "200": {
+            "description": "A json with soervices and pagination data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicesGetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -870,8 +887,8 @@
           "email": { "type": "string", "example": "olora@yahoo.com" },
           "password": { "type": "string", "example": "per43#784732#67y9" },
           "phoneClient": { "type": "string", "example": "+541112345678" },
-          "latitude": {"type": "number", "example": "6.201733"},
-          "longitude": {"type": "number", "example": "-75.578731"},
+          "latitude": { "type": "number", "example": "6.201733" },
+          "longitude": { "type": "number", "example": "-75.578731" },
           "photo": {
             "type": "string",
             "format": "binary",
@@ -892,8 +909,8 @@
         "required": ["email", "password"],
         "type": "object",
         "properties": {
-          "latitude": {"type": "number", "example": "6.201733"},
-          "longitude": {"type": "number", "example": "-75.578731"},
+          "latitude": { "type": "number", "example": "6.201733" },
+          "longitude": { "type": "number", "example": "-75.578731" },
           "phoneProvider": { "type": "string", "example": "+542994130232" }
         }
       },
@@ -901,8 +918,8 @@
         "required": ["latitude", "longitude", "phoneProvider", "UserId"],
         "type": "object",
         "properties": {
-          "latitude": {"type": "number", "example": "6.201733"},
-          "longitude": {"type": "number", "example": "-75.578731"},
+          "latitude": { "type": "number", "example": "6.201733" },
+          "longitude": { "type": "number", "example": "-75.578731" },
           "phoneProvider": { "type": "string", "example": "+542994130232" },
           "UserId": {
             "type": "string",
@@ -913,8 +930,8 @@
       "UpdateProvider": {
         "type": "object",
         "properties": {
-          "latitude": {"type": "number", "example": "6.201733"},
-          "longitude": {"type": "number", "example": "-75.578731"},
+          "latitude": { "type": "number", "example": "6.201733" },
+          "longitude": { "type": "number", "example": "-75.578731" },
           "phoneProvider": { "type": "string", "example": "+542994130232" }
         }
       },
@@ -956,8 +973,8 @@
             "enum": ["delivery"],
             "example": "delivery"
           },
-          "latitude": {"type": "number", "example": "6.201733"},
-          "longitude": {"type": "number", "example": "-75.578731"},
+          "latitude": { "type": "number", "example": "6.201733" },
+          "longitude": { "type": "number", "example": "-75.578731" },
           "description": {
             "type": "string",
             "example": "Tengo un problema con mi llanta, tengo una moto de marca... modelo... año..."
@@ -977,8 +994,8 @@
             "example": "89352dd1-6a0d-460b-a1ec-22bc9d11c279"
           },
           "type": { "type": "string", "example": "Internal server error" },
-          "latitude": {"type": "number", "example": "6.201733"},
-          "longitude": {"type": "number", "example": "-75.578731"},
+          "latitude": { "type": "number", "example": "6.201733" },
+          "longitude": { "type": "number", "example": "-75.578731" },
           "code": { "type": "number", "example": "224158" },
           "description": {
             "type": "string",
@@ -1075,7 +1092,7 @@
           "id": {
             "type": "string",
             "description": "Provider UUIDv4 identificator (not User id)",
-            "example":"77817f25-2fab-42bb-b589-b48c7db80bf4"
+            "example": "77817f25-2fab-42bb-b589-b48c7db80bf4"
           },
           "name": {
             "type": "string",
@@ -1093,6 +1110,42 @@
           "lng": {
             "type": "number",
             "description": "True if is provider"
+          }
+        }
+      },
+      "ServicesGetResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "4917ee58-a1c3-4fc8-9f35-e8ed93d42b30"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Parche de neumáticos"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "totalResults": {
+            "type": "integer",
+            "example": 1
+          },
+          "totalPages": {
+            "type": "integer",
+            "example": 1
+          },
+          "currentPage": {
+            "type": "integer",
+            "example": 1
           }
         }
       }
