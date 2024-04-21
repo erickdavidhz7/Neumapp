@@ -4,9 +4,6 @@ import FooterMap from "../FooterMap";
 import NavBarDash from "../dashBoard/NavBarDash";
 
 export function MapProvider() {
-  const name = localStorage.getItem("User").replace(/^"(.*)"$/, "$1");
-  const img = localStorage.getItem("Photo").replace(/^"(.*)"$/, "$1");
-  const correo = localStorage.getItem("Email").replace(/^"(.*)"$/, "$1");
   return (
     <>
       <Map
@@ -19,7 +16,7 @@ export function MapProvider() {
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
       >
-        <NavBarDash name={name} img={img} correo={correo} />
+        <NavBarDash />
         <FooterMap />
       </Map>
     </>

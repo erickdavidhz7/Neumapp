@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
-function NavBarDash({ name, img, correo }) {
+function NavBarDash() {
   const navigate = useNavigate();
   const context = useContext(AuthContext);
 
@@ -43,17 +43,21 @@ function NavBarDash({ name, img, correo }) {
               as="button"
               className="transition-transform"
               color="secondary"
-              name={name ? name : "Héctor G"}
+              name={context.user ? context.user : "Héctor G"}
               size="sm"
               src={
-                img ? img : "https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                context.photo
+                  ? context.photo
+                  : "https://i.pravatar.cc/150?u=a042581f4e29026704d"
               }
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Registrado como</p>
-              <p className="font-semibold">{correo ? correo : "test-1"}</p>
+              <p className="font-semibold">
+                {context.email ? context.email : "test-1"}
+              </p>
             </DropdownItem>
             <DropdownItem key="mi_cuenta">Mi Cuenta</DropdownItem>
             <DropdownItem key="privacidad">Privacidad</DropdownItem>
