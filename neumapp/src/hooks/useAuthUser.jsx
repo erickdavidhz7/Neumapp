@@ -26,13 +26,13 @@ function useAuthUser() {
   const navigate = useNavigate();
 
   async function createUser(data) {
-    const formData = formatDataClient(data);
+    /* const formData = formatDataClient(data);
     try {
       const res = await userRegisterRequest(formData);
       console.log(res);
     } catch (error) {
       console.log(res);
-    }
+    } */
   }
   async function createProvider(data, coordenadas) {
     try {
