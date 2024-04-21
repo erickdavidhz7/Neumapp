@@ -25,7 +25,7 @@ function formatDataClient(data) {
   formData.append("lastName", data.lastName);
   formData.append("email", data.email);
   formData.append("password", data.password);
-  formData.append("phoneClient", `${data.codeP}${data.phoneClient}`);
+  formData.append("phoneClient", `${data.codeP}-${data.phoneClient}`);
   formData.append("photo", data.photo.item(0));
 
   return formData;
