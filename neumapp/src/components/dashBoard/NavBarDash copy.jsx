@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -10,18 +10,12 @@ import {
   DropdownTrigger,
   Dropdown,
   DropdownMenu,
-  Avatar as NextUIAvatar,
+  Avatar,
 } from "@nextui-org/react";
 import Logo from "../../images/logo/Logo.jsx";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-
-// Eliminamos originalProps para evitar la advertencia en el navegador
-const Avatar = forwardRef(({ originalProps, ...rest }, ref) => {
-  const { originalProps: _, ...props } = rest;
-  return <NextUIAvatar {...props} ref={ref} />;
-});
 
 function NavBarDash() {
   const navigate = useNavigate();
@@ -49,46 +43,29 @@ function NavBarDash() {
               as="button"
               className="transition-transform"
               color="secondary"
-              name={context.user}
+              name={context.user ? context.user : "Héctor G"}
               size="sm"
-              src={context.photo}
+              src={
+                context.photo
+                  ? context.photo
+                  : "https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              }
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
-            <DropdownItem
-              key="profile"
-              className="h-14 gap-2"
-              textValue="Registrado como"
-            >
+            <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Registrado como</p>
               <p className="font-semibold">
                 {context.email ? context.email : "test-1"}
               </p>
             </DropdownItem>
-            <DropdownItem key="mi_cuenta" textValue="Mi Cuenta">
-              Mi Cuenta
-            </DropdownItem>
-            <DropdownItem key="privacidad" textValue="Privacidad">
-              Privacidad
-            </DropdownItem>
-            <DropdownItem key="seguridad" textValue="Seguridad">
-              Seguridad
-            </DropdownItem>
-            <DropdownItem key="configuracion" textValue="Configuración">
-              Configuración
-            </DropdownItem>
-            <DropdownItem key="accesibilidad" textValue="Accesibilidad">
-              Accesibilidad
-            </DropdownItem>
-            <DropdownItem key="contacto" textValue="Contacto">
-              Contacto
-            </DropdownItem>
-            <DropdownItem
-              key="logout"
-              color="danger"
-              onClick={handleLogout}
-              textValue="Cerrar Sesión"
-            >
+            <DropdownItem key="mi_cuenta">Mi Cuenta</DropdownItem>
+            <DropdownItem key="privacidad">Privacidad</DropdownItem>
+            <DropdownItem key="seguridad">Seguridad</DropdownItem>
+            <DropdownItem key="configuracion">Configuración</DropdownItem>
+            <DropdownItem key="accesibilidad">Accesibilidad</DropdownItem>
+            <DropdownItem key="contacto">Contacto</DropdownItem>
+            <DropdownItem key="logout" color="danger" onClick={handleLogout}>
               Cerrar Sesión
             </DropdownItem>
           </DropdownMenu>
