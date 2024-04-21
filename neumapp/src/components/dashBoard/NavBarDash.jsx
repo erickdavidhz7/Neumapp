@@ -33,10 +33,10 @@ function NavBarDash() {
   };
 
   return (
-    <Navbar isBordered className="w-[90%] mx-auto rounded-2xl mt-8">
+    <Navbar isBordered className="w-[90%] mx-auto rounded-2xl mt-6">
       <NavbarContent justify="start">
         <NavbarBrand className="mr-4">
-          <Logo width={30} color="#4036ED" />
+          <Logo width={40} color="#4036ED" />
           <p className="hidden sm:block font-bold text-inherit">Neumapp</p>
         </NavbarBrand>
       </NavbarContent>
@@ -50,7 +50,7 @@ function NavBarDash() {
               className="transition-transform"
               color="secondary"
               name={context.user}
-              size="sm"
+              size="md"
               src={context.photo}
             />
           </DropdownTrigger>
