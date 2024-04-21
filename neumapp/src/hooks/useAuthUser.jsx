@@ -26,12 +26,19 @@ function useAuthUser() {
   const navigate = useNavigate();
 
   async function createUser(data) {
-    const formData = formatDataClient(data);
     try {
-      const res = await userRegisterRequest(formData);
-      console.log(res);
+      const formData = formatDataClient(data);
+      const response = await userRegisterRequest(formData);
+      toast.success("Registro exitoso", {
+        position: "bottom-right",
+        toastId: "registerUserSuccess",
+      });
+      console.log(response);
+      navigate("/mapaprestador");
+      await delay(2000);
+      navigate("/ingresar");
     } catch (error) {
-      console.log(error);
+      console.log(res);
     }
   }
   async function createProvider(data, coordenadas) {

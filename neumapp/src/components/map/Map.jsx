@@ -1,70 +1,128 @@
 import React, { useState } from 'react';
 import Map, { Marker, Popup } from 'react-map-gl';
 import { MarkerClient, MarkerProvider } from './Markers';
-import { CustomPopUp } from './Popup';
+import { CustomPopUp } from './Popup'
+import NavBarMap from './NavBar';
+import FooterMap from '../FooterMap';
 
+const arrayPopUps = [
+  {
+    id: 1,
+    name: " María García",
+    img: "/images/MapImages/provider1.png",
+    imgPopUp:"/images/MapImages/popUp/provider1.png",
+    lng: -58.4054294,
+    lat: -34.6045541
+},{
+    id: 2,
+    name: "José Pérez",
+    img: "/images/MapImages/provider2.png", 
+    lng: 58.3813785,
+    lat: -34.6037014
+}, {
+    id: 3,
+    name: "Alejandra Martínez",
+    img: "/images/MapImages/provider3.png",
+    lng: 58.3832321,
+    lat: -34.5964736
+}, {
+    id: 4,
+    name: "Ana Hernández",
+    img: "/images/MapImages/provider4.png",
+    lng: 58.4071646,
+    lat: -34.5916308
+}, {
+    id: 5,
+    name: "Pablo López",
+    img: "/images/MapImages/provider5.png",
+    lng: 58.4236793,
+    lat: -34.598739
+}, {
+    id: 6,
+    name: "Gabriel García",
+    img: "/images/MapImages/provider6.png",
+    lng: 58.41515,
+    lat: -34.61081
+}, {
+    id: 7,
+    name: "Alejandro López",
+    img: "/images/MapImages/provider7.png",
+    lng: 58.428837,
+    lat: -34.6163608
+}, {
+    id: 8,
+    name: "Santiago Alsina",
+    img: "/images/MapImages/provider8.png",
+    lng: 58.3806046,
+    lat: -34.6123712
+}]
 export default function Maping() {
 
   const [showPopup, setShowPopup] = useState(false);
 
-    const arrayProviders = [{
-        id: 1,
-        name: "Prestador 1",
-        img: "/images/MapImages/provider1.png",
-        lng: -58.3813785,
-        lat: -34.6037014
-    }, {
-        id: 2,
-        name: "Prestador 2",
-        img: "/images/MapImages/provider2.png",
-        lng: -58.4054294,
-        lat: -34.6045541
-    }, {
-        id: 3,
-        name: "Prestador 3",
-        img: "/images/MapImages/provider3.png",
-        lng: -58.3832321,
-        lat: -34.5964736
-    }, {
-        id: 4,
-        name: "Prestador 4",
-        img: "/images/MapImages/provider4.png",
-        lng: -58.4071646,
-        lat: -34.5916308
-    }, {
-        id: 5,
-        name: "Prestador 5",
-        img: "/images/MapImages/provider5.png",
-        lng: -58.4236793,
-        lat: -34.598739
-    }, {
-        id: 6,
-        name: "Prestador 6",
-        img: "/images/MapImages/provider6.png",
-        lng: -58.41515,
-        lat: -34.61081
-    }, {
-        id: 7,
-        name: "Prestador 7",
-        img: "/images/MapImages/provider7.png",
-        lng: -58.428837,
-        lat: -34.6163608
-    }, {
-        id: 8,
-        name: "Prestador 8",
-        img: "/images/MapImages/provider8.png",
-        lng: -58.3806046,
-        lat: -34.6123712
-    }]
+  const arrayProviders = [
+    {
+      id: 1,
+      name: " María García",
+      img: "/images/MapImages/provider1.png",
+      imgPopUp:"/images/MapImages/popUp/provider1.png",
+      lng: -58.4054294,
+      lat: -34.6045541
+  },{
+      id: 2,
+      name: "José Pérez",
+      img: "/images/MapImages/provider2.png", 
+      lng: -58.3813785,
+      lat: -34.6037014
+  }, {
+      id: 3,
+      name: "Alejandra Martínez",
+      img: "/images/MapImages/provider3.png",
+      lng: -58.3832321,
+      lat: -34.5964736
+  }, {
+      id: 4,
+      name: "Ana Hernández",
+      img: "/images/MapImages/provider4.png",
+      lng: -58.4071646,
+      lat: -34.5916308
+  }, {
+      id: 5,
+      name: "Pablo López",
+      img: "/images/MapImages/provider5.png",
+      lng: -58.4236793,
+      lat: -34.598739
+  }, {
+      id: 6,
+      name: "Gabriel García",
+      img: "/images/MapImages/provider6.png",
+      lng: -58.41515,
+      lat: -34.61081
+  }, {
+      id: 7,
+      name: "Alejandro López",
+      img: "/images/MapImages/provider7.png",
+      lng: -58.428837,
+      lat: -34.6163608
+  }, {
+      id: 8,
+      name: "Santiago Alsina",
+      img: "/images/MapImages/provider8.png",
+      lng: -58.3806046,
+      lat: -34.6123712
+  }]
 
     return (
       <>
+        <div> 
+          <NavBarMap></NavBarMap>
+        </div>
          <Map
           mapboxAccessToken="pk.eyJ1IjoibHVwYXR0aW4iLCJhIjoiY2x2NGZ3Y3l3MDgyNTJzcDFnYXpwa2theCJ9.-FiQ4H1sz4AbVPnPvZo52w"
           initialViewState={{
             longitude: -58.3942251,
             latitude: -34.6033355,
-            zoom: 14
+            zoom: 13
           }}
           style={{ width: '100vw', height: '100vh' }}
           mapStyle="mapbox://styles/mapbox/streets-v9"
@@ -80,15 +138,16 @@ export default function Maping() {
             
           )) }  
            {
-            arrayProviders.map((provider) => {
+            arrayPopUps.map((provider) => {
               if (showPopup) {
                 return (
                   <Popup
-                    style={{top:"-120px"}}
+                    style={{left:"40px", borderRadius:"25px"}}
                     longitude={provider.lng}
                     latitude={provider.lat}
-                    anchor="bottom"
+                    anchor="left"
                     onClose={() => setShowPopup(false)}
+                    borderRadius="25px"
                   >
                     <CustomPopUp name={provider.name} img={provider.img}/>
                   </Popup>
@@ -98,6 +157,7 @@ export default function Maping() {
            }
           
         </Map>
+        <FooterMap></FooterMap>
      </>
     );
   }
