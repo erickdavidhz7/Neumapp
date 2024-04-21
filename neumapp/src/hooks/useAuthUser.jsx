@@ -38,7 +38,7 @@ function useAuthUser() {
       await delay(2000);
       navigate("/ingresar");
     } catch (error) {
-      console.log(res);
+      console.log(error);
     }
   }
   async function createProvider(data, coordenadas) {
