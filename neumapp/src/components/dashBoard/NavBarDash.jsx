@@ -14,9 +14,9 @@ import {
 } from "@nextui-org/react";
 import Logo from "../../images/logo/Logo.jsx";
 
-function NavBarDash({name, img, correo}) {
+function NavBarDash({ name, img, correo }) {
   return (
-    <Navbar isBordered>
+    <Navbar isBordered className="w-[90%] mx-auto rounded-2xl mt-8">
       <NavbarContent justify="start">
         <NavbarBrand className="mr-4">
           <Logo width={30} color="#4036ED" />
@@ -34,7 +34,9 @@ function NavBarDash({name, img, correo}) {
               color="secondary"
               name={name ? name : "Héctor G"}
               size="sm"
-              src={img ? img : "https://i.pravatar.cc/150?u=a042581f4e29026704d"}
+              src={
+                img ? img : "https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              }
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
