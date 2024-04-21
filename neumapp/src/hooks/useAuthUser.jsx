@@ -31,17 +31,17 @@ function useAuthUser() {
       const res = await userRegisterRequest(formData);
       console.log(res);
     } catch (error) {
-      console.log(res);
+      console.log(error);
     }
   }
   async function createProvider(data, coordenadas) {
     try {
       const formData = await formatDataProvider(data, coordenadas);
       const response = await providerRegisterRequest(formData);
-      
+
       toast.success("Registro exitoso", {
         position: "bottom-right",
-        toastId: "registerProviderSuccess"
+        toastId: "registerProviderSuccess",
       });
       await delay(2000);
       navigate("/mapaprestador");
@@ -51,16 +51,25 @@ function useAuthUser() {
   }
 
   async function loginUser(data) {
-    // const url = "https://neumapp.site:3001/auth/login";
-
     try {
       const res = await loginRequest(data);
-      // const res = await axios.post(url, data);
       if (res) {
-        context.handlerLogin(res.data.token, "user");
+        const { token, firstName, lastName, email, photo, isProv } = res.data;
+        const userType = isProv ? "provider" : "user";
+        const redirectPath = isProv ? "/mapaprestador" : "/servicios";
+
+        context.handlerLogin(
+          token,
+          firstName,
+          lastName,
+          email,
+          photo,
+          userType
+        );
+        navigate(redirectPath);
+
         console.log("Inicio de sesión exitoso");
         setSuccess("Inicio de sesión exitoso");
-        navigate("/servicios");
       } else {
         console.error("Error: Respuesta inesperada del servidor");
       }

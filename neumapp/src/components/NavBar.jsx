@@ -79,7 +79,12 @@ function NavBar() {
 
       <NavbarContent justify="end" className="hidden sm:flex">
         <NavbarItem>
-          <Button as={Link} href="/ingresar" variant="flat" className=" bg-secondary text-white">
+          <Button
+            as={Link}
+            href="/ingresar"
+            variant="flat"
+            className=" bg-secondary text-white"
+          >
             Ingresar
           </Button>
         </NavbarItem>

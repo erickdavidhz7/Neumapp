@@ -13,8 +13,19 @@ import {
   Avatar,
 } from "@nextui-org/react";
 import Logo from "../../images/logo/Logo.jsx";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 function NavBarDash({ name, img, correo }) {
+  const navigate = useNavigate();
+  const context = useContext(AuthContext);
+
+  const handleLogout = () => {
+    context.handlerLogout();
+    navigate("/");
+  };
+
   return (
     <Navbar isBordered className="w-[90%] mx-auto rounded-2xl mt-8">
       <NavbarContent justify="start">
@@ -50,7 +61,7 @@ function NavBarDash({ name, img, correo }) {
             <DropdownItem key="configuracion">Configuración</DropdownItem>
             <DropdownItem key="accesibilidad">Accesibilidad</DropdownItem>
             <DropdownItem key="contacto">Contacto</DropdownItem>
-            <DropdownItem key="logout" color="danger">
+            <DropdownItem key="logout" color="danger" onClick={handleLogout}>
               Cerrar Sesión
             </DropdownItem>
           </DropdownMenu>
