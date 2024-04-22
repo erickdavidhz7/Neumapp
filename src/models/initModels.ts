@@ -19,4 +19,6 @@ export const initModels = () => {
   Providers.hasMany(ProviderServices, { foreignKey: { allowNull: false } })
   ProviderServices.belongsTo(Providers)
   Providers.belongsTo(Users)
+  Orders.belongsTo(ProviderServices)
+  ProviderServices.hasMany(Orders)
 }

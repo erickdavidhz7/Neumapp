@@ -464,7 +464,7 @@
         "tags": ["Orders"],
         "summary": "Creating an order",
         "requestBody": {
-          "description": "Creates an order the only required fields are location and description.",
+          "description": "Creates an order.",
           "content": {
             "aplication/json": {
               "schema": { "$ref": "#/components/schemas/Orders" }
@@ -965,25 +965,28 @@
         }
       },
       "Orders": {
-        "required": ["latitude", "longitude", "description"],
+        "required": ["latitude", "longitude", "description", "UserId", "ProviderId", "ServiceId"],
         "Type": "object",
         "properties": {
-          "type": {
-            "type": "string",
-            "enum": ["delivery"],
-            "example": "delivery"
-          },
           "latitude": { "type": "number", "example": "6.201733" },
           "longitude": { "type": "number", "example": "-75.578731" },
           "description": {
             "type": "string",
             "example": "Tengo un problema con mi llanta, tengo una moto de marca... modelo... año..."
           },
-          "status": {
+          "UserId": {
             "type": "string",
-            "enum": ["started", "in process", "finished", "cancelled"],
-            "example": "started"
+            "example": "77817f25-2fab-42bb-b589-b48c7db80bf4"
+          },
+          "ProviderId": {
+            "type": "string",
+            "example": "c0a0a31f-f2df-4184-83ca-57c352b6cf77"
+          },
+          "ServiceId": {
+            "type": "string",
+            "example": "4917ee58-a1c3-4fc8-9f35-e8ed93d42b30"
           }
+
         }
       },
       "OrdersResponse": {
@@ -1014,13 +1017,21 @@
             "type": "string",
             "example": "2024-04-09T19:30:59.785Z"
           },
-          "userId": {
+          "UserId": {
             "type": "string",
             "example": "77817f25-2fab-42bb-b589-b48c7db80bf4"
           },
-          "providerId": {
+          "ProviderId": {
             "type": "string",
             "example": "c0a0a31f-f2df-4184-83ca-57c352b6cf77"
+          },
+          "ServiceId": {
+            "type": "string",
+            "example":"4917ee58-a1c3-4fc8-9f35-e8ed93d42b30"
+          },
+          "ProviderServiceId": {
+            "type": "string",
+            "example": "4917ee58-a1c3-4fc8-9f35-e8ed93d42b30"
           }
         }
       },
