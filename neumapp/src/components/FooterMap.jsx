@@ -21,7 +21,7 @@ function FooterMap() {
   const context = useContext(AuthContext);
 
   return (
-    <footer className="fixed bottom-0 w-full z-30">
+    <footer className="fixed bottom-0 w-full z-10">
       <div className="w-full lg:w-[90%] lg:mx-auto rounded-t-2xl text-3xl font-bold bg-[#4036ED66] bg-opacity-60 p-2 lg:p-4 text-white text-center">
         {`Hola, ${context.user}`}
       </div>
