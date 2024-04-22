@@ -1,10 +1,21 @@
 import ButtonUI from "../UI/Button/Button";
 import { DataProvider, WaitingProvider } from "./DataProvider";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 export function CustomPopUp({ img, name }) {
 
     const [changedData, setChangedData] = useState(false);
     const [displayState , setDisplayState] = useState("block");
+
+    const navigate = useNavigate();
+
+    function handleClick() {
+        setChangedData(!changedData);
+        setDisplayState("none");
+        setTimeout(() => {
+            navigate("/prestador");
+        }, 4000);
+    }
 
     return (
         <>
@@ -18,7 +29,7 @@ export function CustomPopUp({ img, name }) {
                         changedData ? <WaitingProvider></WaitingProvider> : <DataProvider></DataProvider>
                     }
                     <div className="flex items-center justify-center">
-                        <ButtonUI style={{ display: displayState }} onClick={() => {setChangedData(!changedData); setDisplayState("none") }} className="bg-blue-500 mt-5">Pedir Ahora</ButtonUI>
+                        <ButtonUI style={{ display: displayState }} onClick={() => {handleClick() }} className="bg-blue-500 mt-5">Pedir Ahora</ButtonUI>
                     </div>
                 </div>
             </div>
