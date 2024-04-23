@@ -9,6 +9,7 @@ interface OrderI {
   ServiceId?: string
   UserId?: string
   ProviderId?: string
+  ProviderServiceId?:string
 }
 
 export default OrderI

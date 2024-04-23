@@ -1,5 +1,7 @@
 import { Orders } from '../models/order.model'
 import OrderI from '../interfaces/order.interface'
+import { ProviderServices } from '../models/provider_services.model'
+import { Service } from '../models/services.model'
 
 const ordersServices = {
   getAllOrders: async () => {
@@ -30,35 +32,6 @@ const ordersServices = {
       throw new Error(error as string)
     }
   },
-  createOrder: async (orderData: OrderI) => {
-    try {
-      if (
-        !orderData.ServiceId ||
-        !orderData.ProviderId ||
-        !orderData.UserId ||
-        !orderData.latitude ||
-        !orderData.longitude
-      ) {
-        throw new Error('Missing Data' as string)
-      }
-      const randomSixDigitNumber = Math.floor(100000 + Math.random() * 900000)
-
-      const newOrder = await Orders.create({
-        type: 'delivery',
-        latitude: orderData.latitude,
-        longitude: orderData.longitude,
-        code: randomSixDigitNumber,
-        description: orderData.description || '',
-        status: 'started',
-        ServiceId: orderData.ServiceId,
-        UserId: orderData.UserId,
-        ProviderId: orderData.ProviderId,
-      })
-      return newOrder
-    } catch (error) {
-      throw new Error(error as string)
-    }
-  },
   updateOrder: async (id: string, newData: Partial<OrderI>) => {
     try {
       const orderToUpdate = await Orders.findByPk(id)
@@ -72,5 +45,60 @@ const ordersServices = {
       throw new Error(error as string)
     }
   },
+  createNewOrder: async (orderData: OrderI) => {
+    try {
+      const service = await Service.findByPk(orderData.ServiceId)
+      if (!service) {
+        throw { status: 404, msg: 'Service does not exist' }
+      }
+      const serviceProvider = await ProviderServices.findOne({
+        where: {
+          ServiceId: orderData.ServiceId,
+          ProviderId: orderData.ProviderId,
+        },
+      })
+      if (!serviceProvider) {
+        throw { status: 404, msg: 'Provider does not offers the service, or provider does not exists' }
+      }
+      orderData.ProviderServiceId = serviceProvider.dataValues.id
+      const newOrder = await ordersServices.createOrder(orderData)
+      return newOrder
+    } catch (error) {
+      throw error
+    }
+  },
+  createOrder:async (orderData: OrderI) => {
+    try {
+      if (
+        !orderData.ProviderId ||
+        !orderData.UserId ||
+        !orderData.latitude ||
+        !orderData.longitude ||
+        !orderData.ProviderServiceId
+      ) {
+        throw new Error('Missing Data' as string)
+      }
+      const randomSixDigitNumber = Math.floor(100000 + Math.random() * 900000)
+      console.log(orderData)
+  
+      const newOrder = await Orders.create(
+        {
+          type: 'delivery',
+          latitude: orderData.latitude,
+          longitude: orderData.longitude,
+          code: randomSixDigitNumber,
+          description: orderData.description || '',
+          status: 'started',
+          UserId: orderData.UserId,
+          ProviderId: orderData.ProviderId,
+          ProviderServiceId: orderData.ProviderServiceId,
+        }
+      )
+      return newOrder
+    } catch (error) {
+      throw new Error(error as string)
+    }
+  }
 }
 export default ordersServices
+
