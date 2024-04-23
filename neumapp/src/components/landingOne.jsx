@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import { useSectionInView } from "../hooks/useSectionInView";
 import LandingSvg from "../images/logo/LandingSvg";
@@ -45,6 +45,8 @@ const LandingOne = () => {
               size="lg"
               radius="full"
               className="bg-secondInk text-white font-semibold text-sm lg:text-lg shadow-lg shadow-indigo-600/70 px-unit-18 py-unit-7 sm:w-unit-6xl"
+              as={Link}
+              href="/registrar"
             >
               Quiero ser prestador
             </Button>
@@ -52,6 +54,8 @@ const LandingOne = () => {
               size="lg"
               radius="full"
               className=" bg-firstInk text-white font-semibold text-sm lg:text-lg shadow-lg shadow-firstShadow-600/70 px-unit-18 py-unit-7 sm:w-unit-6xl"
+              as={Link}
+              href="/ingresar"
             >
               Pedir un servicio
             </Button>

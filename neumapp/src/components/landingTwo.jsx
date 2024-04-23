@@ -1,6 +1,7 @@
 import React from "react";
-import { Button } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import HerramientaSvg from "../images/logo/HerramientaSvg";
+
 
 const LandingTwo = () => {
   return (
@@ -24,6 +25,8 @@ const LandingTwo = () => {
               size="lg"
               radius="full"
               className=" text-white font-semibold w-unit-5xl py-unit-7 sm:w-unit-6xl bg-gradient-to-r from-buttonDegrade-one to-buttonDegrade-two leading-10"
+              as={Link}
+              href="/registrar"
             >
               MÁS INFORMACIÓN
             </Button>
