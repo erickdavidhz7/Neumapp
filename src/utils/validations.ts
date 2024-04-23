@@ -97,7 +97,7 @@ export class Validator {
   }
 
   public isAlphanumeric(options?:ValidationOptions) {
-    const regex = /^[a-zA-Z0-9 ]+$/
+    const regex = /^[a-zA-Z0-9ÁÉÍÓÚáéíóúñÑ ]+$/
     if (this.isPresent && !regex.test(this.toValidate)) {
       this.addErrorMsg(`Not valid format, alphanumeric only`, options?.message)
     }
@@ -108,6 +108,14 @@ export class Validator {
     const regex = /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/
     if (this.isPresent && !regex.test(this.toValidate)) {
       this.addErrorMsg(`Not valid format, alpha only`, options?.message)
+    }
+    return this
+  }
+
+  public isAlphanumericExtended(options?:ValidationOptions) {
+    const regex = /^[a-zA-Z0-9ÁÉÍÓÚáéíóúñÑ\s!\?.,;:¡¿'"(){}[\]\-–—_]+$/u
+    if (this.isPresent && !regex.test(this.toValidate)) {
+      this.addErrorMsg(`Not valid format, alpha numeric es-Es only`, options?.message)
     }
     return this
   }

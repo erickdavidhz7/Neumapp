@@ -37,10 +37,14 @@ const OrdersControllers = {
   createOrder: async (req: Request, res: Response) => {
     const orderData = req.body
     try {
-      const newOrder = await ordersServices.createOrder(orderData)
+      const newOrder = await ordersServices.createNewOrder(orderData)
       res.status(201).json(newOrder)
-    } catch (err) {
-      res.status(500).json({ ok: false, message: 'Internal server error' })
+    } catch (err:any) {
+      console.log(err)
+      if(err.status){
+        return res.status(err.status).json({ ok: false, message: err.msg })
+      }
+      return res.status(500).json({ ok: false, message: 'Internal server error' })
     }
   },
   updateOrder: async (req: Request, res: Response) => {
