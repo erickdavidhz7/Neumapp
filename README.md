@@ -64,7 +64,7 @@ Esta idea surge con el fin de mejorar el servicio de auxilio a los vehículos re
 
 ### **Algunos ejemplos de pantallas**
 
-- Landing Page (Desktop responsive):
+- Home Page (Desktop responsive):
 
 - Inicio de sesión, registro, recuperar contraseña:
 
@@ -111,7 +111,16 @@ Tuvimos en cuenta las semanas organizadas por No-Country para cumplir con los ti
   - Creaación de escenarios de prueba
 
 ## SPRINT 3
+- **Estilos / Funcionalidades completas, mapas y conexión con el Back / test QA**
+  - Estilos en todas las pantallas creando diseños de alta fidelidad
+  - funcionalidades del usuario : solcitar servicio, seleccionar prestador, ver ubicación del prestador
+  - funcionalidades del prestador : aceptar solicitud de servicio, rechazar solicitud de servicio, finalizar prestación
+  - Conexión de la base de datos con el back para su correcto funcionamiento
+  - Test manual de calidad de la app
 
 ## SPRINT 4
+- **Demostración de proyecto en funcionamiento + mejoras y corrección de errores + README**
+  - Se creó una presentación donde se demuestra en funcionamiento del MVP elegido.
+  - Se agregaron mejoras y se solucionaron errores. 
 
 ***
