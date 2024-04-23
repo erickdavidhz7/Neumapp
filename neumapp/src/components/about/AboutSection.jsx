@@ -10,7 +10,7 @@ export default function AboutSection() {
           <Logo width="120" color="#FF6668" />
         </div>
         <div className=" w-1/2 md:w-[80%]">
-          <h2 className="text-5xl md:text-9xl font-extrabold mt-4 mb-8 md:mb-12 bg-gradient-to-r from-firstInk via-orange-300 to-secondInk bg-clip-text text-transparent text-shadow-lg shadow-firstShadow-300/15 ">
+          <h2 className="text-5xl md:text-9xl font-extrabold mt-4 mb-8 md:mb-12 bg-gradient-to-r from-firstInk to-secondInk bg-clip-text text-transparent leading-10 text-shadow-sm shadow-firstInk/10">
             Neumapp
           </h2>
         </div>

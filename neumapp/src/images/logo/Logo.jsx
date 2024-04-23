@@ -8,7 +8,7 @@ const Logo = (props) => {
     return (
       <svg
         width={props.width}
-        className="stroke-[4px]"
+        className="stroke-[6px]"
         viewBox="0 0 93 93"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
