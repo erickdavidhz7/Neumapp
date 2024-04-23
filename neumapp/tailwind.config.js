@@ -1,12 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 const { nextui } = require("@nextui-org/react");
+const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      textShadow: {
+        sm: "0 3px 5px var(--tw-shadow-color)",
+        DEFAULT: "0 2px 4px var(--tw-shadow-color)",
+        lg: "0 8px 5px var(--tw-shadow-color)",
+      },
+    },
   },
   darkMode: "class",
   plugins: [
@@ -111,10 +118,23 @@ module.exports = {
               900: "#1E1601",
               DEFAULT: "#1E1601",
             },
+            buttonDegrade: {
+              one: "#FF666D",
+              two: "#FBB224",
+            },
           },
         },
       },
     }),
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "text-shadow": (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme("textShadow") }
+      );
+    }),
   ],
 };
-

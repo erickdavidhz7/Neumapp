@@ -1,38 +1,38 @@
 [
   {
     "id": 1,
-    "person": "Leonor Preskytil",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    "image": "../images/testimony/lawyer1.png"
+    "person": "Sonia Valdes",
+    "description": "Estoy muy contenta con  el servicio, la aplicación web es sencilla de usar, el servicio llegó muy rápido, lo que es un gran alivio porque estaba lejos de un servicio mecánico.",
+    "image": "../images/testimony/lawyer2.png"
   },
   {
     "id": 2,
-    "person": "Susan Merkadyf",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "person": "Lidia Nuñez",
+    "description": "Se pinchó una goma en plena viaje de la facu y no tenía nada cerca para arreglar la moto, usé la aplicación y llegó justo a tiempo para ayudarme.",
     "image": "../images/testimony/lawyer2.png"
   },
   {
     "id": 3,
-    "person": "Joseph Weznerzol",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "person": "Esteban Sanchez",
+    "description": "Estoy muy conforme con el servicio, la verdad es una gran ayuda para la gente que usa auto y se le pincha la goma en medio de la ruta y no sabe a quien llamar. ",
     "image": "../images/testimony/lawyer3.png"
   },
   {
     "id": 4,
-    "person": "Leonor Preskytil",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "person": "Daniela Perez",
+    "description": "Nunca pensé que encontraría una solución tan rápida para mi problema de motor. La aplicación web fue mi salvación cuando mi auto se detuvo en medio de la nada. ¡Gracias por el excelente servicio!",
     "image": "../images/testimony/lawyer1.png"
   },
   {
     "id": 5,
-    "person": "Susan Merkadyf",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "person": "María Fernández",
+    "description": "Como madre soltera, la confiabilidad y la rapidez son fundamentales para mí. Cuando mi coche tuvo una avería en el camino a recoger a mis hijos, el equipo de mecánicos llegó en tiempo récord. ¡Definitivamente los recomendaré a todos mis amigos!",
     "image": "../images/testimony/lawyer2.png"
   },
   {
     "id": 6,
-    "person": "Joseph Weznerzol",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "person": "Pedro González",
+    "description": "Siempre había sido escéptico sobre los servicios de asistencia en carretera, pero esta experiencia cambió mi opinión por completo. El técnico llegó en menos tiempo del que esperaba y solucionó el problema de mi vehículo de manera impecable. ¡Excelente servicio!",
     "image": "../images/testimony/lawyer3.png"
   }
 ]

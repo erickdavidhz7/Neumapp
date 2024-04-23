@@ -2,32 +2,37 @@ import React from "react";
 import { Button } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import { useSectionInView } from "../hooks/useSectionInView";
+import LandingSvg from "../images/logo/LandingSvg";
 
 const LandingOne = () => {
   const { ref } = useSectionInView("Inicio", 0.5);
   return (
     <section
       ref={ref}
-      className="bg-zinc-700 sm:h-screen flex  justify-center items-cente scroll-mt-32"
+      className="sm:h-screen flex  justify-center items-cente scroll-mt-32"
       id="inicio"
     >
       <div className=" w-full flex flex-col sm:flex-row items-center justify-center gap-5">
         <div className="w-full p-5 sm:w-1/2 sm:mx-10">
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-8xl font-bold tracking-tight text-white "
+            className="mt-10 text-5xl md:text-7xl md:mt-0 lg:text-8xl font-bold tracking-tight text-firstInk text-shadow-lg shadow-firstInk/40"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            SUBHEADING
+            Auxilio <span className="text-secondInk ">vehicular</span> que marca{" "}
+            <span className="text-secondInk">la diferencia</span>
           </motion.h1>
+
+          {/* estilo para usar el degradado  */}
+          {/* bg-gradient-to-r from-firstInk from-30% via-orange-600 via-50% to-thirdInk to-90% bg-clip-text text-transparent leading-10 */}
           <motion.p
-            className=" text-white mt-6 text-lg leading-8"
+            className=" text-firstInk font-semibold mt-6 text-lg leading-8"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique
-            ducimus harum neque tenetur repudiandae architecto beatae odit.
+            Te ayudamos a reunirte con un mecánico mas cercano, solo tenes que
+            registrarte para poder acceder a nuestros servicios.
           </motion.p>
 
           <motion.div
@@ -37,34 +42,28 @@ const LandingOne = () => {
             transition={{ delay: 0.2 }}
           >
             <Button
-              color="default"
               size="lg"
               radius="full"
-              className="px-unit-12 py-unit-7 sm:w-unit-6xl"
+              className="bg-secondInk text-white font-semibold text-sm lg:text-lg shadow-lg shadow-indigo-600/70 px-unit-18 py-unit-7 sm:w-unit-6xl"
             >
-              button
+              Quiero ser prestador
             </Button>
             <Button
-              color="default"
               size="lg"
               radius="full"
-              className="px-unit-12 py-unit-7 sm:w-unit-6xl"
+              className=" bg-firstInk text-white font-semibold text-sm lg:text-lg shadow-lg shadow-firstShadow-600/70 px-unit-18 py-unit-7 sm:w-unit-6xl"
             >
-              button
+              Pedir un servicio
             </Button>
           </motion.div>
         </div>
         <motion.div
-          className=" w-4/5 lg:w-1/2 lg:mx-10"
+          className="lg:w-1/2 lg:mx-10"
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <img
-            className="lg:w-full h-auto rounded-3xl"
-            src="https://www.viewhotels.jp/ryogoku/wp-content/uploads/sites/9/2020/03/test-img.jpg"
-            alt="banner"
-          ></img>
+          <LandingSvg />
         </motion.div>
       </div>
     </section>
