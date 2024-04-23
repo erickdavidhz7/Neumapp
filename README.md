@@ -1,5 +1,5 @@
 # Seleccionado 14 - Grupo 35 (Node/React)
-# NEUMAPP
+# ![LogoNeumapp](https://github.com/No-Country/s14-35-n-node-react/assets/122756986/2a3fe3e7-8655-4d4d-867d-841620f40c65)
 
 **Usuarios: 2**
 
