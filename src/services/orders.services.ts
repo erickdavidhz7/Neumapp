@@ -58,7 +58,7 @@ const ordersServices = {
         },
       })
       if (!serviceProvider) {
-        throw { status: 404, msg: 'Provider does not offers the service' }
+        throw { status: 404, msg: 'Provider does not offers the service, or provider does not exists' }
       }
       orderData.ProviderServiceId = serviceProvider.dataValues.id
       const newOrder = await ordersServices.createOrder(orderData)
