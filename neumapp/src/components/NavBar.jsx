@@ -37,7 +37,7 @@ function NavBar() {
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       className=" bg-firstInk text-white bg-opacity-75 "
-      maxWidth="xl"
+      maxWidth="2xl"
     >
       {/* Vista Desktop */}
 
@@ -51,7 +51,7 @@ function NavBar() {
         </p>
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-4 " justify="center">
+      <NavbarContent className="hidden md:flex gap-4 " justify="center">
         {menuItems.map(
           (item, index) =>
             item.name !== "Ingresar" &&
@@ -88,13 +88,13 @@ function NavBar() {
         )}
       </NavbarContent>
 
-      <NavbarContent justify="end" className="hidden sm:flex ">
+      <NavbarContent justify="end" className="hidden md:flex ">
         <NavbarItem>
           <Button
             as={Link}
             href="/ingresar"
             variant="flat"
-            className="bg-gradient-to-r from-buttonDegrade-one to-buttonDegrade-two text-white px-unit-3  md:w-unit-4xl font-semibold"
+            className="bg-gradient-to-r from-buttonDegrade-one to-buttonDegrade-two text-white px-unit-3 w-unit-3xl  lg:w-unit-4xl font-semibold"
           >
             Ingresar
           </Button>
@@ -104,7 +104,7 @@ function NavBar() {
             as={Link}
             href="/registrar"
             variant="flat"
-            className=" bg-gradient-to-r from-buttonDegrade-one to-buttonDegrade-two text-white px-unit-3  md:w-unit-4xl font-semibold"
+            className=" bg-gradient-to-r from-buttonDegrade-one to-buttonDegrade-two text-white px-unit-3 w-unit-3xl  lg:w-unit-4xl font-semibold"
           >
             Registrar
           </Button>
@@ -113,7 +113,7 @@ function NavBar() {
 
       {/* Vista Mobile */}
 
-      <NavbarContent className="sm:hidden" justify="center">
+      <NavbarContent className="md:hidden" justify="center">
         <NavbarMenu className="bg-firstInk-700 py-5  text-center hover:opacity-95 transition">
           {menuItems.map((item, index) => (
             <NavbarMenuItem
@@ -137,7 +137,7 @@ function NavBar() {
         </NavbarMenu>
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden" justify="end">
+      <NavbarContent className="md:hidden" justify="end">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />

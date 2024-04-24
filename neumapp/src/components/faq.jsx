@@ -5,8 +5,9 @@ export default function Faq() {
 
   return (
     <motion.section id="faq" ref={ref}>
-      <section className="h-screen w-full flex justify-center ">
-        <div className="relative w-full px-6 pb-8 sm:mx-auto sm:max-w-2xl sm:rounded-lg sm:px-10 mt-16">
+
+      <section className="h-[90%] w-full flex justify-center">
+        <div className="relative w-full px-6 mb-24 mt-6 sm:mx-auto sm:max-w-2xl sm:rounded-lg sm:px-10 " >
           <div className="mx-auto px-5">
             <div className="flex flex-col items-center">
               <h3 className="text-2xl lg:text-5xl text-secondInk text-center font-bold  text-shadow-lg shadow-firstShadow-300/15">

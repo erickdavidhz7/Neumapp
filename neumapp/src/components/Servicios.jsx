@@ -42,7 +42,7 @@ export const Card = ({ index, picture, title, emoji, text }) => {
   return (
     <motion.li
       key={index}
-      className="w-full sm:w-full h-52 flex items-center justify-center rounded-3xl bg-firstInk-200 hover:bg-firstInk-300 transition-all ease-in-out duration-600 border-secondInk-700/20 border-3 shadow-sm shadow-secondShadow-700/60"
+      className="w-full h-52 flex items-center justify-center rounded-3xl bg-firstInk-200 hover:bg-firstInk-300 transition-all ease-in-out duration-600 border-secondInk-700/20 border-3 shadow-sm shadow-secondShadow-700/60"
       onMouseEnter={() => handleHover(index)}
       onMouseLeave={() => handleHover(index)}
       variants={faceInAnimationVariants}
@@ -82,7 +82,7 @@ const Servicios = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.175 }}
     >
-      <h3 className="text-4xl font-bold tracking-tight text-firstInk sm:text-7xl my-5 sm:mb-12 text-shadow-sm shadow-firstInk/70">
+      <h3 className="text-4xl text-center font-bold tracking-tight text-firstInk sm:text-7xl my-5 sm:mb-12 text-shadow-sm shadow-firstInk/70">
         Nuestros <span className="text-secondInk"> servicios</span>
       </h3>
 
