@@ -82,11 +82,16 @@ Esta idea surge con el fin de mejorar el servicio de auxilio a los vehículos re
 
 ### **Algunos ejemplos de pantallas**
 
-- Home Page (Desktop responsive):
+- Home Page (Desktop/responsive):
+
+  <img width="833" alt="homeWebUno" src="https://github.com/No-Country/s14-35-n-node-react/assets/122756986/4e11260b-e224-4985-a0b2-84cb3adf76fd">
+  
 
 - Inicio de sesión, registro, recuperar contraseña:
 
-- Menú con servicios:
+- Menú con servicios (logueado):
+
+<img width="794" alt="serviciosWeb" src="https://github.com/No-Country/s14-35-n-node-react/assets/122756986/1c415d83-2a22-4854-a31d-389e83b47410">
 
 - Mapas:
 
