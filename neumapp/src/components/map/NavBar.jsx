@@ -43,7 +43,7 @@ function NavBarMap({ name, img, correo }) {
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Registrado como</p>
-              <p className="font-semibold">{correo ? correo : "test-1"}</p>
+              <p className="font-semibold">{correo ? correo : "Florencia"}</p>
             </DropdownItem>
             <DropdownItem key="mi_cuenta">Mi Cuenta</DropdownItem>
             <DropdownItem key="privacidad">Privacidad</DropdownItem>
