@@ -27,56 +27,60 @@ export function MapProvider() {
     let count = 0;
     const intervalId = setInterval(async () => {
       try {
-        const response = await fetch('https://neumapp.site:3001/orders');
+        const response = await fetch("https://neumapp.site:3001/orders");
         const data = await response.json();
-        const order = data.find(order => order.id === "fc383217-fb53-42ce-8ea4-52280a311998");
+        const order = data.find(
+          (order) => order.id === "fc383217-fb53-42ce-8ea4-52280a311998"
+        );
         if (order.status === "started") {
           setTimeout(() => {
             clearInterval(intervalId);
             setShowModal(true);
-            onOpen()
-          }, 2000)
+            onOpen();
+          }, 2000);
         }
         count++;
         if (count >= 5) {
           clearInterval(intervalId);
         }
       } catch (error) {
-        console.error('Error al realizar la llamada a la API:', error);
+        console.error("Error al realizar la llamada a la API:", error);
       }
     }, 5000);
-  
+
     return () => clearInterval(intervalId);
   }, []);
 
-
-async function handleServiceInProcess() {
-    const serviceStatus = await fetch("https://neumapp.site:3001/orders/fc383217-fb53-42ce-8ea4-52280a311998", {
-      method: "PATCH",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify({        
-          status:"in process"        
-      })
-      
-    })    
-      setButtonDisplay("none");
-      setButtonState("Haga click para finalizar el servicio");
-      
-    }
-async function handleServiceFinished() {
-   await fetch("https://neumapp.site:3001/orders/fc383217-fb53-42ce-8ea4-52280a311998", {
-    method: "PATCH",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({        
-        status:"finished"        
-    })
-    
-  })
-}
+  async function handleServiceInProcess() {
+    const serviceStatus = await fetch(
+      "https://neumapp.site:3001/orders/fc383217-fb53-42ce-8ea4-52280a311998",
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          status: "in process",
+        }),
+      }
+    );
+    setButtonDisplay("none");
+    setButtonState("Haga click para finalizar el servicio");
+  }
+  async function handleServiceFinished() {
+    await fetch(
+      "https://neumapp.site:3001/orders/fc383217-fb53-42ce-8ea4-52280a311998",
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          status: "finished",
+        }),
+      }
+    );
+  }
   return (
     <>
       <Map
@@ -89,8 +93,8 @@ async function handleServiceFinished() {
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
       >
-        <Marker longitude={-58.3942251} latitude={-34.6033355} anchor="bottom" >
-            <MarkerClient></MarkerClient>
+        <Marker longitude={-58.3942251} latitude={-34.6033355} anchor="bottom">
+          <MarkerClient></MarkerClient>
         </Marker>
         {showModal && (
           <Modal
@@ -111,7 +115,10 @@ async function handleServiceFinished() {
                   </ModalHeader>
                   <ModalBody className="flex flex-row gap-4">
                     <div className="w-1/3">
-                      <img src="https://res.cloudinary.com/disv40hau/image/upload/v1713480345/Neumapp/providers/tmp-5-1713480345236.png" alt="user" />
+                      <img
+                        src="https://res.cloudinary.com/disv40hau/image/upload/v1713480345/Neumapp/providers/tmp-5-1713480345236.png"
+                        alt="user"
+                      />
                     </div>
                     <div className="w-2/3 flex flex-col gap-4">
                       <span className="text-xl text-white">Cliente</span>
@@ -124,11 +131,22 @@ async function handleServiceFinished() {
                     </div>
                   </ModalBody>
                   <ModalFooter className="flex flex-row justify-center gap-4">
-                    
-                    <Button onClick={ ()=>{ handleServiceInProcess()}} style={{ display: buttonDisplay }} color="danger" >
+                    <Button
+                      onClick={() => {
+                        handleServiceInProcess();
+                      }}
+                      style={{ display: buttonDisplay }}
+                      color="danger"
+                    >
                       Aceptar
                     </Button>
-                    <Button onClick={ ()=>{ handleServiceFinished() }} color="primary" onPress={onClose}>
+                    <Button
+                      onClick={() => {
+                        handleServiceFinished();
+                      }}
+                      color="primary"
+                      onPress={onClose}
+                    >
                       {buttonTitle}
                     </Button>
                   </ModalFooter>
