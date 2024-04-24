@@ -1,3 +1,5 @@
+
+
 export default function TeamCard({ image, person, description, role }) {
   return (
     <article className="flex gap-4 lg:gap-6 w-[90%] mx-auto ">
