@@ -13,19 +13,60 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 
+import { Marker } from "react-map-gl";
+import { MarkerClient } from "./Markers";
+
 export function MapProvider() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [showModal, setShowModal] = useState(false);
 
+  const [buttonTitle, setButtonState] = useState("declinar");
+  const [buttonDisplay, setButtonDisplay] = useState("block");
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowModal(true);
-      onOpen();
+    let count = 0;
+    const intervalId = setInterval(async () => {
+      try {
+        const response = await fetch('https://neumapp.site:3001/orders');
+        const data = await response.json();
+        const order = data.find(order => order.id === "fc383217-fb53-42ce-8ea4-52280a311998");
+        if (order.status === "in process") {
+          setTimeout(() => {
+            clearInterval(intervalId);
+            setShowModal(true);
+            onOpen()
+          }, 2000)
+        }
+        count++;
+        if (count >= 5) {
+          clearInterval(intervalId);
+        }
+      } catch (error) {
+        console.error('Error al realizar la llamada a la API:', error);
+      }
     }, 5000);
+  
+    return () => clearInterval(intervalId);
+  }, []);
 
-    return () => clearTimeout(timer);
-  }, [onOpen]);
 
+async function handleServiceFinished() {
+    const serviceStatus = await fetch("https://neumapp.site:3001/orders/fc383217-fb53-42ce-8ea4-52280a311998", {
+      method: "PATCH",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({        
+          status:"finished"        
+      })
+      
+    })
+    const serviceStatusJson = await serviceStatus.json();
+    if (serviceStatusJson.status === "finished") {
+      setButtonDisplay("none");
+      setButtonState("Haga click para finalizar el servicio");
+      }
+    }
   return (
     <>
       <Map
@@ -38,6 +79,9 @@ export function MapProvider() {
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
       >
+        <Marker longitude={-58.3942251} latitude={-34.6033355} anchor="bottom" >
+            <MarkerClient></MarkerClient>
+        </Marker>
         {showModal && (
           <Modal
             isOpen={isOpen}
@@ -57,10 +101,10 @@ export function MapProvider() {
                   </ModalHeader>
                   <ModalBody className="flex flex-row gap-4">
                     <div className="w-1/3">
-                      <img src={User} alt="user" />
+                      <img src="https://res.cloudinary.com/disv40hau/image/upload/v1713480345/Neumapp/providers/tmp-5-1713480345236.png" alt="user" />
                     </div>
                     <div className="w-2/3 flex flex-col gap-4">
-                      <span className="text-xl text-white">Name</span>
+                      <span className="text-xl text-white">Cliente</span>
                       <span className="text-xl text-white">
                         Servicio solicitado
                       </span>
@@ -69,12 +113,13 @@ export function MapProvider() {
                       </span>
                     </div>
                   </ModalBody>
-                  <ModalFooter className="flex flex-row gap-4">
-                    <Button color="danger" onPress={onClose}>
+                  <ModalFooter className="flex flex-row justify-center gap-4">
+                    
+                    <Button onClick={ ()=>{ handleServiceFinished()}} style={{ display: buttonDisplay }} color="danger" >
                       Aceptar
                     </Button>
                     <Button color="primary" onPress={onClose}>
-                      Declinar
+                      {buttonTitle}
                     </Button>
                   </ModalFooter>
                 </>

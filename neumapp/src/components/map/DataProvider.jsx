@@ -29,13 +29,13 @@ export function DataProvider() {
     )
 }
 
-export function WaitingProvider (){
+export function WaitingProvider ({ title, display }) {
 
     return (
         <>
             <div className="flex flex-row items-center mb-10">
                 <img className="w-[50px] h-[50px]" src="/images/icons/time.png" alt="Time Waiting" />
-                <p className="text-center text-xl">En espera de confirmacion...</p>
+                <p className="text-center text-xl">{title}</p>
             </div>
         </>
     )

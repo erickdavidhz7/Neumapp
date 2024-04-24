@@ -41,17 +41,15 @@ function ValueProvider() {
         </div>
     )
 }
-export function Provider() {
+export function Provider({position, state}) {
 
-    const [changedData, setChangedData] = useState(false);
+    
 
-    setTimeout(() => {
-        setChangedData(true);
-    }, 6000);
+    
+
     return (
         <>
-        <div className="flex items-center justify-center bg-zinc-700 w-full h-[100vh]">
-            <div className="flex flex-row items-center justify-center rounded w-[80%] ">
+            <div style={{ position:position, top: "185px", left: "150px"}} className="flex flex-row items-center justify-center rounded w-[80%] position-absolute">
                 <div className=" bg-white flex flex-col items-center justify-between h-[400px] w-[220px] max-w-sm overflow-hidden shadow-lg rounded-tl-2xl rounded-bl-2xl">
                     <img className="w-full h-1/2 " src={"/images/MapImages/popUp/provider1.png"} alt="Provider image" />
                     <div className="flex flex-col text-center mb-10 ">
@@ -62,10 +60,9 @@ export function Provider() {
                     </div>
                 </div>
                 {
-                    changedData ? <ValueProvider></ValueProvider> : <ProviderCommingSoon></ProviderCommingSoon>
+                    state ? <ValueProvider></ValueProvider> : <ProviderCommingSoon></ProviderCommingSoon>
                 }               
             </div>
-        </div>
         </>
     )
 }

@@ -4,6 +4,7 @@ import { MarkerClient, MarkerProvider } from './Markers';
 import { CustomPopUp } from './Popup'
 import NavBarMap from './NavBar';
 import FooterMap from '../FooterMap';
+import { Provider } from '../provider/Provider';
 
 const arrayPopUps = [
   {
@@ -111,6 +112,9 @@ export default function Maping() {
 
   const [showPopup, setShowPopup] = useState(false);
 
+  const [positionState, setPositionState] = useState("inherit");
+  const [providerState, setProviderState] = useState(false);
+
 
     return (
       <>
@@ -149,12 +153,13 @@ export default function Maping() {
                     onClose={() => setShowPopup(false)}
                     borderRadius="25px"
                   >
-                    <CustomPopUp name={provider.name} img={provider.img}/>
+                    <CustomPopUp providerState={setProviderState} changeToProvider={setPositionState} name={provider.name} img={provider.img}/>
                   </Popup>
                 )
               }
             })
            }
+           <Provider state={providerState}  position={positionState}></Provider>
           
         </Map>
         <FooterMap></FooterMap>
