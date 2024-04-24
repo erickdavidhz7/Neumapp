@@ -30,7 +30,7 @@ export function MapProvider() {
         const response = await fetch('https://neumapp.site:3001/orders');
         const data = await response.json();
         const order = data.find(order => order.id === "fc383217-fb53-42ce-8ea4-52280a311998");
-        if (order.status === "in process") {
+        if (order.status === "started") {
           setTimeout(() => {
             clearInterval(intervalId);
             setShowModal(true);
@@ -50,23 +50,33 @@ export function MapProvider() {
   }, []);
 
 
-async function handleServiceFinished() {
+async function handleServiceInProcess() {
     const serviceStatus = await fetch("https://neumapp.site:3001/orders/fc383217-fb53-42ce-8ea4-52280a311998", {
       method: "PATCH",
       headers: {
           "Content-Type": "application/json"
       },
       body: JSON.stringify({        
-          status:"finished"        
+          status:"in process"        
       })
       
-    })
-    const serviceStatusJson = await serviceStatus.json();
-    if (serviceStatusJson.status === "finished") {
+    })    
       setButtonDisplay("none");
       setButtonState("Haga click para finalizar el servicio");
-      }
+      
     }
+async function handleServiceFinished() {
+   await fetch("https://neumapp.site:3001/orders/fc383217-fb53-42ce-8ea4-52280a311998", {
+    method: "PATCH",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({        
+        status:"finished"        
+    })
+    
+  })
+}
   return (
     <>
       <Map
@@ -115,10 +125,10 @@ async function handleServiceFinished() {
                   </ModalBody>
                   <ModalFooter className="flex flex-row justify-center gap-4">
                     
-                    <Button onClick={ ()=>{ handleServiceFinished()}} style={{ display: buttonDisplay }} color="danger" >
+                    <Button onClick={ ()=>{ handleServiceInProcess()}} style={{ display: buttonDisplay }} color="danger" >
                       Aceptar
                     </Button>
-                    <Button color="primary" onPress={onClose}>
+                    <Button onClick={ ()=>{ handleServiceFinished() }} color="primary" onPress={onClose}>
                       {buttonTitle}
                     </Button>
                   </ModalFooter>

@@ -26,10 +26,11 @@ export function CustomPopUp({ img, name, changeToProvider, providerState}) {
 
         let count = 0;
         const intervalId = setInterval(async () => {
-        try {
+            
             const response = await fetch('https://neumapp.site:3001/orders');
             const data = await response.json();
             const order = data.find(order => order.id === "fc383217-fb53-42ce-8ea4-52280a311998");
+
             if (order.status === "in process") {
                 setTitleData("Se ha aceptado el servicio... aguarde un instante.");
                 setTimeout(() => {
@@ -38,34 +39,34 @@ export function CustomPopUp({ img, name, changeToProvider, providerState}) {
                     changeToProvider("absolute")
                     
                 }, 2000);
-
-                let count = 0;
-                    const intervalId = setInterval(async () => {
-                    try {
-                        const response = await fetch('https://neumapp.site:3001/orders');
-                        const data = await response.json();
-                        const order = data.find(order => order.id === "fc383217-fb53-42ce-8ea4-52280a311998");
-                        if (order.status === "finished") {
-                            providerState(true);
-                        }
-                        count++;
-                        if (count >= 15) {
-                        clearInterval(intervalId);
-                        }
-                    } catch (error) {
-                        console.error('Error al realizar la llamada a la API:', error);
-                    }
-                    }, 5000);
-                
-                    return () => clearInterval(intervalId);
             }
             count++;
             if (count >= 5) {
+            console.log("primer if");
             clearInterval(intervalId);
+            }         
+        }, 5000);
+
+        
+        let count2 = 0;
+        const intervalId2 = setInterval(async () => {
+            
+            const response = await fetch('https://neumapp.site:3001/orders');
+            const data = await response.json();
+            const order = data.find(order => order.id === "fc383217-fb53-42ce-8ea4-52280a311998");
+
+            if (order.status === "finished") {
+                setTitleData("Se ha aceptado el servicio... aguarde un instante.");
+                setTimeout(() => {
+                    providerState(true);
+                    
+                }, 2000);
             }
-        } catch (error) {
-            console.error('Error al realizar la llamada a la API:', error);
-        }
+            count2++;
+            if (count >= 5) {
+            console.log("ultimo if");
+            clearInterval(intervalId2);
+            }         
         }, 5000);
     
         return () => clearInterval(intervalId);
