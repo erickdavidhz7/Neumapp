@@ -1,7 +1,7 @@
 
 export default function AboutHistorySection() {
   return (
-    <section id="aboutHistory" className=" mt-20">
+    <section id="aboutHistory" className="mt-20">
       <h3 className="text-2xl lg:text-5xl text-secondInk text-center font-bold my-10 text-shadow-lg shadow-firstShadow-300/15">
         ¿ Por qué creamos Neumapp ?
       </h3>

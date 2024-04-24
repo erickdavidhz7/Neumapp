@@ -6,7 +6,7 @@ export default function Contact() {
   const { ref } = useSectionInView("Contacto", 0.75);
 
   return (
-    <motion.section id="contacto" ref={ref}>
+    <motion.section id="contacto" ref={ref} className="scroll-mt-32">
       <section className="w-full flex justify-center items-center">
         <div className=" w-full h-full flex flex-col items-center justify-center">
           <div className="mb-5 w-full h-auto  rounded-lg flex flex-col items-center justify-center">

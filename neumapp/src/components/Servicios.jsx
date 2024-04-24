@@ -77,7 +77,7 @@ const Servicios = () => {
     <motion.section
       ref={ref}
       id="servicios"
-      className="min-h-screen flex flex-col  justify-center items-center"
+      className="min-h-screen flex flex-col  justify-center items-center scroll-mt-16 sm:scroll-mt-20 "
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.175 }}

@@ -129,6 +129,11 @@ function NavBar() {
                 color={location !== item.path && "foreground"}
                 href={item.path}
                 size="lg"
+                onPress={() => {
+                  setActiveSection(item.name);
+                  setTimeOfLastClick(Date.now());
+                  setIsMenuOpen(false);
+                }}
               >
                 {item.name}
               </Link>
