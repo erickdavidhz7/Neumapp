@@ -25,22 +25,33 @@ function NavBar() {
     { name: "Inicio", path: "#inicio" },
     { name: "Servicios", path: "#servicios" },
     { name: "About", path: "#about" },
-    { name: "FAQ", path: "#faq" },
+    { name: "FAQs", path: "#faq" },
     { name: "Contacto", path: "#contacto" },
     { name: "Ingresar", path: "/ingresar" },
-    { name: "Registrar", path: "/registrar" },
+    { name: "Registrarme", path: "/registrar" },
   ];
 
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      className=" bg-firstInk text-white bg-opacity-75 "
+      maxWidth="xl"
+    >
       {/* Vista Desktop */}
 
-      <NavbarBrand>
-        <Logo width={30} color="#4036ED" />
-        <p className="font-bold text-inherit">Neumapp</p>
+      <NavbarBrand className="flex justify-center items-center my-10">
+        <div className="w-fit sm:w-[20%] flex justify-end items-center mr-1">
+          <Logo width={30} color="#FF6668" />
+        </div>
+
+        <p className="font-bold text-3xl bg-gradient-to-r from-buttonDegrade-two via-orange-100 to-buttonDegrade-one bg-clip-text text-transparent leading-10">
+          Neumapp
+        </p>
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-4 " justify="center">
         {menuItems.map(
           (item, index) =>
             item.name !== "Ingresar" &&
@@ -50,8 +61,8 @@ function NavBar() {
                   href={item.path}
                   className={
                     item.name === activeSection
-                      ? "hover:no-underline focus:font-medium font-medium transition"
-                      : "hover:no-underline focus:font-medium font-normal transition"
+                      ? "text-white hover:no-underline hover:bg-firstInk-800 focus:font-medium font-medium transition"
+                      : " text-white hover:no-underline focus:font-medium font-normal transition"
                   }
                   color={location !== item.path && "foreground"}
                   onPress={() => {
@@ -62,7 +73,7 @@ function NavBar() {
                   {item.name}
                   {item.name === activeSection && (
                     <motion.span
-                      className="border-b-3 mt-6 border-[#4036ED] absolute inset-0 -z-10"
+                      className="border-b-3 mt-6 border-secundary absolute inset-0 -z-10"
                       layoutId="activeSection"
                       transition={{
                         type: "spring",
@@ -77,14 +88,24 @@ function NavBar() {
         )}
       </NavbarContent>
 
-      <NavbarContent justify="end" className="hidden sm:flex">
+      <NavbarContent justify="end" className="hidden sm:flex ">
         <NavbarItem>
-          <Button as={Link} color="primary" href="/ingresar" variant="flat">
+          <Button
+            as={Link}
+            href="/ingresar"
+            variant="flat"
+            className="bg-gradient-to-r from-buttonDegrade-one to-buttonDegrade-two text-white px-unit-3  md:w-unit-4xl font-semibold"
+          >
             Ingresar
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="/registrar" variant="flat">
+          <Button
+            as={Link}
+            href="/registrar"
+            variant="flat"
+            className=" bg-gradient-to-r from-buttonDegrade-one to-buttonDegrade-two text-white px-unit-3  md:w-unit-4xl font-semibold"
+          >
             Registrar
           </Button>
         </NavbarItem>
@@ -92,12 +113,19 @@ function NavBar() {
 
       {/* Vista Mobile */}
 
-      <NavbarContent className="sm:hidden pr-3" justify="center">
-        <NavbarMenu>
+      <NavbarContent className="sm:hidden" justify="center">
+        <NavbarMenu className="bg-firstInk-700 py-5  text-center hover:opacity-95 transition">
           {menuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
+            <NavbarMenuItem
+              key={`${item}-${index}`}
+              className="p-2 rounded-2xl hover:bg-firstInk-500"
+            >
               <Link
-                className="w-full"
+                className={
+                  item.name === activeSection
+                    ? "text-white hover:no-underline focus:font-medium font-medium transition"
+                    : " text-white hover:no-underline focus:font-medium font-normal transition"
+                }
                 color={location !== item.path && "foreground"}
                 href={item.path}
                 size="lg"

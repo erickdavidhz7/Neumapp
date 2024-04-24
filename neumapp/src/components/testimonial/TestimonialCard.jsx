@@ -46,13 +46,13 @@ export default function TestimonialCard() {
               <img
                 src={testimony.image}
                 alt={testimony.person}
-                className="absolute left-1/2 -top-10 lg:-top-20 -translate-x-1/2 h-28 w-28 lg:h-40 lg:w-40 rounded-full object-cover border-[0.2rem] border-white shadow-xl"
+                className="absolute left-1/2 -top-10 lg:-top-20 -translate-x-1/2 h-28 w-28 lg:h-40 lg:w-40 rounded-full object-cover border-[0.3rem] border-secondInk shadow-xl"
               />
-              <div className="text-[#181818] rounded-2xl bg-[#ffffff] py-4 px-3 lg:py-8 lg:px-6">
+              <div className="text-white rounded-2xl bg-firstInk/90 py-4 px-3 lg:py-8 lg:px-6">
                 <h2 className="text-lg lg:text-2xl text-center font-bold mt-14">
                   {testimony.person}
                 </h2>
-                <p className="text-base text-[#2a2a2a] text-center mt-4">
+                <p className="text-base text-white text-center mt-4">
                   {testimony.description}
                 </p>
               </div>
