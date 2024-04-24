@@ -10,7 +10,7 @@ const iconSize = 25;
 
 function MenuItem({ icon, text }) {
   return (
-    <div className="flex items-center flex-col lg:flex-row gap-x-4 text-lg">
+    <div className="flex items-center flex-col lg:flex-row gap-x-4 text-base">
       {icon}
       <span className="text-red-500">{text}</span>
     </div>
@@ -22,7 +22,7 @@ function FooterMap() {
 
   return (
     <footer className="fixed bottom-0 w-full z-10">
-      <div className="w-full lg:w-[90%] lg:mx-auto rounded-t-2xl text-3xl font-bold bg-[#4036ED66] bg-opacity-60 p-2 lg:p-4 text-white text-center">
+      <div className="w-full lg:w-[90%] lg:mx-auto rounded-t-2xl text-xl lg:text-3xl font-bold bg-[#4036ED66] bg-opacity-60 p-2 lg:p-4 text-white text-center">
         {`Hola, ${context.user}`}
       </div>
       {context.type === "provider" ? (
@@ -35,7 +35,7 @@ function FooterMap() {
           <MenuItem icon={<BiSupport size={iconSize} />} text="Soporte" />
         </div>
       ) : (
-        <div className="w-full lg:w-[90%] lg:mx-auto flex justify-between items-center bg-white py-2 lg:py-4 px-8 lg:px-20 text-black">
+        <div className="w-full lg:w-[90%] lg:mx-auto flex justify-between items-center gap-2 bg-white py-2 lg:py-4 px-4 lg:px-20 text-black">
           <MenuItem icon={<FaSearch size={iconSize} />} text="Buscar" />
           <MenuItem icon={<FaTools size={iconSize} />} text="Mis solicitudes" />
           <MenuItem icon={<AiFillAlert size={iconSize} />} text="Emergencia" />
