@@ -91,7 +91,7 @@ Esta idea surge con el fin de mejorar el servicio de auxilio a los vehículos re
 
 - Menú con servicios (logueado):
 
-<img width="794" alt="serviciosWeb" src="https://github.com/No-Country/s14-35-n-node-react/assets/122756986/1c415d83-2a22-4854-a31d-389e83b47410">
+  <img width="794" alt="serviciosWeb" src="https://github.com/No-Country/s14-35-n-node-react/assets/122756986/1c415d83-2a22-4854-a31d-389e83b47410">
 
 - Mapas:
 
