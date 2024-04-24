@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 export const AuthContext = React.createContext();
 
 const AuthProvider = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const initialState = {
     login: localStorage.getItem("Login") === "true",
     type: JSON.parse(localStorage.getItem("Type")) || null,
@@ -47,6 +49,7 @@ const AuthProvider = ({ children }) => {
       email,
       photo,
     });
+    setIsAuthenticated(true);
   };
 
   const handlerLogout = () => {
@@ -59,10 +62,13 @@ const AuthProvider = ({ children }) => {
       email: null,
       photo: null,
     });
+    setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ ...authData, handlerLogin, handlerLogout }}>
+    <AuthContext.Provider
+      value={{ ...authData, isAuthenticated, handlerLogin, handlerLogout }}
+    >
       {children}
     </AuthContext.Provider>
   );

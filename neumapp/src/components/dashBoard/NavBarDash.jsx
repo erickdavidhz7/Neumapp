@@ -3,9 +3,9 @@ import {
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
-  Link,
-  Input,
+  // NavbarItem,
+  // Link,
+  // Input,
   DropdownItem,
   DropdownTrigger,
   Dropdown,
@@ -62,7 +62,8 @@ function NavBarDash() {
             >
               <p className="font-semibold">Registrado como</p>
               <p className="font-semibold">
-                {context.email ? context.email : "test-1"}
+                {context.email}
+                {/* {context.email ? context.email : "Florencia"} */}
               </p>
             </DropdownItem>
             <DropdownItem key="mi_cuenta" textValue="Mi Cuenta">
