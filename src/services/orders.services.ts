@@ -53,9 +53,11 @@ const ordersServices = {
         ServiceId: orderData.ServiceId,
         UserId: orderData.UserId,
         ProviderId: orderData.ProviderId,
+        ProviderServiceId: orderData.ProviderServiceId || null
       })
       return newOrder
     } catch (error) {
+      console.log(error);
       throw new Error(error as string)
     }
   },
