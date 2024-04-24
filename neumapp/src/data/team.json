@@ -2,31 +2,43 @@
   {
     "id": 1,
     "person": "Héctor Gómez",
-    "description": "Experto creativo con licenciatura en electrónica y Desarrollo Web. Me dedico a crear experiencias web cautivadoras y funcionales con el único objetivo de ofrecer soluciones innovadoras que hagan una diferencia en la vida de las personas.",
-    "image": "https://res.cloudinary.com/dyfpaqkyt/image/upload/v1713922359/neumapp/njbyd8zhrn0owy1rsrxb.jpg",
-    "role": "Frontend Developer"
+    "description": "Experto creativo con licenciatura en electrónica y Desarrollo Web. Mi enfoque se centra en la creación de experiencias digitales cautivadoras y transformadoras, con un profundo conocimiento técnico y una visión innovadora.",
+    "image": "https://res.cloudinary.com/dyfpaqkyt/image/upload/c_crop,g_auto,h_400,w_400/neumapp/njbyd8zhrn0owy1rsrxb.jpg",
+    "role": "Frontend Developer",
+    "gender": "male",
+    "social": "https://www.linkedin.com/in/h%C3%A9ctor-g%C3%B3mez-0a1075287/"
+
   },
   {
     "id": 2,
-    "person": "Erick Henríquez",
-    "description": "Apasionado estudiante de ciberseguridad y tutor de programación que desarrolla aplicaciones web enfocado la parte de microservicios y bases de datos de la misma.",
-    "image": "https://res.cloudinary.com/dyfpaqkyt/image/upload/v1713920783/neumapp/jfiegp4vdaoyyksljs3l.jpg",
-    "role": "Backend Developer"
+    "person": "Mariely Carrizo",
+    "description": "Análisis y resolución de problemas, junto con excelentes habilidades de comunicación y atención al detalle. Familiaridad con metodología ágil, como Scrum y con capacidad para ejecutar pruebas manuales, diseño y ejecución de casos de pruebas, reportes y seguimiento de incidentes.",
+    "image": "https://res.cloudinary.com/dyfpaqkyt/image/upload/c_crop,g_auto,h_400,w_400/neumapp/owzz5dtgdbwp0lgqcgsk.jpg",
+    "role": "QA TESTER",
+    "gender": "female",
+    "social": "https://www.linkedin.com/in/carrizomariely"
   },
   {
     "id": 3,
-    "person": "Mariely Carrizo",
-    "description": "Análisis y resolución de problemas, junto con excelentes habilidades de comunicación y atención al detalle. Familiaridad con metodología ágil, como Scrum y con capacidad para ejecutar pruebas manuales, diseño y ejecución de casos de pruebas, reportes y seguimiento de incidentes.",
-    "image": "https://res.cloudinary.com/dyfpaqkyt/image/upload/v1713920401/neumapp/owzz5dtgdbwp0lgqcgsk.jpg",
-    "role": "QA TESTER"
+    "person": "Lea Romero",
+    "description": "Proveniente del campo audiovisual pero formándome y juntando experiencias sin parar para formar parte del mundo del desarrollo de software como analista QA. Traigo de mis vivencias anteriores mucha experiencia en organización y trabajo en equipo.",
+    "image": "https://res.cloudinary.com/dyfpaqkyt/image/upload/c_crop,g_auto,h_400,w_400/neumapp/rsnxxcghpbgqcpqvmxgo.jpg",
+    "role": "QA TESTER",
+    "gender": "female",
+    "social": "https://www.linkedin.com/in/lea-romero-ar"
+
+    
   },
   {
     "id": 4,
-    "person": "Lea Romero",
-    "description": "Proveniente del campo audiovisual pero formándome y juntando experiencias sin parar para formar parte del mundo del desarrollo de software como analista QA. Traigo de mis vivencias anteriores mucha experiencia en organización y trabajo en equipo.",
-    "image": "https://res.cloudinary.com/dyfpaqkyt/image/upload/c_crop,g_auto,h_800,w_800/neumapp/rsnxxcghpbgqcpqvmxgo.jpg",
-    "role": "QA TESTER"
+    "person": "Erick Henríquez",
+    "description": "Apasionado estudiante de ciberseguridad y tutor de programación que desarrolla aplicaciones web enfocado la parte de microservicios y bases de datos de la misma.",
+    "image": "https://res.cloudinary.com/dyfpaqkyt/image/upload/c_crop,g_auto,h_400,w_400/neumapp/jfiegp4vdaoyyksljs3l.jpg",
+    "role": "Backend Developer",
+    "gender": "male",
+    "social": "https://www.linkedin.com/in/erick-david-henriquez-sierra/"
   }
+
 ]
 
 

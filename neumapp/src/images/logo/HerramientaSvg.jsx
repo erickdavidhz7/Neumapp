@@ -6,7 +6,7 @@ const HerramientaSvg = () => {
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 242.41 246.86"
-      className=" max-w-xs"
+      className="w-1/2 md:w-3/4"
     >
       <g id="Vector">
         <line x1="151.5" y1="144.39" x2="152.88" y2="143.02" />

@@ -20,11 +20,11 @@ const LandingTwo = () => {
             Tenemos una plataforma preparada para que encuentres rapidamente un
             auxilio en tu zona. O bien puedas prestar un servicio mecánico.
           </p>
-          <div className="my-8">
+          <div className="my-8 flex justify-center">
             <Button
               size="lg"
               radius="full"
-              className=" text-white font-semibold w-unit-5xl py-unit-7 sm:w-unit-6xl bg-gradient-to-r from-buttonDegrade-one to-buttonDegrade-two leading-10"
+              className=" text-white font-semibold bg-gradient-to-r from-buttonDegrade-one to-buttonDegrade-two leading-10 px-unit-6 text-sm sm:text-lg sm:px-unit-16 py-unit-7 "
               as={Link}
               href="/registrar"
             >

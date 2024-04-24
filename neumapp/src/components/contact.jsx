@@ -7,10 +7,10 @@ export default function Contact() {
 
   return (
     <motion.section id="contacto" ref={ref}>
-      <section className=" h-screen w-full flex justify-center items-center">
+      <section className="w-full flex justify-center items-center">
         <div className=" w-full h-full flex flex-col items-center justify-center">
-          <div className="mb-5 w-[100%] h-auto  rounded-lg flex flex-col items-center justify-center">
-            <h4 className=" text-2xl text-firstInk font-bold m-3 sm:text-6xl text-shadow-sm shadow-firstInk/60">
+          <div className="mb-5 w-full h-auto  rounded-lg flex flex-col items-center justify-center">
+            <h4 className=" text-2xl text-firstInk font-bold m-3 sm:text-6xl text-shadow-sm shadow-firstInk/60 text-center">
               {" "}
               ¿Queres prestar servicios?
             </h4>
@@ -25,7 +25,7 @@ export default function Contact() {
               Registrarme
             </button>
           </div>
-          <div className="w-[100%] h-[60%] rounded-lg flex flex-col-reverse sm:flex-col-reverse items-center justify-center sm:h-[50%] ">
+          <div className="w-full rounded-lg flex flex-col-reverse sm:flex-col-reverse items-center justify-center sm:h-[50%] ">
             <div className="flex flex-col h-1/2 w-[100%] justify-around">
               <div className="flex flex-row items-center justify-around sm:justify-around ">
                 <div className="flex flex-row justify-between mt-10 text-base sm:w-3/4 sm:mt-0 sm:gap-40 text-firstInk font-medium">
@@ -83,24 +83,24 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-row text-white font-bold items-center sm:h-1/2 w-[100%] justify-around">
-              <div className="flex justify-center items-center">
+            <div className="w-full h-full mb-10 flex flex-col text-white font-bold items-center  justify-around sm:h-1/2  md:flex-row">
+              <div className=" w-1/2 flex justify-center items-center">
               <Logo width={60} color="#FF6668" />
                 <div>
                   <h2 className="text-3xl sm:text-6xl font-bold bg-gradient-to-r from-firstInk to-secondInk bg-clip-text text-transparent leading-10 text-shadow-sm shadow-firstInk/10">Neumapp</h2>
                 </div>
               </div>
-              <div className="flex flex-col justify-center items-center ">
-                <p className=" text-firstInk-800 font-extrabold text-sm sm:text-2xl">
+              <div className="w-4/5 flex flex-col justify-center items-center sm:w-1/2">
+                <p className=" text-firstInk-800 font-extrabold text-xl text-center mt-8 md:mt-0">
                   Unite a nuestro newsletter
                 </p>
-                <div className=" flex flex-row h-[50px] w-[200px] px-10 bg-[#4336ED] rounded-full mt-5 sm:w-[300px] justify-around text-secondInk-100 ">
+                <div className=" flex flex-row h-[50px] w-full px-10 py-1 bg-[#4336ED] rounded-full mt-5 md:w-3/4 justify-around text-secondInk-100 ">
                   <input
                     className="w-[90%] m-2 text-sm bg-transparent text-secondInk-100 placeholder-secondInk-100 placeholder-opacity-75 focus:outline-none"
                     type="text"
                     placeholder="Correo"
                   />
-                  <button className="text-sm rounded-lg my-2 bg-gradient-to-r from-buttonDegrade-one to-buttonDegrade-two text-white md:w-unit-4xl font-semibold hover:bg-gradient-to-r hover:from-buttonDegrade-one hover:to-orange-500 hover:scale-95 transition">
+                  <button className="text-sm rounded-lg my-2 bg-gradient-to-r from-buttonDegrade-one to-buttonDegrade-two text-white w-unit-4xl font-semibold hover:bg-gradient-to-r hover:from-buttonDegrade-one hover:to-orange-500 hover:scale-95 transition">
                     Enviar
                   </button>
                 </div>

@@ -5,15 +5,11 @@ import TeamsData from "../../data/team.json";
 export default function AboutSection() {
   return (
     <section id="about" className="mt-8">
-      <div className="flex justify-center items-center my-10">
-        <div className="w-fit md:w-[20%] flex justify-end mr-5 mb-4">
-          <Logo width="120" color="#FF6668" />
-        </div>
-        <div className=" w-1/2 md:w-[80%]">
-          <h2 className="text-5xl md:text-9xl font-extrabold mt-4 mb-8 md:mb-12 bg-gradient-to-r from-firstInk to-secondInk bg-clip-text text-transparent leading-10 text-shadow-sm shadow-firstInk/10">
-            Neumapp
-          </h2>
-        </div>
+      <div className="flex flex-col justify-center items-center my-10 sm:flex-row">
+        <Logo width="120" color="#FF6668" />
+        <h2 className="text-5xl md:text-9xl font-extrabold mt-4 mb-8 md:mb-12 bg-gradient-to-r from-firstInk to-secondInk bg-clip-text text-transparent leading-10 text-shadow-sm shadow-firstInk/10">
+          Neumapp
+        </h2>
       </div>
 
       <h4 className="text-center text-3xl sm:text-5xl font-bold text-secondInk mt-2 mb-8 sm:mb-16  text-shadow-lg shadow-firstShadow-300/15">
@@ -28,6 +24,8 @@ export default function AboutSection() {
             person={team.person}
             description={team.description}
             role={team.role}
+            gender={team.gender}
+            social={team.social}
           />
         ))}
       </div>

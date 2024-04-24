@@ -36,7 +36,7 @@ const LandingOne = () => {
           </motion.p>
 
           <motion.div
-            className="flex gap-10 items-center mt-10"
+            className="flex flex-col gap-10 items-center mt-10 md:flex-row"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -44,7 +44,7 @@ const LandingOne = () => {
             <Button
               size="lg"
               radius="full"
-              className="bg-secondInk text-white font-semibold text-sm lg:text-lg shadow-lg shadow-indigo-600/70 px-unit-18 py-unit-7 sm:w-unit-6xl"
+              className="bg-secondInk text-white font-semibold text-sm lg:text-lg shadow-lg shadow-indigo-600/70 px-unit-6 sm:px-unit-16 py-unit-7 md:w-unit-6xl"
               as={Link}
               href="/registrar"
             >
@@ -53,7 +53,7 @@ const LandingOne = () => {
             <Button
               size="lg"
               radius="full"
-              className=" bg-firstInk text-white font-semibold text-sm lg:text-lg shadow-lg shadow-firstShadow-600/70 px-unit-18 py-unit-7 sm:w-unit-6xl"
+              className=" bg-firstInk text-white font-semibold text-sm lg:text-lg shadow-lg shadow-firstShadow-600/70 px-unit-8 sm:px-unit-18 py-unit-7 md:w-unit-6xl"
               as={Link}
               href="/ingresar"
             >
