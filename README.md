@@ -47,14 +47,32 @@ Esta idea surge con el fin de mejorar el servicio de auxilio a los vehículos re
 - [Verónica](http://github.com/veritoa45)
 
 ***
-## TECNOLOGIAS UTILIZADAS
+## TECNOLOGIAS / DEPENDENCIAS
 
 ### FRONTEND
+- React
+- mapbox
+- tailwind
+- axios
+- framer motion
 
 ### BACKEND
-***
+- Node.js
+- Typescript
+- express
+- sequelize
+- postgre SQL
+- cloudinary
 
-## DEPENDENCIAS
+### QA
+- Excel
+- Google sheets
+- ClickUp
+
+### DevOps
+- Github actions
+- Linux OS
+- Docker
 
 ### UX/UI
 - Figma
