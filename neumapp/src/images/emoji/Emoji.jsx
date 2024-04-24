@@ -137,8 +137,8 @@ const HandOk = ({ width }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(6.05755 9.15489) scale(7.2672)"
         >
-          <stop offset="0.2793" stop-color="#FFCA28" />
-          <stop offset="0.7972" stop-color="#FFB300" />
+          <stop offset="0.2793" stopColor="#FFCA28" />
+          <stop offset="0.7972" stopColor="#FFB300" />
         </radialGradient>
         <radialGradient
           id="paint1_radial_1116_491"
@@ -148,8 +148,8 @@ const HandOk = ({ width }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(15.4778 8.88916) scale(13.9943)"
         >
-          <stop stop-color="#FFCA28" />
-          <stop offset="1" stop-color="#FFB300" />
+          <stop stopColor="#FFCA28" />
+          <stop offset="1" stopColor="#FFB300" />
         </radialGradient>
         <radialGradient
           id="paint2_radial_1116_491"
@@ -159,14 +159,14 @@ const HandOk = ({ width }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(12.266 22.669) scale(24.1203 22.7293)"
         >
-          <stop offset="0.242" stop-color="#FFCA28" />
-          <stop offset="0.7972" stop-color="#FFB300" />
+          <stop offset="0.242" stopColor="#FFCA28" />
+          <stop offset="0.7972" stopColor="#FFB300" />
         </radialGradient>
       </defs>
     </svg>
   );
 };
-const FlexedBiceps = ({width}) => {
+const FlexedBiceps = ({ width }) => {
   return (
     <svg
       width={width}
@@ -208,8 +208,8 @@ const FlexedBiceps = ({width}) => {
           y2="4.45053"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FFB300" />
-          <stop offset="0.4007" stop-color="#FFCA28" />
+          <stop stopColor="#FFB300" />
+          <stop offset="0.4007" stopColor="#FFCA28" />
         </linearGradient>
       </defs>
     </svg>

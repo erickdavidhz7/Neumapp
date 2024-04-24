@@ -1,6 +1,6 @@
 import React from "react";
 
-export const RimIcon = ({width}) => {
+export const RimIcon = ({ width }) => {
   return (
     <svg
       width={width}
@@ -48,9 +48,9 @@ export const RimIcon = ({width}) => {
           y2="60"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.255" stop-color="#4A36ED" />
-          <stop offset="0.615" stop-color="#F4C884" />
-          <stop offset="1" stop-color="#F97A7F" />
+          <stop offset="0.255" stopColor="#4A36ED" />
+          <stop offset="0.615" stopColor="#F4C884" />
+          <stop offset="1" stopColor="#F97A7F" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_914_830"
@@ -60,8 +60,8 @@ export const RimIcon = ({width}) => {
           y2="31.8488"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A36ED" />
-          <stop offset="1" stop-color="#F97A7F" />
+          <stop stopColor="#4A36ED" />
+          <stop offset="1" stopColor="#F97A7F" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_914_830"
@@ -71,8 +71,8 @@ export const RimIcon = ({width}) => {
           y2="26.0137"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A36ED" />
-          <stop offset="1" stop-color="#F97A7F" />
+          <stop stopColor="#4A36ED" />
+          <stop offset="1" stopColor="#F97A7F" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_914_830"
@@ -82,8 +82,8 @@ export const RimIcon = ({width}) => {
           y2="39.5839"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A36ED" />
-          <stop offset="1" stop-color="#F97A7F" />
+          <stop stopColor="#4A36ED" />
+          <stop offset="1" stopColor="#F97A7F" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_914_830"
@@ -93,8 +93,8 @@ export const RimIcon = ({width}) => {
           y2="44.6457"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A36ED" />
-          <stop offset="1" stop-color="#F97A7F" />
+          <stop stopColor="#4A36ED" />
+          <stop offset="1" stopColor="#F97A7F" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_914_830"
@@ -104,8 +104,8 @@ export const RimIcon = ({width}) => {
           y2="39.5797"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A36ED" />
-          <stop offset="1" stop-color="#F97A7F" />
+          <stop stopColor="#4A36ED" />
+          <stop offset="1" stopColor="#F97A7F" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_914_830"
@@ -115,8 +115,8 @@ export const RimIcon = ({width}) => {
           y2="26.0132"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A36ED" />
-          <stop offset="1" stop-color="#F97A7F" />
+          <stop stopColor="#4A36ED" />
+          <stop offset="1" stopColor="#F97A7F" />
         </linearGradient>
       </defs>
     </svg>
