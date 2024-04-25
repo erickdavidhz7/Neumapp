@@ -84,8 +84,11 @@ export default function Contact() {
               </div>
             </div>
             <div className="w-full h-full mb-10 flex flex-col text-white font-bold items-center  justify-around sm:h-1/2  md:flex-row">
-              <div className=" w-1/2 flex justify-center items-center">
-              <Logo width={60} color="#FF6668" />
+              <div className=" w-full md:w-1/2 flex justify-center items-center">
+              <div className="size-[32px] sm:size-[60px] ">
+                <Logo/>
+              </div>
+              
                 <div>
                   <h2 className="text-3xl sm:text-6xl font-bold bg-gradient-to-r from-firstInk to-secondInk bg-clip-text text-transparent leading-10 text-shadow-sm shadow-firstInk/10">Neumapp</h2>
                 </div>

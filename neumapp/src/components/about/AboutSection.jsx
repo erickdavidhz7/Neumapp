@@ -6,7 +6,10 @@ export default function AboutSection() {
   return (
     <section id="about" className="mt-8 scroll-mt-24">
       <div className="flex flex-col justify-center items-center my-10 sm:flex-row">
-        <Logo width="120" color="#FF6668" />
+        <div className="size-36">
+          <Logo />
+        </div>
+
         <h2 className="text-5xl md:text-9xl font-extrabold mt-4 mb-8 md:mb-12 bg-gradient-to-r from-firstInk to-secondInk bg-clip-text text-transparent leading-10 text-shadow-sm shadow-firstInk/10">
           Neumapp
         </h2>
