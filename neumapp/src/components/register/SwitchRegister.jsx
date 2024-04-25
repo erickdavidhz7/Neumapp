@@ -15,8 +15,8 @@ function SwitchRegister() {
         selectedKey={selected}
         onSelectionChange={setSelected}
         classNames={{
-          tabList: "p-0 font-semibold ",
-          tab: " h-10 transition-all duration-700",
+          tabList: "p-0 font-semibold border-2 border-firstInk ",
+          tab: " h-10 transition-all duration-700 ",
           cursor: "w-full",
           tabContent: "group-data-[selected=true]:text-white",
         }}
@@ -31,7 +31,7 @@ function SwitchRegister() {
         ></Tab>
       </Tabs>
       <div className="text-center mt-2">
-        <span className=" text-white ">
+        <span className=" text-secondInk font-semibold ">
           ¿Tienes una cuenta?{" "}
           <Link className="text-primary font-semibold" href="/ingresar">
             Inicia Sesión

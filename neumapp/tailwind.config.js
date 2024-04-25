@@ -12,6 +12,7 @@ module.exports = {
         sm: "0 3px 5px var(--tw-shadow-color)",
         DEFAULT: "0 2px 4px var(--tw-shadow-color)",
         lg: "0 8px 5px var(--tw-shadow-color)",
+        g: "0 -12px 2px var(--tw-shadow-color)",
       },
       keyframes: {
         linerInfinityTopX: {
@@ -31,6 +32,9 @@ module.exports = {
           '100%': { transform: 'translateY(-100%)' },
         },
       },
+      screens: {
+        'x': '400px',
+      }
     },
   },
   darkMode: "class",
@@ -40,6 +44,19 @@ module.exports = {
       themes: {
         light: {
           colors: {
+            primary: {
+              100: "#EAE9FD",
+              200: "#D5D2FB",
+              300: "#BFBCF9",
+              400: "#AAA6F7",
+              500: "#958FF5",
+              600: "#8079F3",
+              700: "#6A63F1",
+              800: "#554CEF",
+              900: "#4036ED",
+              DEFAULT: "#4036ED",
+              foreground: "#FFFFFF"
+            },
             firstInk: {
               100: "#EAE9FD",
               200: "#D5D2FB",

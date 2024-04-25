@@ -42,8 +42,8 @@ function NavBar() {
       {/* Vista Desktop */}
 
       <NavbarBrand className="flex justify-center items-center my-10">
-        <div className="w-fit sm:w-[20%] flex justify-end items-center mr-1">
-          <Logo width={30} color="#FF6668" />
+        <div className=" size-8 flex justify-end items-center mr-1">
+          <Logo />
         </div>
 
         <p className="font-bold text-3xl bg-gradient-to-r from-buttonDegrade-two via-orange-100 to-buttonDegrade-one bg-clip-text text-transparent leading-10">
@@ -129,6 +129,11 @@ function NavBar() {
                 color={location !== item.path && "foreground"}
                 href={item.path}
                 size="lg"
+                onPress={() => {
+                  setActiveSection(item.name);
+                  setTimeOfLastClick(Date.now());
+                  setIsMenuOpen(false);
+                }}
               >
                 {item.name}
               </Link>
