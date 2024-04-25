@@ -15,7 +15,7 @@ export default function Faq() {
               </h3>
             </div>
             <div className="mx-auto mt-8 grid max-w-xl divide-y divide-neutral-200">
-              <div className="m-2 p-5 bg-firstInk-800 rounded-lg">
+              <div className="m-2 p-5 bg-firstInk-900 rounded-lg">
                 <details className="group">
                   <summary className="flex cursor-pointer list-none items-center justify-between font-medium text-secondInk-100">
                     <span>¿ Cómo me registro ?</span>
@@ -43,7 +43,7 @@ export default function Faq() {
                   </p>
                 </details>
               </div>
-              <div className="m-2 p-5 bg-firstInk-800 rounded-lg">
+              <div className="m-2 p-5 bg-firstInk-900 rounded-lg">
                 <details className="group">
                   <summary className="flex cursor-pointer list-none items-center justify-between font-medium text-secondInk-100">
                     <span>¿ Cómo son los medios de pago ?</span>
@@ -71,7 +71,7 @@ export default function Faq() {
                   </p>
                 </details>
               </div>
-              <div className="m-2 p-5 bg-firstInk-800 rounded-lg">
+              <div className="m-2 p-5 bg-firstInk-900 rounded-lg">
                 <details className="group">
                   <summary className="flex cursor-pointer list-none items-center justify-between font-medium text-secondInk-100">
                     <span>¿ Cómo me conecto con el prestador ?</span>
@@ -99,7 +99,7 @@ export default function Faq() {
                   </p>
                 </details>
               </div>
-              <div className="m-2 p-5 bg-firstInk-800 rounded-lg">
+              <div className="m-2 p-5 bg-firstInk-900 rounded-lg">
                 <details className="group">
                   <summary className="flex cursor-pointer list-none items-center justify-between font-medium text-secondInk-100">
                     <span>¿ Es segura la aplicación ?</span>
@@ -127,7 +127,7 @@ export default function Faq() {
                   </p>
                 </details>
               </div>
-              <div className="m-2 p-5 bg-firstInk-800 rounded-lg">
+              <div className="m-2 p-5 bg-firstInk-900 rounded-lg">
                 <details className="group">
                   <summary className="flex cursor-pointer list-none items-center justify-between font-medium text-secondInk-100">
                     <span>¿ Qué necesito para unirme ?</span>

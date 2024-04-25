@@ -36,7 +36,7 @@ function NavBar() {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className=" bg-firstInk text-white bg-opacity-75 "
+      className=" bg-firstInk-900 text-white bg-opacity-100 "
       maxWidth="2xl"
     >
       {/* Vista Desktop */}

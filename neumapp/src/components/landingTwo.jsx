@@ -11,8 +11,8 @@ const LandingTwo = () => {
           <HerramientaSvg />
         </div>
 
-        <div className="w-full p-5 sm:w-1/2 sm:mx-10">
-          <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold tracking-tight text-firstInk text-shadow-sm shadow-firstInk/50">
+        <div className="w-full p-5 sm:w-[100%] sm:mx-10">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-firstInk text-shadow-sm shadow-firstInk/50">
             En Neumapp <span className="text-secondInk">encontrá</span> o prestá{" "}
             <span className="text-secondInk">servicios de mecanica.</span>
           </h1>

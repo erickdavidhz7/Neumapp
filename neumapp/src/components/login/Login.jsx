@@ -27,13 +27,13 @@ const Login = () => {
   return (
     <section
       id="login"
-      className="min-h-screen bg-zinc-700 flex justify-center items-center"
+      className="min-h-screen bg-firstInk-100 flex justify-center items-center"
     >
       <div className="flex flex-col lg:flex-row justify-between w-full max-w-7xl mx-auto gap-y-8 lg:gap-0">
         <div className="flex flex-row-reverse justify-center items-center mx-10 mt-10 lg:flex-col lg:m-0 lg:items-start">
           <section className="flex  justify-start items-center mx-auto lg:mx-0 h-full">
-            <Logo width={"10vw"} color="white" />
-            <span className="text-4xl lg:text-9xl text-white antialiased">
+            <Logo width={"10vw"} color="#FB686C" />
+            <span className="font-bold text-4xl lg:text-9xl text-firstInk ">
               Neumapp
             </span>
           </section>
@@ -43,10 +43,10 @@ const Login = () => {
             size="sm"
             variant="light"
             startContent={
-              <FaArrowLeft color="white" size={30} className="mx-2 lg:mx-0" />
+              <FaArrowLeft color="#FB686C" size={30} className="mx-2 lg:mx-0" />
             }
           >
-            <span className="  text-lg text-white ml-5 hidden lg:block lg:mx-5">
+            <span className="  text-lg text-firstInk ml-5 hidden lg:block lg:mx-5">
               Volver al Inicio
             </span>
           </Button>
@@ -58,7 +58,7 @@ const Login = () => {
             <div className="mb-6">
               <label
                 htmlFor="email"
-                className="text-white block text-base mb-2 font-medium"
+                className="text-blue-600/100 block text-base mb-2 font-medium"
               >
                 Correo
               </label>
@@ -66,7 +66,7 @@ const Login = () => {
                 name="email"
                 type="text"
                 id="email"
-                className="bg-white border border-[#33353F] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-full p-2.5"
+                className="bg-white border-2 border-[#FF6668] placeholder-[#9CA2A9] focus:text-slate-900 text-base rounded-lg block w-full p-2.5"
                 placeholder="myemail@gmail.com"
                 {...register("email")}
               />
@@ -77,7 +77,7 @@ const Login = () => {
             <div className="mb-6 relative">
               <label
                 htmlFor="password"
-                className="text-white block text-base mb-2 font-medium"
+                className="text-blue-600/100 block text-base mb-2 font-medium"
               >
                 Contraseña
               </label>
@@ -85,7 +85,7 @@ const Login = () => {
                 name="password"
                 type={isVisible ? "text" : "password"}
                 id="password"
-                className="bg-white border border-[#33353F] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
+                className="bg-white border-2 border-[#FF6668] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
                 placeholder="****************"
                 {...register("password")}
               />

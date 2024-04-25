@@ -23,8 +23,8 @@ export default function TeamCard({
       <div
         className={
           gender === "female"
-            ? "w-[60%] h-auto text-secondInk rounded-2xl bg-secondInk-500 py-4 px-3 lg:py-8 lg:px-6 shadow-lg shadow-slate-500"
-            : "w-[60%] h-auto text-secondInk rounded-2xl bg-firstInk-500 py-4 px-3 lg:py-8 lg:px-6 shadow-lg shadow-slate-500"
+            ? "w-[60%] h-auto text-secondInk rounded-2xl bg-secondInk-900 py-4 px-3 lg:py-8 lg:px-6 shadow-lg shadow-slate-500"
+            : "w-[60%] h-auto text-secondInk rounded-2xl bg-firstInk-900 py-4 px-3 lg:py-8 lg:px-6 shadow-lg shadow-slate-500"
         }
       >
         <p className={"text-sm text-white text-center mt-2 tracking-wide "}>
@@ -61,8 +61,8 @@ export function CardImg({ key, image, person, role, gender, social }) {
         radius="none"
         className={
           gender === "female"
-            ? "text-small justify-between bg-secondInk-500"
-            : "text-small justify-between bg-firstInk-500"
+            ? "text-small justify-between bg-secondInk-900"
+            : "text-small justify-between bg-firstInk-900"
         }
       >
         <b className=" text-white ">{person}</b>

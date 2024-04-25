@@ -50,24 +50,24 @@ const OurServices = () => {
     <motion.section
       id="servicios"
       className="min-h-screen flex flex-col justify-center items-center"
-      style={{ background: 'rgba(67, 67, 67, 1)' }} // Estilo en línea para el color de fondo
+      style={{ background: 'rgba(234, 233, 253, 1)' }} // Estilo en línea para el color de fondo
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.175 }}
     >
-      <h3 className="text-4xl font-bold tracking-tight text-white sm:text-5xl my-5 sm:mb-12">
+      <h3 className="text-4xl font-bold tracking-tight text-[#FF6668] sm:text-5xl my-5 sm:mb-12">
         Nuestros servicios
       </h3>
       <ul className="w-full lg:w-[1192px] grid grid-cols-2 md:grid-cols-3 gap-4 mt-10">
         {serviceData.map((service, index) => (
           <li
             key={service.id}
-            className="w-full h-52 flex flex-col items-center justify-center rounded-3xl bg-slate-300 hover:bg-slate-500 transition-all ease-in-out duration-600 p-4"
+            className="w-full h-52 flex flex-col items-center justify-center rounded-3xl bg-blue-400 hover:bg-blue-500 transition-all ease-in-out duration-600 p-4"
           >
             <h3 className="text-xl font-semibold text-white">{service.title}</h3>
             <p className="text-white my-2">{service.includes}</p>
             <p className="text-white mb-4">{service.value}</p>
-            <button onClick={() => {navigate('/mapa')}} className="text-white bg-blue-500 hover:bg-blue-600 font-bold py-2 px-4 rounded">
+            <button onClick={() => {navigate('/mapa')}} className="text-blue-600 bg-white hover:bg-blue-200 font-bold py-2 px-4 rounded">
               Solicitar
             </button>
           </li>
