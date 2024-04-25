@@ -11,8 +11,6 @@ import AccessLocation from "../../modal/AccessLocation.jsx";
 import { grantPermission } from "../../../utils/locationData.js";
 import { toast, ToastContainer } from "react-toastify";
 
-
-
 const ProviderRegister = () => {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const [dataForm, setDataForm] = useState();
@@ -67,7 +65,7 @@ const ProviderRegister = () => {
           <div className="w-4/5 mr-1 sm:mr-3">
             <label
               htmlFor="firstName"
-              className="text-white block mb-2 text-base font-medium"
+              className="text-primary block mb-2 text-base font-medium"
             >
               Nombre
             </label>
@@ -75,14 +73,20 @@ const ProviderRegister = () => {
               name="firstName"
               type="text"
               id="firstName"
-              className="bg-white border border-[#33353F] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
+              className={
+                errors.firstName === undefined
+                  ? "bg-white border border-[#9CA2A9] placeholder-[#9CA2A9] focus:outline-none text-base rounded-lg block w-full p-2.5"
+                  : "bg-white border-2 border-secondInk placeholder-[#9CA2A9] text-secondInk focus:outline-none text-base rounded-lg block w-full p-2.5"
+              }
               placeholder="Jhon"
               {...register("firstName", {
                 required: true,
               })}
             />
             {errors.firstName && (
-              <p className="text-red-300 text-sm">{errors.firstName.message}</p>
+              <p className="text-secondInk text-sm">
+                {errors.firstName.message}
+              </p>
             )}
           </div>
 
@@ -90,7 +94,7 @@ const ProviderRegister = () => {
           <div className="w-4/5 ml-1 sm:ml-3">
             <label
               htmlFor="lastName"
-              className="text-white block mb-2 text-base font-medium"
+              className="text-primary block mb-2 text-base font-medium"
             >
               Apellido
             </label>
@@ -98,21 +102,27 @@ const ProviderRegister = () => {
               name="lastName"
               type="text"
               id="lastName"
-              className="bg-white border border-[#33353F] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
+              className={
+                errors.lastName === undefined
+                  ? "bg-white border border-[#9CA2A9] placeholder-[#9CA2A9] focus:outline-none text-base rounded-lg block w-full p-2.5"
+                  : "bg-white border-2 border-secondInk placeholder-[#9CA2A9] text-secondInk focus:outline-none text-base rounded-lg block w-full p-2.5"
+              }
               placeholder="Smith"
               {...register("lastName", {
                 required: true,
               })}
             />
             {errors.lastName && (
-              <p className="text-red-300 text-sm">{errors.lastName.message}</p>
+              <p className="text-secondInk text-sm">
+                {errors.lastName.message}
+              </p>
             )}
           </div>
         </div>
         <div className="mb-6">
           <label
             htmlFor="email"
-            className="text-white block text-base mb-2 font-medium"
+            className="text-primary block text-base mb-2 font-medium"
           >
             Correo
           </label>
@@ -121,20 +131,24 @@ const ProviderRegister = () => {
             type="text"
             id="email"
             autoComplete="email"
-            className="bg-white border border-[#33353F] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
+            className={
+              errors.email === undefined
+                ? "bg-white border border-[#9CA2A9] placeholder-[#9CA2A9] focus:outline-none text-base rounded-lg block w-full p-2.5"
+                : "bg-white border-2 border-secondInk placeholder-[#9CA2A9] text-secondInk focus:outline-none text-base rounded-lg block w-full p-2.5"
+            }
             placeholder="myemail@gmail.com"
             {...register("email", {
               required: true,
             })}
           />
           {errors.email && (
-            <p className="text-red-300 text-sm">{errors.email.message}</p>
+            <p className="text-secondInk text-sm">{errors.email.message}</p>
           )}
         </div>
         <div className="mb-6 relative">
           <label
             htmlFor="password"
-            className="text-white block text-base mb-2 font-medium"
+            className="text-primary block text-base mb-2 font-medium"
           >
             Contraseña
           </label>
@@ -143,7 +157,11 @@ const ProviderRegister = () => {
             type={isVisible ? "text" : "password"}
             id="password"
             placeholder="**********"
-            className="bg-white border border-[#33353F] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
+            className={
+              errors.password === undefined
+                ? "bg-white border border-[#33353F] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
+                : "bg-white border-2 border-secondInk placeholder-[#9CA2A9]  text-base text-secondInk rounded-lg block w-full p-2.5 focus:outline-none transition"
+            }
             {...register("password", {
               required: true,
             })}
@@ -162,14 +180,14 @@ const ProviderRegister = () => {
           </button>
 
           {errors.password && (
-            <p className="text-red-300 text-sm">{errors.password.message}</p>
+            <p className="text-secondInk text-sm">{errors.password.message}</p>
           )}
         </div>
         {/* Numero de celular personal */}
         <div className="mb-6">
           <label
             htmlFor="phoneClient"
-            className="text-white block text-base mb-2 font-medium"
+            className="text-primary block text-base mb-2 font-medium"
           >
             Ingresa tu número personal
           </label>
@@ -179,7 +197,11 @@ const ProviderRegister = () => {
                 name="codeP"
                 type="text"
                 id="codeP"
-                className="bg-white border border-[#33353F] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
+                className={
+                  errors.codeP === undefined
+                    ? "bg-white border border-[#9CA2A9] placeholder-[#9CA2A9] focus:outline-none text-base rounded-lg block w-full p-2.5"
+                    : "bg-white border-2 border-secondInk placeholder-[#9CA2A9] text-secondInk focus:outline-none text-base rounded-lg block w-full p-2.5"
+                }
                 placeholder="+54"
                 {...register("codeP", {
                   required: true,
@@ -191,7 +213,11 @@ const ProviderRegister = () => {
                 type="text"
                 id="phoneClient"
                 onKeyDown={onKeyNumbers}
-                className="bg-white border border-[#33353F] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
+                className={
+                  errors.phoneClient === undefined
+                    ? "bg-white border border-[#9CA2A9] placeholder-[#9CA2A9] focus:outline-none text-base rounded-lg block w-full p-2.5"
+                    : "bg-white border-2 border-secondInk placeholder-[#9CA2A9] text-secondInk focus:outline-none text-base rounded-lg block w-full p-2.5"
+                }
                 placeholder="1193475762"
                 {...register("phoneClient", {
                   required: true,
@@ -201,12 +227,12 @@ const ProviderRegister = () => {
             <div className="flex justify-start w-full">
               <div className="w-1/2">
                 {errors.codeP && (
-                  <p className="text-red-300 text-xs">{errors.codeP.message}</p>
+                  <p className="text-secondInk text-xs">{errors.codeP.message}</p>
                 )}
               </div>
               <div className="w-1/2 ml-3">
                 {errors.phoneClient && (
-                  <p className="text-red-300 text-xs">
+                  <p className="text-secondInk text-xs">
                     {errors.phoneClient.message}
                   </p>
                 )}
@@ -219,7 +245,7 @@ const ProviderRegister = () => {
         <div className="mb-6">
           <label
             htmlFor="phoneProvider"
-            className="text-white block text-base mb-2 font-medium"
+            className="text-primary block text-base mb-2 font-medium"
           >
             Ingresa tu número laboral
           </label>
@@ -229,7 +255,11 @@ const ProviderRegister = () => {
                 name="codeL"
                 type="text"
                 id="codeL"
-                className="bg-white border border-[#33353F] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
+                className={
+                  errors.codeL === undefined
+                    ? "bg-white border border-[#9CA2A9] placeholder-[#9CA2A9] focus:outline-none text-base rounded-lg block w-full p-2.5"
+                    : "bg-white border-2 border-secondInk placeholder-[#9CA2A9] text-secondInk focus:outline-none text-base rounded-lg block w-full p-2.5"
+                }
                 placeholder="+54"
                 {...register("codeL", {
                   required: true,
@@ -239,7 +269,11 @@ const ProviderRegister = () => {
                 name="phoneProvider"
                 type="text"
                 id="phoneProvider"
-                className="bg-white border border-[#33353F] placeholder-[#9CA2A9]  text-base rounded-lg block w-full p-2.5 hover:bg-gray-100 focus:outline-none focus:text-slate-700 transition"
+                className={
+                  errors.phoneProvider === undefined
+                    ? "bg-white border border-[#9CA2A9] placeholder-[#9CA2A9] focus:outline-none text-base rounded-lg block w-full p-2.5"
+                    : "bg-white border-2 border-secondInk placeholder-[#9CA2A9] text-secondInk focus:outline-none text-base rounded-lg block w-full p-2.5"
+                }
                 placeholder="1193475762"
                 onKeyDown={onKeyNumbers}
                 {...register("phoneProvider", {
@@ -250,13 +284,13 @@ const ProviderRegister = () => {
             <div className="flex justify-start w-full">
               <div className="w-1/2">
                 {errors.codeL && (
-                  <p className="text-red-300 text-xs">{errors.codeL.message}</p>
+                  <p className="text-secondInk text-xs">{errors.codeL.message}</p>
                 )}
               </div>
 
               <div className="w-1/2 ml-3">
                 {errors.phoneProvider && (
-                  <p className="text-red-300 text-xs">
+                  <p className="text-secondInk text-xs">
                     {errors.phoneProvider.message}
                   </p>
                 )}
@@ -268,7 +302,7 @@ const ProviderRegister = () => {
         {/* input subir imagen */}
         <div className="mb-6">
           <label
-            className="block mb-2 text-sm font-medium text-white dark:text-gray-900 text-center"
+            className="block mb-2 text-sm font-medium text-firstInk dark:text-gray-900 text-center"
             htmlFor="photo"
           >
             Adjunta una foto de perfil.
@@ -284,23 +318,23 @@ const ProviderRegister = () => {
             })}
           />
           {selectedFile === "Seleccionar archivo" ? (
-            <label
-              htmlFor="photo"
-              className="block mr-4 py-2 px-4
-            rounded-md border-0 text-sm font-semibold bg-purple-50
-            text-primary hover:bg-purple-100 cursor-pointer text-center"
-            >
-              Seleccionar archivo
-            </label>
-          ) : (
-            <label
-              htmlFor="photo"
-              className="block mr-4 py-2 px-4
-            rounded-md border-0 text-sm font-semibold bg-purple-400
-            text-white hover:bg-purple-500 cursor-pointer text-center"
-            >
-              {selectedFile}
-            </label>
+           <label
+           htmlFor="photo"
+           className="block mr-4 py-2 px-4
+           rounded-md border-0 text-sm font-semibold bg-secondInk
+           text-white hover:bg-secondInk-700 cursor-pointer text-center transition-colors"
+         >
+           Seleccionar archivo
+         </label>
+       ) : (
+         <label
+           htmlFor="photo"
+           className="block mr-4 py-2 px-4
+           rounded-md border-0 text-sm font-semibold bg-thirdInk-300
+           text-secondInk hover:bg-thirdInk-700 cursor-pointer text-center transition-colors"
+         >
+           {selectedFile}
+         </label>
           )}
 
           <div className="flex gap-x-4">
@@ -308,7 +342,7 @@ const ProviderRegister = () => {
               <p className="text-red-300 text-sm">{errors.photo.message}</p>
             ) : (
               <p
-                className="mt-1 text-sm text-gray-300 dark:text-gray-900"
+                className="mt-1 text-sm text-primary dark:text-gray-900"
                 id="photo_error"
               >
                 JPG ,JPGE ,PNG o WEBP (10MB Max).
@@ -327,7 +361,7 @@ const ProviderRegister = () => {
                 required: true,
               })}
             />
-            <label className="ml-2 text-xs text-white" htmlFor="agreements">
+            <label className="ml-2 text-xs text-primary" htmlFor="agreements">
               Estoy de acuerdo con los términos y condicones y politicas de
               seguridad y confirmo que soy mayor de edad
             </label>
@@ -343,7 +377,7 @@ const ProviderRegister = () => {
         </div>
         <button
           type="submit"
-          className="bg-[#929292] hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+          className="bg-primary hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
         >
           Crear Usuario
         </button>
