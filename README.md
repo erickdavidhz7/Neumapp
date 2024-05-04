@@ -18,7 +18,6 @@ Esta idea surge con el fin de mejorar el servicio de auxilio a los vehículos re
 - [Edwin Amaranto](https://github.com/EdwinCoder85)
 - [Luca Pattin](https://github.com/lupattin)
 - [Camilo Duque](https://github.com/camiloduquee)
-- [Joseph Rodríguez](https://github.com/eJosR-Coding)
 
 ### Backend
 
@@ -39,9 +38,6 @@ Esta idea surge con el fin de mejorar el servicio de auxilio a los vehículos re
 
 - [Mariely Carrizo](https://www.linkedin.com/in/carrizomariely/)
 - [Lea Romero](https://www.linkedin.com/in/lea-romero-ar)
-
-### PM
-- [Nciolas Mennichelli](https://github.com/michiqueli)
 
 ### TL
 - [Verónica](http://github.com/veritoa45)
